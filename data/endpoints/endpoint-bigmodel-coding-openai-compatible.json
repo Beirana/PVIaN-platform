@@ -1,0 +1,29 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-bigmodel-coding-openai-compatible",
+  "endpoint_kind": "official_direct",
+  "provider_id": "provider-bigmodel-coding",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "v4_coding_plan_docs",
+  "model_requested": "glm-5.3",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": "cn",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-17T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only endpoint record from the official Zhipu docs (docs.bigmodel.cn) captured 2026-08-17; no controlled qualification observation has run against this endpoint yet.",
+      "Subscription-plan endpoint https://open.bigmodel.cn/api/coding/paas/v4 with a Coding-Plan-specific API key. Official docs state that Coding Plan, Token Plan, and pay-as-you-go keys and base URLs are fully isolated and must be used in matching pairs; mixing them causes 401/403 or unexpected pay-as-you-go billing.",
+      "Same host as the pay-as-you-go endpoint (open.bigmodel.cn/api/paas/v4); the required_base_path /api/coding/paas/v4 plus the dedicated credential variable keep the two identities separate. The Bailian-hosted glm-5.2 route is a different provider, endpoint, and model version entirely."
+    ]
+  }
+}

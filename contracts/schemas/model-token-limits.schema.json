@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/model-token-limits.schema.json",
+  "title": "PVIaN model token limits v1",
+  "description": "Advertised model output/context ceilings sourced from official provider pages. Static capability facts (not runtime usage). Indexed by (provider, region, upstream_model) and injected into pricing-snapshot responses as the output_limits block. Reasoning tokens count toward max_output_tokens on thinking models.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "captured_at", "source_pages", "limits"],
+  "properties": {
+    "schema_version": {"const": "pvian.model-token-limits/v1"},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "source_pages": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "uniqueItems": true
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider",
+          "region",
+          "upstream_model",
+          "context_window",
+          "max_output_tokens",
+          "max_thinking_chain_tokens",
+          "output_parameter",
+          "thinking_default",
+          "thinking_controls",
+          "recommended_defaults",
+          "confirmation",
+          "source_url",
+          "notes"
+        ],
+        "properties": {
+          "provider": {"type": "string", "minLength": 1},
+          "region": {"type": "string", "minLength": 1},
+          "upstream_model": {"type": "string", "minLength": 1},
+          "context_window": {"type": "integer", "minimum": 1},
+          "max_output_tokens": {"type": "integer", "minimum": 1},
+          "max_thinking_chain_tokens": {"type": ["integer", "null"], "minimum": 1},
+          "output_parameter": {"type": "string", "minLength": 1},
+          "thinking_default": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["state", "default_effort", "default_thinking_budget", "default_effort_confirmation"],
+            "properties": {
+              "state": {"enum": ["on", "off", "always_on", "adaptive"]},
+              "default_effort": {"type": ["string", "null"], "minLength": 1},
+              "default_thinking_budget": {"type": ["integer", "null"], "minimum": 1},
+              "default_effort_confirmation": {"enum": ["confirmed", "cross_source_unconfirmed"]}
+            }
+          },
+          "thinking_controls": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "recommended_defaults": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["send", "omit", "required_non_reasoning"],
+            "properties": {
+              "send": {
+                "type": "object",
+                "description": "Reasoning params to send explicitly to reproduce the upstream default. Empty object means omit all reasoning params."
+              },
+              "omit": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+                "uniqueItems": true,
+                "description": "Params that are NOT supported by this model and will cause a 400 if sent."
+              },
+              "required_non_reasoning": {
+                "type": "object",
+                "description": "Non-reasoning params required for a valid default request (e.g. stream:true for kimi-k3)."
+              }
+            }
+          },
+          "confirmation": {"enum": ["confirmed", "cross_source_unconfirmed"]},
+          "source_url": {"type": "string", "format": "uri"},
+          "notes": {"type": ["string", "null"]}
+        }
+      },
+      "uniqueItems": true
+    }
+  }
+}

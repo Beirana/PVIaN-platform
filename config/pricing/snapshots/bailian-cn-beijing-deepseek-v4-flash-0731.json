@@ -1,0 +1,19 @@
+{
+  "schema_version": "pvian.price-snapshot/v1",
+  "snapshot_id": "snap-deepseek-v4-flash-0731-20260805",
+  "created_at": "2026-08-05T00:00:00Z",
+  "effective_at": "2026-08-03T00:00:00Z",
+  "currency": "CNY",
+  "source_pricing_document": "config/pricing/bailian-cn-beijing-deepseek-v4-flash-0731.json",
+  "source_pricing_document_sha256": "965a6a3375642b6fa20d0348f4bb92bdef256e071c3a2367f09aca53d6240666",
+  "pricing_version": "2026-08-03",
+  "provider": "bailian",
+  "region": "cn-beijing",
+  "model": "deepseek-v4-flash-0731",
+  "rates": {
+    "input": 1,
+    "cached_input": 0.2,
+    "output": 2
+  },
+  "snapshot_digest": "b5f8edc6a792952a0c73003478a78f7a9cb5806959d3cbb43b5f04e919f2e3de"
+}

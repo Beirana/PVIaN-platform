@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/evidence-reference.schema.json",
+  "title": "PVI Evidence Reference v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "source_kind",
+    "host_profile_id",
+    "capture_surface",
+    "sha256",
+    "media_type",
+    "redaction_profile",
+    "locator",
+    "captured_at",
+    "retention_class"
+  ],
+  "properties": {
+    "schema_version": { "const": "pvi.evidence-reference/v1" },
+    "evidence_id": { "type": "string", "minLength": 1 },
+    "source_kind": {
+      "enum": [
+        "official_document",
+        "provider_native",
+        "managed_cloud",
+        "broker_gateway",
+        "local_runtime",
+        "host_bridge",
+        "host_hook",
+        "session_export",
+        "operator_note",
+        "unknown"
+      ]
+    },
+    "host_profile_id": { "type": ["string", "null"] },
+    "capture_surface": {
+      "enum": [
+        "provider_wire",
+        "gateway_wire",
+        "host_normalized_event",
+        "host_session_record",
+        "hook_callback",
+        "exported_transcript",
+        "operator_observation",
+        "unknown"
+      ]
+    },
+    "sha256": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      ]
+    },
+    "media_type": { "type": "string", "minLength": 1 },
+    "redaction_profile": { "type": "string", "minLength": 1 },
+    "locator": { "type": ["string", "null"] },
+    "captured_at": { "type": "string", "format": "date-time" },
+    "retention_class": {
+      "enum": ["ephemeral", "standard", "restricted", "metadata_only"]
+    }
+  }
+}

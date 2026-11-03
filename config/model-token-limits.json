@@ -1,0 +1,913 @@
+{
+  "schema_version": "pvian.model-token-limits/v1",
+  "captured_at": "2026-08-19T00:00:00Z",
+  "source_pages": [
+    "https://help.aliyun.com/zh/model-studio/deep-thinking",
+    "https://help.aliyun.com/zh/model-studio/error-code",
+    "https://api-docs.deepseek.com/",
+    "https://api-docs.deepseek.com/quick_start/pricing",
+    "https://api-docs.deepseek.com/api/create-chat-completion/",
+    "https://platform.kimi.com/docs/guide/kimi-k3-quickstart",
+    "https://platform.kimi.com/docs/pricing/chat",
+    "https://openrouter.ai/api/v1/models",
+    "https://openrouter.ai/docs/features/provider-routing",
+    "https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3.md",
+    "https://docs.bigmodel.cn/cn/coding-plan/latest-model.md",
+    "https://docs.aigocode.com/docs/api/models",
+    "https://platform.openai.com/docs/models/gpt-5.5",
+    "https://www.anthropic.com/news/claude-opus-4-8",
+    "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+    "https://platform.openai.com/docs/models/gpt-5.6-luna",
+    "https://platform.openai.com/docs/models/gpt-5.6-terra",
+    "https://platform.openai.com/docs/models/gpt-5.6-sol",
+    "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "https://ai.google.dev/gemini-api/docs/latest-model",
+    "https://docs.x.ai/developers/grok-4-6",
+    "https://mimo.mi.com/docs/zh-CN/quick-start/summary/model",
+    "https://help.aliyun.com/zh/model-studio/token-plan-personal-overview",
+    "https://help.aliyun.com/zh/model-studio/more-tools",
+    "https://help.aliyun.com/zh/model-studio/qwen3-7-max",
+    "https://help.aliyun.com/zh/model-studio/qwen3-6-flash",
+    "https://help.aliyun.com/zh/model-studio/deepseek-api",
+    "https://api.aigocode.com/v1/messages"
+  ],
+  "limits": [
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "qwen3.8-max",
+      "context_window": 1000000,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": 262144,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": 262144,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/qwen3-8-max",
+      "notes": "混合思考模式，商业版默认开启思考。无 reasoning_effort；思考强度靠 thinking_budget 调节，默认=最大思维链长度 262144。enable_thinking 仅支持 stream=true。推荐配方：省略所有 reasoning 参数即得上游默认（思考开）。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "kimi/kimi-k3",
+      "context_window": 1048576,
+      "max_output_tokens": 1048576,
+      "max_thinking_chain_tokens": 1048576,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "always_on",
+        "default_effort": "max",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {
+          "stream": true
+        }
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/kimi-api-by-moonshot-ai",
+      "notes": "仅思考模型（常开，不可关闭）。百炼版 kimi-k3 的 reasoning_effort 唯一支持值为 max（与 Moonshot 上游 low/high/max 不同）；enable_thinking 不适用于 k3，thinking_budget 不适用于 Moonshot 部署的 k3。stream_options 仅支持 true（必须流式）。max_output_tokens 列 1048576 与 context 同值，默认 max_completion_tokens=131072。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "glm-5.2",
+      "context_window": 1048576,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": 131072,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": 131072,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "reasoning_effort",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/glm-5-2",
+      "notes": "混合思考模式，默认开启思考。reasoning_effort 可选 none/minimal/low/medium/high/xhigh/max；官方未明确默认值，按 DeepSeek V4 同体系推测为 high（cross_source_unconfirmed）。enable_thinking 优先级高于 reasoning_effort。thinking_budget 默认=最大思维链长度 131072（与 max_output_tokens 同池）。推荐配方：省略所有 reasoning 参数即得上游默认（思考开）。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "qwen3.7-plus",
+      "context_window": 1000000,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": 262144,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": 262144,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/qwen3-7-plus",
+      "notes": "混合思考模式，默认开启思考。无 reasoning_effort；thinking_budget 默认=最大思维链长度 262144。推荐配方：省略所有 reasoning 参数即得上游默认（思考开）。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "qwen3-vl-plus",
+      "context_window": 262144,
+      "max_output_tokens": 32768,
+      "max_thinking_chain_tokens": 81920,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "off",
+        "default_effort": null,
+        "default_thinking_budget": 81920,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {
+          "enable_thinking": true
+        },
+        "omit": [],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/qwen3-vl-plus",
+      "notes": "混合思考模式，但 enable_thinking 官方默认关闭（与其余 Qwen3 默认开不同）。为与其余模型保持「默认开思考」策略，推荐配方显式发 enable_thinking=true；thinking_default.state 仍记 off 以反映官方原始默认。开启后 thinking_budget 默认=最大思维链长度 81920，最小值 1024。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "MiniMax/MiniMax-M3",
+      "context_window": 1048576,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "adaptive",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "thinking.type"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "reasoning_effort",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/minimax-m3",
+      "notes": "通过 thinking.type=adaptive（默认，自适应）/ disabled 控制，无 reasoning_effort 与 thinking_budget。切勿发 enable_thinking/reasoning_effort/thinking_budget（非 MiniMax 协议参数）。max_output_tokens 官方 minimax-m3 卡片显「—」，131072 为跨源一致值待控制台复核。reasoning_tokens 在 usage 单列但是否计入 max_tokens 官方未说明。推荐配方：省略整个 thinking 对象即得上游默认（adaptive）。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "xiaomi/mimo-v2.5-pro",
+      "context_window": 1048576,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": 131072,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "reasoning_effort",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/mimo",
+      "notes": "混合推理模型，enable_thinking 默认 true。明确不支持 reasoning_effort 与 thinking_budget（无任何强度调节手段），只能开关思考。思维链长度与最大输出同值（同一 131072 池）。推荐配方：省略所有 reasoning 参数即得上游默认（思考开）。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "deepseek-v4-pro",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/deepseek-api",
+      "notes": "混合思考模型，官方明确默认开启思考、默认 reasoning_effort=high（可选 low/medium/high/xhigh/max）。enable_thinking 切换开关；官方未说明 enable_thinking 与 reasoning_effort 同时传时的优先级。思考折叠进输出无独立 thinking_budget（切勿发）。393216 为官方参数表 max_tokens 列「共 393216」，「共」字精确语义官方未注解。推荐配方：省略所有 reasoning 参数即得上游默认（思考开+high）。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "deepseek-v4-flash-0731",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/deepseek-api",
+      "notes": "混合思考模型，官方明确默认开启思考、默认 reasoning_effort=high（可选 low/medium/high/xhigh/max）。enable_thinking 切换开关；官方未说明 enable_thinking 与 reasoning_effort 同时传时的优先级。思考折叠进输出无独立 thinking_budget（切勿发）。与 v4-pro 同引自 deepseek-api 参数表。推荐配方：省略所有 reasoning 参数即得上游默认（思考开+high）。"
+    },
+    {
+      "provider": "deepseek-official",
+      "region": "global",
+      "upstream_model": "deepseek-v4-pro",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "thinking.type",
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget",
+          "frequency_penalty",
+          "presence_penalty"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://api-docs.deepseek.com/",
+      "notes": "DeepSeek 官方直连（非百炼版，方言不同勿混用）。官方页 2026-08-17 取证：默认思考开启、thinking.type 默认 enabled、reasoning_effort 默认 high（可选 low/high/max，medium/xhigh 映射为 high）。思考控制是 thinking 对象参数，与百炼版 enable_thinking 布尔参数不同协议。官方页以「Context 1M / MAXIMUM 384K」显示，按仓库换算惯例记 1048576/393216；无独立思维链上限（推理 token 计入 384K 输出池）。frequency_penalty/presence_penalty 官方已弃用（勿发）。deepseek-v4-pro 当前指向 V4-Pro-0813 版本。定价为 CNY（中国站 peak 标准价，off-peak 半价；英文文档页另有 USD 标价，账户按中国站人民币计费）。推荐配方：省略所有 reasoning 参数即得上游默认（思考开+high）。"
+    },
+    {
+      "provider": "deepseek-official",
+      "region": "global",
+      "upstream_model": "deepseek-v4-flash",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "thinking.type",
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget",
+          "frequency_penalty",
+          "presence_penalty"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://api-docs.deepseek.com/",
+      "notes": "DeepSeek 官方直连（非百炼 flash-0731 固定版，官方 ID 为动态指针，当前指向 V4-Flash-0731）。官方页 2026-08-17 取证：默认思考开启、thinking.type 默认 enabled、reasoning_effort 默认 high（可选 low/high/max）。thinking 对象协议同 v4-pro 条目；Context 1M / 384K 输出按惯例换算 1048576/393216。frequency_penalty/presence_penalty 已弃用（勿发）。定价为 CNY（中国站 peak 标准价，off-peak 半价；英文文档页另有 USD 标价，账户按中国站人民币计费）。推荐配方：省略所有 reasoning 参数即得上游默认（思考开+high）。"
+    },
+    {
+      "provider": "moonshot-official",
+      "region": "cn",
+      "upstream_model": "kimi-k3",
+      "context_window": 1048576,
+      "max_output_tokens": 1048576,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_completion_tokens",
+      "thinking_default": {
+        "state": "always_on",
+        "default_effort": "max",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://platform.kimi.com/docs/guide/kimi-k3-quickstart",
+      "notes": "Moonshot 官方直连（api.moonshot.cn/v1，中国站 key；与百炼版 kimi/kimi-k3 为不同身份）。官方 2026-08-17 取证：思考始终开启不可关，reasoning_effort 可选 low/high/max、默认 max（百炼版仅支持 max——两身份方言不同）。非流式请求官方支持（百炼版要求 stream:true，官方无此要求）。max_completion_tokens 默认 131072、上限 1048576（与 1M 上下文同值）。temperature=1.0/top_p=0.95 为官方固定值，建议勿显式设置。推荐配方：省略所有 reasoning 参数即得上游默认（思考常开+max）。"
+    },
+    {
+      "provider": "openrouter",
+      "region": "global",
+      "upstream_model": "anthropic/claude-sonnet-5",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_completion_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "reasoning",
+        "reasoning.effort",
+        "reasoning.enabled"
+      ],
+      "recommended_defaults": {
+        "send": {
+          "provider": {
+            "allow_fallbacks": false
+          }
+        },
+        "omit": [
+          "enable_thinking",
+          "thinking_budget",
+          "include_reasoning"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://openrouter.ai/api/v1/models",
+      "notes": "OpenRouter 聚合网关（broker）：目录记 reasoning 默认 enabled（effort 默认值未披露，记 null）。OpenRouter 统一 reasoning 对象（effort: low/medium/high/xhigh/max 按模型支持）映射到 Anthropic 原生思考；include_reasoning 已弃用（改用 reasoning.exclude/enabled）。关键身份稳定性配方：provider.allow_fallbacks=false——OpenRouter 默认在 provider 5xx/限流时静默换后端，必须显式关闭才保住「精确身份」语义（catalog 价格为默认路由价，cache-write 价本 schema 不承载）。max_output 128000 来自目录 top_provider.max_completion_tokens。支持 max_tokens 与 max_completion_tokens 两种输出参数。:nitro/:floor/:batch 后缀为不同身份。"
+    },
+    {
+      "provider": "openrouter",
+      "region": "global",
+      "upstream_model": "openai/gpt-5.6-sol",
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_completion_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "reasoning",
+        "reasoning.effort",
+        "reasoning.enabled"
+      ],
+      "recommended_defaults": {
+        "send": {
+          "provider": {
+            "allow_fallbacks": false
+          }
+        },
+        "omit": [
+          "enable_thinking",
+          "thinking_budget",
+          "include_reasoning"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://openrouter.ai/api/v1/models",
+      "notes": "OpenRouter 聚合网关上的 GPT-5.6 Sol（旗舰）。reasoning effort 支持 max/xhigh/high/medium/low/none（含 none 可完全关闭思考，故 state 记 on 为推测，默认 effort 未披露记 null，均 cross_source_unconfirmed）。provider.allow_fallbacks=false 配方原因同 claude-sonnet-5 条目。定价双层：prompt 超 272K token 后 input/output 加倍（见定价文件两档）。上下文 1,050,000、最大输出 128000（目录 top_provider.max_completion_tokens）。支持 seed 与 structured_outputs（目录 supported_parameters）。:batch 与 -pro 后缀为不同身份。"
+    },
+    {
+      "provider": "openrouter",
+      "region": "global",
+      "upstream_model": "dots-studio/dots-3-note-preview:free",
+      "context_window": 512000,
+      "max_output_tokens": 512000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "reasoning",
+        "reasoning.effort",
+        "reasoning.enabled"
+      ],
+      "recommended_defaults": {
+        "send": {
+          "provider": {
+            "allow_fallbacks": false
+          }
+        },
+        "omit": [
+          "enable_thinking",
+          "thinking_budget",
+          "include_reasoning"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://openrouter.ai/api/v1/models",
+      "notes": "OpenRouter :free 免费层身份（与付费同名去后缀身份不同，可单独下线/限流，零费率为目录明示的免费价而非未知占位）。280B MoE（16B 激活）预览模型，目录未披露默认思考状态与默认 effort（on 为占位推测，待 qualification 实测后修正）。支持 reasoning/tools/structured_outputs。上下文 512000、最大输出 512000（目录 top_provider.max_completion_tokens）。免费层有请求频率/日配额限制。"
+    },
+    {
+      "provider": "openrouter",
+      "region": "global",
+      "upstream_model": "nvidia/nemotron-3.5-lightning:free",
+      "context_window": 1000000,
+      "max_output_tokens": 65536,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "reasoning",
+        "reasoning.effort",
+        "reasoning.enabled"
+      ],
+      "recommended_defaults": {
+        "send": {
+          "provider": {
+            "allow_fallbacks": false
+          }
+        },
+        "omit": [
+          "enable_thinking",
+          "thinking_budget",
+          "include_reasoning"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://openrouter.ai/api/v1/models",
+      "notes": "OpenRouter :free 免费层身份（与付费同名去后缀身份不同，可单独下线/限流，零费率为目录明示的免费价而非未知占位）。30B MoE（3B 激活）。目录未披露默认思考状态（on 为占位推测，待实测修正）。支持 reasoning/tools 但不支持 structured_outputs。上下文 1000000、最大输出 65536（目录 top_provider.max_completion_tokens）。免费层有请求频率/日配额限制。"
+    },
+    {
+      "provider": "bigmodel-coding",
+      "region": "cn",
+      "upstream_model": "glm-5.3",
+      "context_window": 1000000,
+      "max_output_tokens": 128000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "always_on",
+        "default_effort": "max",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "thinking.type",
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3.md",
+      "notes": "智谱官方 GLM Coding Plan 订阅端点（open.bigmodel.cn/api/coding/paas/v4，套餐专属 Key；与同主机按量端点 /api/paas/v4、以及百炼 glm-5.2 均为不同身份，密钥与 Base URL 官方明示不可混用）。官方模型卡片（2026-08-17）：上下文 1M（按十进制记 1000000）、最大输出 128K（记 128000）——卡片未给精确整数，单位换算为唯一解释自由度。思考常开不可关（thinking.type 仅 enabled），reasoning_effort low/high/max、默认 max（confirmed）。思维链长度上限未披露记 null。订阅制定价：无逐 token 牌价，台账成本估算按 unknown（pricing_missing）而非 0。glm-5.3[1m] 后缀为另一身份未收录；glm-5.3 按量 API 截图时未上线（Coding Plan 独占期）。推荐配方：省略全部 reasoning 参数即得上游默认（思考常开+max）。"
+    },
+    {
+      "provider": "aigocode",
+      "region": "global",
+      "upstream_model": "gpt-5.6-sol",
+      "context_window": 1050000,
+      "max_output_tokens": 128000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "medium",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://platform.openai.com/docs/models/gpt-5.6-sol",
+      "notes": "AiGoCode 中转站身份（CODEX 组令牌）。GPT-5.6 旗舰：官方模型卡 1050000/128000/默认 medium，$5/$30。与 OpenRouter 目录的 openai/gpt-5.6-sol 为不同渠道身份（本仓库已有后者档案，两者并存不映射）。站点实价登录墙后，台账估算 unknown。中转截断风险待验证。"
+    },
+    {
+      "provider": "aigocode",
+      "region": "global",
+      "upstream_model": "gemini-3.7-flash",
+      "context_window": 1048576,
+      "max_output_tokens": 65536,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "reasoning_effort",
+        "thinking_level",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://ai.google.dev/gemini-api/docs/latest-model",
+      "notes": "AiGoCode 中转站身份（GEMINI 组令牌）。Google 官方文档（2026-08-18）：上下文 1048576、最大输出 65536、思考 low/medium/high 可调（默认档未披露记 null）、多模态输入；介绍期 $0.75/$3.75（2027-01-01 起 $1.5/$7.5）。站点实价登录墙后，台账估算 unknown。中转截断风险待验证。"
+    },
+    {
+      "provider": "aigocode",
+      "region": "global",
+      "upstream_model": "grok-4.6",
+      "context_window": 500000,
+      "max_output_tokens": 500000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "reasoning_effort",
+        "reasoning"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://docs.x.ai/developers/grok-4-6",
+      "notes": "AiGoCode 中转站身份（GROK 组令牌）。xAI 官方文档（2026-08-18）：上下文 500000、官方明示无文本输出上限（输出受上下文窗口约束，max_output 按窗口记 500000，为解释值 cross_source_unconfirmed）、知识截止 2026-02-01、可配置 reasoning（OpenRouter 目录记默认 high）；$2/$6、超 200K prompt 加倍。logprobs 会被静默忽略。站点实价登录墙后，台账估算 unknown。"
+    },
+    {
+      "provider": "aigocode",
+      "region": "global",
+      "upstream_model": "claude-sonnet-5",
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "reasoning_effort",
+        "thinking",
+        "thinking.budget_tokens"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "notes": "AiGoCode 中转站身份（CLAUDE 组令牌，操作员指定用 sonnet 不用 opus）。Anthropic 官方文档（2026-08-18）：上下文 200000、最大输出 64000、自适应思考（effort 默认 high）、文本+图像输入、$3/$15。与 sonnet-4-6 及 opus/fable 全家为不同身份。thinking.budget_tokens 经 OpenAI 兼容中转是否透传待探针。站点实价登录墙后，台账估算 unknown。"
+    },
+    {
+      "provider": "mimo-token-plan",
+      "region": "cn",
+      "upstream_model": "mimo-v2.5-pro",
+      "context_window": 1048576,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": 131072,
+      "output_parameter": "max_completion_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "reasoning_effort",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://mimo.mi.com/docs/zh-CN/quick-start/summary/model",
+      "notes": "小米 MiMo Token Plan 订阅端点（token-plan-cn.xiaomimimo.com/v1，tp- Key；与按量端点 api.xiaomimimo.com、百炼渠道均为不同身份，密钥与 Base URL 官方明示不可混用）。官方模型列表（2026-08-18）：上下文 1M（1048576）、最大输出 128K（131072）、深度思考/流式/函数调用/结构化输出/联网搜索，RPM 100 / TPM 10M。混合推理，与百炼版同方言：enable_thinking 开关、不支持 effort/budget，思考 token 与输出同池（131072）；输出参数用 max_completion_tokens（订阅端点官方示例口径，百炼版为 max_tokens——两身份方言差异已记录）。2026-08-18 trial 实测：reasoning_content 字段透传、usage 含 reasoning_tokens 明细与缓存命中。订阅制 Credits 计费：无逐 token 牌价，台账估算 unknown。ToS 限编码工具、禁 API 自动化——操作员知情接受灰区并已做受控 trial。"
+    },
+    {
+      "provider": "local-qwen",
+      "region": "local",
+      "upstream_model": "qwen3.8-27b-fp8",
+      "context_window": 131072,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "reasoning_effort",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "http://127.0.0.1:18000/v1/models",
+      "notes": "自部署 vLLM（127.0.0.1:18000，SSH 隧道；操作员契约固定 base_url/model/api_key 三值跨后端不变）。上下文 131072 为服务端目录自报 max_model_len（权威）；最大输出按操作员指示记 128K（131072，与上下文同值——vLLM 实际输出受 prompt 长度挤压）。思考型模型：思考在 message.reasoning（非 reasoning_content 方言），无 effort/budget 控制参数披露，controls 为空。max_tokens 建议 ≥1024 才能等到 content（部署契约）。并发契约：最多 4 路同发、超发排队不报错；>100K 长文建议限 2 路（网关无限流器，需消费者自律）。超时沿用其他路由 300s（操作员确认）。自部署无逐 token 牌价：台账估算 unknown。"
+    },
+    {
+      "provider": "aliyun-token-plan",
+      "region": "cn-beijing",
+      "upstream_model": "qwen3.8-max",
+      "context_window": 1000000,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": 262144,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": 262144,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/qwen3-8-max",
+      "notes": "阿里云百炼 Token Plan 个人版订阅端点（token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1，sk-sp- Key；与按量 bailian-cn-beijing 路由同名不同身份，Key/Base URL 官方明示互不相通、混用不抵扣套餐额度）。模型规格与按量版同一官方模型页：混合思考默认开、思考强度靠 thinking_budget（默认=最大思维链 262144）、无 reasoning_effort、enable_thinking 仅支持 stream=true。输出参数沿用 compatible-mode 的 max_tokens 口径（订阅端点示例未见另立参数名；若 live 探针发现方言差异以探针证据修订）。订阅 Credits 计费无逐 token 牌价：台账估算 unknown；22:00-08:00 该模型 Credits 五折（官方限时活动）。ToS 限交互式编程/智能体工具、禁 API 自动化后端——操作员知情接受灰区（同 mimo 先例）。"
+    },
+    {
+      "provider": "aliyun-token-plan",
+      "region": "cn-beijing",
+      "upstream_model": "qwen3.7-max",
+      "context_window": 1000000,
+      "max_output_tokens": 131072,
+      "max_thinking_chain_tokens": 262144,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "reasoning_effort"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/qwen3-7-max",
+      "notes": "Token Plan 个人版目录模型（本平台此前不可达的新身份）。官方模型页（2026-08-19）：上下文 1M、最大输出 131072（思考模式下同）、最大思维链 262144（主模型与 2026-05-20 快照列出）；主模型纯文本（Text→Text），06-08 快照另加图/视频输入属不同身份。思考方言（enable_thinking/thinking_budget、默认开）继承 qwen 家族 deep-thinking 文档而非本模型页重述，默认 budget 未按模型确认——故整体 cross_source_unconfirmed，live 探针后修订。qwen 家族无 reasoning_effort，omit 之。订阅 Credits 计费：台账估算 unknown。 2026-08-19 实测（用户授权 live 门）：资质 enable_thinking true/false 两变体全通过，smoke usage 的 reasoning_tokens>0 证实默认思考开启——方言与默认态由 wire 证据确认，条目升级 confirmed。"
+    },
+    {
+      "provider": "aliyun-token-plan",
+      "region": "cn-beijing",
+      "upstream_model": "qwen3.6-flash",
+      "context_window": 1000000,
+      "max_output_tokens": 65536,
+      "max_thinking_chain_tokens": 131072,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": null,
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "cross_source_unconfirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "thinking_budget"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "reasoning_effort"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/qwen3-6-flash",
+      "notes": "Token Plan 个人版目录模型（本平台此前不可达的新身份）。官方模型页（2026-08-19）：上下文 1M、最大输出 65536（思考模式下同）、最大思维链 131072；广告支持图/视频输入（本平台冻结纯文本资质，多模态仅 advertised）。思考方言继承 qwen 家族文档、默认开关状态未按模型页确认——整体 cross_source_unconfirmed。qwen 家族无 reasoning_effort，omit 之。订阅 Credits 计费：台账估算 unknown。 2026-08-19 实测（用户授权 live 门）：资质 enable_thinking true/false 两变体全通过，smoke usage 的 reasoning_tokens>0 证实默认思考开启——方言与默认态由 wire 证据确认，条目升级 confirmed。"
+    },
+    {
+      "provider": "aliyun-token-plan",
+      "region": "cn-beijing",
+      "upstream_model": "deepseek-v4-pro-0813",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/deepseek-api",
+      "notes": "Token Plan 个人版目录旗舰快照（本平台此前不可达的新身份；与按量 deepseek-v4-pro、DeepSeek 官方直连均不同身份）。官方 DeepSeek API 页（2026-08-19）：max_tokens 与 thinking_budget 共用上限「共 393216」；默认开思考、reasoning_effort 可选 low/high/max 默认 high；reasoning_content 字段透出思考、usage 含 reasoning_tokens；不支持 thinking_budget/seed/logprobs，思考模式 n=1。上下文长度模型页未载明（指向控制台），1M 为行业报道口径——cross_source_unconfirmed，控制台证据后修订。订阅 Credits 计费：台账估算 unknown；22:00-08:00 该模型 Credits 五折（官方限时活动）。 2026-08-19 实测：token-plan 端点目录（11 模型）未列该 ID，资质 fail-closed 未发现（官方概览页标 NEW 与端点目录不一致）；待目录上架后另行授权复测。"
+    },
+    {
+      "provider": "aigocode-anthropic",
+      "region": "global",
+      "upstream_model": "claude-sonnet-5",
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "thinking",
+        "thinking.budget_tokens"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "enable_thinking",
+          "reasoning_effort",
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "confirmed",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "notes": "AiGoCode Anthropic 原生面身份（api.aigocode.com /v1/messages，Claude 组令牌 Bearer；与站点 OpenAI 兼容路由为不同身份，后者已记录转译缺陷，永不映射）。模型规格同 Anthropic 官方：上下文 200000、最大输出 64000、自适应思考默认 high。原生面优势：thinking 块与 tool_use 块零翻译透传——thinking 参数用 Anthropic 原生 dialect（thinking.type / thinking.budget_tokens），OpenAI 面 dialect（enable_thinking/reasoning_effort）在此面无效故 omit。2026-08-19 wire 三探针定性：消息/强制 tool_use（原生 dict input）/tool_result 回放全 200。站点实价登录墙后，台账估算 unknown。"
+    },
+    {
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "upstream_model": "deepseek-v4-pro-0813",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "max_thinking_chain_tokens": null,
+      "output_parameter": "max_tokens",
+      "thinking_default": {
+        "state": "on",
+        "default_effort": "high",
+        "default_thinking_budget": null,
+        "default_effort_confirmation": "confirmed"
+      },
+      "thinking_controls": [
+        "enable_thinking",
+        "reasoning_effort"
+      ],
+      "recommended_defaults": {
+        "send": {},
+        "omit": [
+          "thinking_budget"
+        ],
+        "required_non_reasoning": {}
+      },
+      "confirmation": "cross_source_unconfirmed",
+      "source_url": "https://help.aliyun.com/zh/model-studio/deepseek-api",
+      "notes": "百炼按量身份（与 token-plan 订阅目录中仍缺席的那个 0813 候选、deepseek-v4-pro 无后缀版、DeepSeek 官方直连均为不同身份）。官方 DeepSeek API 页：max_tokens 与 thinking_budget 共用上限「共 393216」；默认开思考、reasoning_effort 可选 low/high/max 默认 high；不支持 thinking_budget/seed/logprobs，思考模式 n=1。上下文长度官方页未载明（指向控制台），1M 为跨源口径——cross_source_unconfirmed。2026-08-21 按量目录只读 GET 确认 exact ID 在列（240 模型）。"
+    }
+  ]
+}

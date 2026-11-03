@@ -1,0 +1,128 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-deepseek-official-v4-pro",
+  "profile_version": "0.1.0",
+  "lifecycle": "active",
+  "provider": {
+    "provider_id": "provider-deepseek-official",
+    "display_name": "DeepSeek official API",
+    "region": "global",
+    "credential_environment_variable": "PVI_PROBE_DEEPSEEK_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-deepseek-official-openai-compatible",
+      "route_id_prefix": "deepseek-official",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_DEEPSEEK_OPENAI_BASE_URL",
+      "allowed_hosts": [
+        "api.deepseek.com"
+      ],
+      "required_base_path": "",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": [
+      "deepseek_v4_pro"
+    ],
+    "targets": [
+      {
+        "logical_model_id": "deepseek_v4_pro",
+        "catalog_id_patterns": [
+          "^deepseek-v4-pro$"
+        ],
+        "source": {
+          "kind": "official_documentation",
+          "url": "https://api-docs.deepseek.com/"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": [
+      "allow_network",
+      "confirm_cost"
+    ],
+    "probe_set": [
+      "message",
+      "stream",
+      "thinking",
+      "native_tool_call",
+      "assistant_replay",
+      "tool_result_replay",
+      "usage"
+    ],
+    "request_variants": [
+      {
+        "variant_id": "baseline",
+        "request_overrides": {}
+      },
+      {
+        "variant_id": "thinking_disabled",
+        "request_overrides": {
+          "thinking": {
+            "type": "disabled"
+          }
+        }
+      },
+      {
+        "variant_id": "thinking_enabled_effort_low",
+        "request_overrides": {
+          "thinking": {
+            "type": "enabled",
+            "reasoning_effort": "low"
+          }
+        }
+      },
+      {
+        "variant_id": "thinking_enabled_effort_max",
+        "request_overrides": {
+          "thinking": {
+            "type": "enabled",
+            "reasoning_effort": "max"
+          }
+        }
+      }
+    ],
+    "probe_request_policy": {
+      "temperature": null,
+      "seed": null,
+      "max_output_parameter": "max_tokens",
+      "max_output_tokens": {
+        "message": 128,
+        "stream": 128,
+        "thinking": 256,
+        "tool": 256,
+        "replay": 128
+      },
+      "tool_choice_mode": "auto",
+      "timeout_seconds": 300,
+      "retry_total_attempts": 1,
+      "fallback": null
+    },
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": [
+        "message",
+        "thinking",
+        "usage"
+      ],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

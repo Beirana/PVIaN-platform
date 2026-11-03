@@ -1,0 +1,28 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-moonshot-official-openai-compatible",
+  "endpoint_kind": "official_direct",
+  "provider_id": "provider-moonshot-official",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "v1_official_docs",
+  "model_requested": "kimi-k3",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": "cn",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-17T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only endpoint record from the official Kimi platform docs (platform.kimi.com) captured 2026-08-17; no controlled qualification observation has run against this endpoint yet.",
+      "China endpoint https://api.moonshot.cn/v1 with a China-console key; the global endpoint api.moonshot.ai is a separate identity and is deliberately not covered by this record."
+    ]
+  }
+}

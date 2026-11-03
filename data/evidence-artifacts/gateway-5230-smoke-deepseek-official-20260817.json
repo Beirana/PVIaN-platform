@@ -1,0 +1,61 @@
+{
+  "child_pid": 48512,
+  "completion_calls": 2,
+  "evidence_class": "deployed_gateway_smoke",
+  "manifest": {
+    "aliases": [
+      "pvian/deepseek-official/deepseek-v4-pro",
+      "pvian/deepseek-official/deepseek-v4-flash"
+    ],
+    "port": 5230,
+    "profile_versions": {
+      "provider-deepseek-official-v4-flash": "0.1.0-gateway5230.1",
+      "provider-deepseek-official-v4-pro": "0.1.0-gateway5230.1"
+    },
+    "schema_version": "pvian.gateway-5230-overlay/v1",
+    "source_state_file": "C:\\path\\to\\PVIaN-platform\\var\\gateway-isolated\\deepseek-official-state.json"
+  },
+  "port": 5230,
+  "results": [
+    {
+      "alias": "pvian/deepseek-official/deepseek-v4-pro",
+      "finish_reason": "length",
+      "http_status": 200,
+      "reported_model": "deepseek-v4-pro",
+      "usage": {
+        "completion_tokens": 64,
+        "completion_tokens_details": {
+          "reasoning_tokens": 64
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 93,
+        "prompt_tokens": 93,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 157
+      }
+    },
+    {
+      "alias": "pvian/deepseek-official/deepseek-v4-flash",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "reported_model": "deepseek-v4-flash",
+      "usage": {
+        "completion_tokens": 45,
+        "completion_tokens_details": {
+          "reasoning_tokens": 37
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 93,
+        "prompt_tokens": 93,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 138
+      }
+    }
+  ],
+  "schema_version": "pvian.gateway-5230-smoke/v1",
+  "smoked_at": "2026-08-16T17:06:29.969687+00:00"
+}

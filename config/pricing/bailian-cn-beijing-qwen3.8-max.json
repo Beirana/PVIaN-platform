@@ -1,0 +1,33 @@
+{
+  "schema_version": "pvian.local-pricing/v2",
+  "pricing_version": "2026-08-09-official-list",
+  "effective_at": null,
+  "captured_at": "2026-08-09T00:00:00Z",
+  "source": {
+    "kind": "official_documentation",
+    "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+    "price_basis": "advertised_list_price",
+    "discounts_included": false,
+    "captured_via": "official_page_field_capture",
+    "content_sha256": null,
+    "content_digest_status": "unavailable_dynamic_page_not_archived",
+    "model_identity_evidence": [
+      "https://bailian.console.aliyun.com/cn-beijing/?tab=model#/model-market/detail/qwen3.8-max?serviceSite=asia-pacific-china&ref=all",
+      "https://help.aliyun.com/zh/model-studio/model-pricing"
+    ],
+    "public_documentation_drift": "cn-beijing console and current pricing documentation advertise qwen3.8-max; an older public model-list page names qwen3.8-max-preview for Token Plan. The preview ID is not substituted into this standard-endpoint candidate."
+  },
+  "provider": "bailian",
+  "profile_id": "provider-bailian-cn-beijing-qwen3-8-max",
+  "region": "cn-beijing",
+  "model": "qwen3.8-max",
+  "currency": "CNY",
+  "unit": "per_1m_tokens",
+  "tiers": [
+    {
+      "input_tokens_gt": 0,
+      "input_tokens_lte": 1000000,
+      "rates": {"input": 12, "cached_input": null, "output": 36}
+    }
+  ]
+}

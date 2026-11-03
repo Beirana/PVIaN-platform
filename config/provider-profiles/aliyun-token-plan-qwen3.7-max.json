@@ -1,0 +1,74 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-aliyun-token-plan-qwen3-7-max",
+  "profile_version": "0.1.0",
+  "lifecycle": "candidate",
+  "provider": {
+    "provider_id": "provider-aliyun-token-plan",
+    "display_name": "Alibaba Cloud Bailian Token Plan (personal subscription endpoint)",
+    "region": "cn-beijing",
+    "credential_environment_variable": "PVI_PROBE_ALIYUN_TOKEN_PLAN_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-aliyun-token-plan-openai-compatible",
+      "route_id_prefix": "aliyun-token-plan",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_ALIYUN_TOKEN_PLAN_OPENAI_BASE_URL",
+      "allowed_hosts": ["token-plan.cn-beijing.maas.aliyuncs.com"],
+      "required_base_path": "/compatible-mode/v1",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": ["qwen3_7_max"],
+    "targets": [
+      {
+        "logical_model_id": "qwen3_7_max",
+        "catalog_id_patterns": ["^qwen3\\.7-max$"],
+        "source": {
+          "kind": "official_documentation",
+          "url": "https://help.aliyun.com/zh/model-studio/qwen3-7-max",
+          "public_document_drift": "token-plan subscription identity; the pay-as-you-go compatible-mode route (bailian-cn-beijing) is a different identity with isolated keys and must never be mapped; snapshot IDs (qwen3.7-max-2026-06-08 etc.) are different identities and are not accepted"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": ["allow_network", "confirm_cost"],
+    "probe_set": ["message", "stream", "thinking", "native_tool_call", "assistant_replay", "tool_result_replay", "usage"],
+    "request_variants": [
+      {"variant_id": "enable_thinking_false", "request_overrides": {"enable_thinking": false}},
+      {"variant_id": "enable_thinking_true", "request_overrides": {"enable_thinking": true}}
+    ],
+    "probe_request_policy": {
+      "temperature": 0,
+      "seed": null,
+      "max_output_parameter": "max_tokens",
+      "max_output_tokens": {"message": 64, "stream": 64, "thinking": 256, "tool": 256, "replay": 128},
+      "tool_choice_mode": "forced_function",
+      "timeout_seconds": 300,
+      "retry_total_attempts": 1,
+      "fallback": null
+    },
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": ["message", "stream", "thinking", "native_tool_call", "assistant_replay", "tool_result_replay", "usage"],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

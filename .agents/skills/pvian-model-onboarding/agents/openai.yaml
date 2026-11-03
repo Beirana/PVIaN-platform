@@ -1,0 +1,4 @@
+interface:
+  display_name: "PVIaN Model Onboarding"
+  short_description: "Safely onboard and qualify gateway models"
+  default_prompt: "Use $pvian-model-onboarding to add and qualify a provider model in PVIaN safely."

@@ -1,0 +1,29 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-mimo-token-plan-openai-compatible",
+  "endpoint_kind": "official_direct",
+  "provider_id": "provider-mimo-token-plan",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "v1_subscription_docs",
+  "model_requested": "mimo-v2.5-pro",
+  "model_reported": "mimo-v2.5-pro",
+  "model_revision": "MiMo-V2.5-Pro (1T MoE, 42B active; 2026-04-23 release per official model log)",
+  "deployment_id": null,
+  "region": "cn",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-18T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Subscription endpoint https://token-plan-cn.xiaomimimo.com/v1 with a tp- key (Bearer auth). Official docs: Token Plan and pay-as-you-go keys/base URLs are fully isolated and must not be mixed; the payg host api.xiaomimimo.com and the Bailian-hosted route are separate identities.",
+      "Operator-accepted gray zone: the plan ToS restricts usage to coding tools and forbids API automation; the operator explicitly directed a bounded direct trial on 2026-08-18.",
+      "Trial evidence 2026-08-18 (read-only catalog GET + one authorized completion): catalog 200 lists the six documented models; completion 200 with exact reported identity mimo-v2.5-pro, reasoning_content field present in the message dialect, usage with reasoning_tokens detail and cached_tokens (192) observed. SDK-style User-Agent passes; no WAF blocking observed."
+    ]
+  }
+}

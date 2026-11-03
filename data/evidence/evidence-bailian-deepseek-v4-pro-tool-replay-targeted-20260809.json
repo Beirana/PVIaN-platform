@@ -1,0 +1,13 @@
+{
+  "schema_version": "pvi.evidence-reference/v1",
+  "evidence_id": "evidence-bailian-deepseek-v4-pro-tool-replay-targeted-20260809",
+  "source_kind": "managed_cloud",
+  "host_profile_id": "provider-bailian-cn-beijing",
+  "capture_surface": "provider_wire",
+  "sha256": "ee3feea6e216d79379f99a5dc35d5b68733fde9cc460466d1f2f3bb2f59a854b",
+  "media_type": "application/vnd.pvian.targeted-capability-probe+json",
+  "redaction_profile": "provider-capability-targeted-metadata-only/v1",
+  "locator": "data/evidence-artifacts/provider-capability-targeted-deepseek-v4-pro-tool-replay-20260809.json",
+  "captured_at": "2026-08-09T13:29:33.486690Z",
+  "retention_class": "metadata_only"
+}

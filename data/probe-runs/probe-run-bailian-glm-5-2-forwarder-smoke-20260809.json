@@ -1,0 +1,15 @@
+{
+  "schema_version": "pvi.probe-run/v1",
+  "probe_run_id": "probe-run-bailian-glm-5-2-forwarder-smoke-20260809",
+  "probe_id": "online_text_message_probe",
+  "probe_version": "1.0.0",
+  "subject_profile_id": "cap-bailian-glm-5-2",
+  "input_digest": null,
+  "configuration_digest": null,
+  "environment_digest": null,
+  "started_at": "2026-08-09T11:27:20Z",
+  "completed_at": "2026-08-09T11:27:20Z",
+  "verdict": "observed_supported",
+  "evidence_ids": ["evidence-bailian-gateway-forwarder-smoke-20260809"],
+  "normalization_error_ids": []
+}

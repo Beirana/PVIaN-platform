@@ -1,0 +1,144 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-aigocode-gemini-3-7-flash",
+  "profile_version": "0.3.0",
+  "subject": {
+    "endpoint_id": "endpoint-aigocode-openai-compatible",
+    "endpoint_kind": "broker_gateway",
+    "provider_id": "provider-aigocode",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "v1_station_docs",
+    "model_requested": "gemini-3.7-flash",
+    "model_reported": null,
+    "model_revision": "Google Gemini 3.7 Flash (official docs 2026-08-18: 1048576 ctx / 65536 out / thinking low-medium-high; intro USD 0.75 in / 3.75 out per 1M) as served by the AiGoCode station",
+    "deployment_id": null,
+    "region": "global",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-18T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only capability layer plus read-only catalog observation; no completion probe, forwarder smoke, or deployed gateway smoke has run for this identity yet.",
+      "Per-vendor station token: this model is reachable only with its group key (scoping verified read-only 2026-08-18: each of the four tokens lists exactly one vendor, zero cross-vendor visibility).",
+      "GEMINI token catalog (2026-08-18): 4 models gemini-3.1-pro-preview, 3.5-flash, 3.6-flash, 3.7-flash.",
+      "Station WAF blocks generic Python User-Agents with Cloudflare 1010; browser-style and OpenAI-SDK-style UAs pass (verified 2026-08-18). The gateway/probe HTTP stack must be confirmed live before qualification.",
+      "Station per-token prices sit behind the console login, so no pricing file exists for this provider and ledger cost estimates are intentionally unknown (pricing_missing), never zero.",
+      "Advertised specs come from the upstream vendor official pages and are unverified for this relay (the station may cap context/output below vendor maxima).",
+      "2026-08-18 live gates: qualification recorded CANDIDATE — message/usage/exact identity passed, effort variants accepted, but no reasoning field is exposed through the station's OpenAI-compatible translation (thinking not observable). A profile revision for non-exposing dialects awaits separate authorization.",
+      "2026-08-18 re-qualification under explicit operator authorization (+24 completions): profile 0.1.1 relaxes enablement.required_probes from [message, thinking, usage] to [message, usage] because this relay dialect structurally cannot expose reasoning (OpenAI chat-completions has no reasoning slot; the station's /responses shim also drops reasoning items). The relaxation is auditable in the profile version bump, the alias re-binding, the CHANGELOG entry, and this note; the model still reasons (tokens fold into completion billing) — only visibility is waived, not the fact. Qualification now ENABLED with exact identity; forwarder smoke 200 observed_supported; isolated 5237 gateway smoke 200 exact identity.",
+      "2026-08-19 targeted capability verification (operator-requested; stream/tool-call/tool-replay/structured-output per model, max_tokens<=256): stream 200 with [DONE]; native tool call finish=tool_calls with valid JSON arguments; tool-result replay 200 with content and usage; response_format json_object parses. All five capabilities functional through the relay."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817",
+        "evidence-aigocode-catalog-20260818"
+      ]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "structured_output": {
+      "advertised": "unknown",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "supported",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "unsupported",
+      "effective": "unknown",
+      "exposure": "none",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

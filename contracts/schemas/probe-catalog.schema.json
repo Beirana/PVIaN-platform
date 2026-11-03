@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/probe-catalog.schema.json",
+  "title": "PVI Probe Catalog v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "probes"],
+  "properties": {
+    "schema_version": { "const": "pvi.probe-catalog/v1" },
+    "probes": {
+      "type": "array",
+      "minItems": 19,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "probe_id",
+          "probe_version",
+          "description",
+          "capability_path",
+          "offline_only"
+        ],
+        "properties": {
+          "probe_id": { "type": "string", "minLength": 1 },
+          "probe_version": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "capability_path": { "type": "string", "minLength": 1 },
+          "offline_only": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

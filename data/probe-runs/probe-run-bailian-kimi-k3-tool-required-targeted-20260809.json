@@ -1,0 +1,18 @@
+{
+  "schema_version": "pvi.probe-run/v1",
+  "probe_run_id": "probe-run-bailian-kimi-k3-tool-required-targeted-20260809",
+  "probe_id": "online_native_tool_call_probe",
+  "probe_version": "1.0.0",
+  "subject_profile_id": "cap-bailian-kimi-k3",
+  "input_digest": null,
+  "configuration_digest": "sha256:fddc8bcdf8e1ad593db0ae120a5141c05468a6b1bcc1d6f933ae5c017c32287e",
+  "environment_digest": null,
+  "started_at": "2026-08-09T13:23:55.069096Z",
+  "completed_at": "2026-08-09T13:23:55.069096Z",
+  "verdict": "observed_supported",
+  "evidence_ids": [
+    "evidence-bailian-kimi-k3-tool-required-official-20260809",
+    "evidence-bailian-kimi-k3-tool-required-targeted-20260809"
+  ],
+  "normalization_error_ids": []
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "A4",
+  "description": "只有官方声明时 observed/effective 不得升级。",
+  "profile_id": "cap-official-beta-advertised-only",
+  "assertions": {
+    "tool_calling.advertised": "supported",
+    "tool_calling.observed": "not_tested",
+    "tool_calling.effective": "not_tested"
+  }
+}

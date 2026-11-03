@@ -1,0 +1,147 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-moonshot-official-kimi-k3",
+  "profile_version": "0.2.0",
+  "subject": {
+    "endpoint_id": "endpoint-moonshot-official-openai-compatible",
+    "endpoint_kind": "official_direct",
+    "provider_id": "provider-moonshot-official",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "v1_official_docs",
+    "model_requested": "kimi-k3",
+    "model_reported": "kimi-k3",
+    "model_revision": "Kimi K3 (2.8T parameters, per official docs 2026-08-17)",
+    "deployment_id": null,
+    "region": "cn",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-17T17:49:33Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only profile from the official Kimi platform docs captured 2026-08-17; no provider probe, forwarder smoke, or deployed gateway smoke has run for this identity.",
+      "China endpoint https://api.moonshot.cn/v1; a global-console key (platform.kimi.ai / api.moonshot.ai) is a different identity not covered here.",
+      "Thinking is always on with top-level reasoning_effort low/high/max (default max); unlike the Bailian kimi/kimi-k3 dialect, non-streaming requests are documented as supported and reasoning_effort is not restricted to max.",
+      "Official docs fix temperature=1.0 and top_p=0.95 and advise not to set sampling parameters explicitly.",
+      "2026-08-17 live gates: qualification enabled with exact requested/reported identity (kimi-k3), reasoning_content observed across low/high/max variants; forwarder smoke (CNY cost estimated) and unified 5231 gateway smoke passed. See docs/reviews/moonshot-openrouter-onboarding-2026-08-17.md.",
+      "Observed behavior fact: with max_tokens=64 the always-on thinking consumed the budget (finish_reason=length, 61 reasoning tokens); budget output for real workloads.",
+      "Streaming, native tool call/replay, and structured output remain not_tested under the frozen enablement scope."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-gateway-5231-unified-batch-smoke-20260817",
+        "evidence-moonshot-official-forwarder-smoke-20260817",
+        "evidence-moonshot-official-kimi-k3-docs-20260817",
+        "evidence-moonshot-official-kimi-k3-qualification-20260817"
+      ]
+    },
+    "multimodal": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-moonshot-official-kimi-k3-docs-20260817"
+      ]
+    },
+    "structured_output": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-moonshot-official-kimi-k3-docs-20260817"
+      ]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "not_tested",
+      "evidence_ids": [
+        "evidence-moonshot-official-kimi-k3-docs-20260817"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "exposure": "visible_reasoning_text",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-moonshot-official-kimi-k3-docs-20260817",
+        "evidence-moonshot-official-kimi-k3-qualification-20260817"
+      ]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-gateway-5231-unified-batch-smoke-20260817",
+        "evidence-moonshot-official-forwarder-smoke-20260817",
+        "evidence-moonshot-official-kimi-k3-docs-20260817"
+      ]
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-moonshot-official-kimi-k3-docs-20260817"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-moonshot-official-kimi-k3-docs-20260817"
+      ]
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

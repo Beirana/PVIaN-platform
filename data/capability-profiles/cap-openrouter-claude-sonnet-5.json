@@ -1,0 +1,122 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-openrouter-claude-sonnet-5",
+  "profile_version": "0.1.0",
+  "subject": {
+    "endpoint_id": "endpoint-openrouter-openai-compatible",
+    "endpoint_kind": "broker_gateway",
+    "provider_id": "provider-openrouter",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "api/v1_official_docs",
+    "model_requested": "anthropic/claude-sonnet-5",
+    "model_reported": "unknown",
+    "model_revision": "unknown",
+    "deployment_id": null,
+    "region": "global",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-17T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only profile from the official OpenRouter catalog captured 2026-08-17; no provider probe, forwarder smoke, or deployed gateway smoke has run for this identity.",
+      "Broker identity: endpoint operator (OpenRouter) and declared upstream vendor (Anthropic) are distinct; the reported-model field must be verified by a controlled probe before any identity conclusion.",
+      "OpenRouter silently retries a different backing provider on 5xx/rate-limit by default; exact-identity semantics require provider.allow_fallbacks=false in the request body (frozen in recommended_defaults).",
+      "Unified reasoning object {effort} maps across vendors; include_reasoning is deprecated in favor of reasoning.exclude/enabled."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    },
+    "structured_output": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "not_tested",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "exposure": "unknown",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": ["evidence-openrouter-claude-sonnet-5-docs-20260817"]
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

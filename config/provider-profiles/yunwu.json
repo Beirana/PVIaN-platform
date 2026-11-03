@@ -1,0 +1,76 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-yunwu-openai-compatible",
+  "profile_version": "0.2.0",
+  "lifecycle": "candidate",
+  "provider": {
+    "provider_id": "provider-yunwu",
+    "display_name": "Yunwu OpenAI-compatible gateway",
+    "credential_environment_variable": "PVI_PROBE_YUNWU_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-yunwu-openai-compatible",
+      "route_id_prefix": "yunwu",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_YUNWU_BASE_URL",
+      "allowed_hosts": ["yunwu.ai"],
+      "required_base_path": "/v1",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": ["deepseek_v4_pro"],
+    "targets": [
+      {
+        "logical_model_id": "deepseek_v4_pro",
+        "catalog_id_patterns": ["^deepseek-v4-pro$"],
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": ["allow_network", "confirm_cost"],
+    "probe_set": [
+      "message",
+      "stream",
+      "thinking",
+      "native_tool_call",
+      "assistant_replay",
+      "tool_result_replay"
+    ],
+    "request_variants": [
+      {"variant_id": "baseline", "request_overrides": {}},
+      {
+        "variant_id": "enable_thinking_true",
+        "request_overrides": {"enable_thinking": true}
+      },
+      {
+        "variant_id": "reasoning_effort_high",
+        "request_overrides": {"reasoning_effort": "high"}
+      },
+      {
+        "variant_id": "reasoning_effort_max",
+        "request_overrides": {"reasoning_effort": "max"}
+      }
+    ],
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": ["message", "stream"],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "attempts": [
+    {
+      "cost": {
+        "amount": "0.004776",
+        "currency": "CNY",
+        "effective_at": null,
+        "pricing_version": "2026-08-09-official-list",
+        "status": "estimated"
+      },
+      "finish_reason": "stop",
+      "provider_request_id_sha256": "sha256:907204cef368d7c8a6ccfbe7db78eb49641dd8f5599cb61c278bb906a396a452",
+      "reported_model": "deepseek-v4-pro",
+      "reported_model_identity": {
+        "match": "exact",
+        "policy_id": "pvian.reported-model-identity/exact-v1",
+        "schema_version": "pvian.reported-model-identity-decision/v1"
+      },
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 36,
+        "prompt_tokens": 326,
+        "reasoning_tokens": null,
+        "total_tokens": 362
+      }
+    },
+    {
+      "cost": {
+        "amount": "0.001776",
+        "currency": "CNY",
+        "effective_at": null,
+        "pricing_version": "2026-08-09-official-list",
+        "status": "estimated"
+      },
+      "finish_reason": "stop",
+      "provider_request_id_sha256": "sha256:7cd84017fe33ad4f71ccaff6f5b59ad7abc15cdb0e271527722b3dc9d7e01c15",
+      "reported_model": "deepseek-v4-pro",
+      "reported_model_identity": {
+        "match": "exact",
+        "policy_id": "pvian.reported-model-identity/exact-v1",
+        "schema_version": "pvian.reported-model-identity-decision/v1"
+      },
+      "usage": {
+        "cached_tokens": 0,
+        "completion_tokens": 24,
+        "prompt_tokens": 100,
+        "reasoning_tokens": null,
+        "total_tokens": 124
+      }
+    }
+  ],
+  "completed_at": "2026-08-09T13:29:33.486690Z",
+  "completion_call_budget": 2,
+  "completion_calls_attempted": 2,
+  "content_policy": {
+    "persist_private_reasoning": false,
+    "persist_raw_content": false,
+    "persist_raw_provider_body": false,
+    "persist_tool_arguments": false
+  },
+  "evidence_class": "provider_capability_targeted",
+  "fallback": null,
+  "probe": "tool_and_replay",
+  "profile_id": "provider-bailian-cn-beijing",
+  "profile_version": "0.2.1",
+  "requested_model": "deepseek-v4-pro",
+  "retry_total_attempts": 1,
+  "schema_version": "pvian.targeted-capability-probe/v1",
+  "thinking_mode": "disabled",
+  "tool_choice_initial": "named_function",
+  "tool_choice_replay": "none",
+  "validation": {
+    "native_tool_call_valid": true,
+    "passed": true,
+    "replay_output_nonempty": true
+  }
+}

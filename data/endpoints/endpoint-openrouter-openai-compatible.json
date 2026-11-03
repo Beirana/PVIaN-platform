@@ -1,0 +1,29 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-openrouter-openai-compatible",
+  "endpoint_kind": "broker_gateway",
+  "provider_id": "provider-openrouter",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "api/v1_official_docs",
+  "model_requested": "anthropic/claude-sonnet-5",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": "global",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-17T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only endpoint record from official OpenRouter docs and the public /api/v1/models catalog captured 2026-08-17; no controlled qualification observation has run against this endpoint yet.",
+      "OpenRouter is an aggregation broker: the endpoint operator and the declared upstream model vendor are distinct. By default it silently retries a different backing provider on 5xx/rate-limit; requests must carry provider.allow_fallbacks=false for exact-identity semantics.",
+      "Catalog suffixed identities (:nitro, :floor, :batch, -pro) are separate models and are not interchangeable with the exact slugs frozen here."
+    ]
+  }
+}

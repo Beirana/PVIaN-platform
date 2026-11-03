@@ -1,0 +1,119 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-bigmodel-coding-glm-5-3",
+  "profile_version": "0.2.0",
+  "lifecycle": "candidate",
+  "provider": {
+    "provider_id": "provider-bigmodel-coding",
+    "display_name": "Zhipu BigModel GLM Coding Plan (official subscription endpoint)",
+    "region": "cn",
+    "credential_environment_variable": "PVI_PROBE_BIGMODEL_CODING_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-bigmodel-coding-openai-compatible",
+      "route_id_prefix": "bigmodel-coding",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_BIGMODEL_CODING_OPENAI_BASE_URL",
+      "allowed_hosts": [
+        "open.bigmodel.cn"
+      ],
+      "required_base_path": "/api/coding/paas/v4",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": [
+      "glm_5_3"
+    ],
+    "targets": [
+      {
+        "logical_model_id": "glm_5_3",
+        "catalog_id_patterns": [
+          "^glm-5\\.3$"
+        ],
+        "source": {
+          "kind": "official_documentation",
+          "url": "https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3.md",
+          "public_document_drift": "model_card_documents_a_1m_context_and_128k_max_output_as_default_spec; the [1m]-suffixed identity referenced by the Claude Code tooling docs is a separate identity and is deliberately not matched by this pattern"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": [
+      "allow_network",
+      "confirm_cost"
+    ],
+    "probe_set": [
+      "message",
+      "stream",
+      "thinking",
+      "native_tool_call",
+      "assistant_replay",
+      "tool_result_replay",
+      "usage"
+    ],
+    "request_variants": [
+      {
+        "variant_id": "baseline",
+        "request_overrides": {}
+      },
+      {
+        "variant_id": "reasoning_effort_low",
+        "request_overrides": {
+          "reasoning_effort": "low"
+        }
+      },
+      {
+        "variant_id": "reasoning_effort_high",
+        "request_overrides": {
+          "reasoning_effort": "high"
+        }
+      }
+    ],
+    "probe_request_policy": {
+      "temperature": null,
+      "seed": null,
+      "max_output_parameter": "max_tokens",
+      "max_output_tokens": {
+        "message": 128,
+        "stream": 128,
+        "thinking": 256,
+        "tool": 256,
+        "replay": 128
+      },
+      "tool_choice_mode": "auto",
+      "timeout_seconds": 300,
+      "retry_total_attempts": 1,
+      "fallback": null
+    },
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": [
+        "message",
+        "stream",
+        "thinking",
+        "native_tool_call",
+        "assistant_replay",
+        "tool_result_replay",
+        "usage"
+      ],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

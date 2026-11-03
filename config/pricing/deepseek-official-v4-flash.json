@@ -1,0 +1,32 @@
+{
+  "schema_version": "pvian.local-pricing/v2",
+  "pricing_version": "2026-08-17-official-list-cn",
+  "effective_at": null,
+  "captured_at": "2026-08-17T00:00:00Z",
+  "source": {
+    "kind": "official_documentation",
+    "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "price_basis": "advertised_list_price",
+    "discounts_included": false,
+    "captured_via": "official_page_field_capture",
+    "content_sha256": null,
+    "content_digest_status": "unavailable_dynamic_page_not_archived"
+  },
+  "provider": "deepseek-official",
+  "profile_id": "provider-deepseek-official-v4-flash",
+  "region": "global",
+  "model": "deepseek-v4-flash",
+  "currency": "CNY",
+  "unit": "per_1m_tokens",
+  "tiers": [
+    {
+      "input_tokens_gt": 0,
+      "input_tokens_lte": 1000000,
+      "rates": {
+        "input": 3.0,
+        "cached_input": 0.1,
+        "output": 9.0
+      }
+    }
+  ]
+}

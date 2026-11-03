@@ -1,0 +1,1917 @@
+{
+  "catalog_gets": 1,
+  "catalog_request_id_sha256": "sha256:08916d38c734793c3b851a8bfc9c3c2aa03246cc74ee6655681b7fdb50e40b57",
+  "completed_at": "2026-08-09T13:03:10.753306Z",
+  "completion_call_budget": 58,
+  "completion_calls_attempted": 39,
+  "content_policy": {
+    "persist_private_reasoning": false,
+    "persist_raw_content": false,
+    "persist_raw_provider_body": false,
+    "persist_tool_arguments": false
+  },
+  "evidence_class": "provider_capability_sweep",
+  "fallback": null,
+  "global_stop": null,
+  "results": [
+    {
+      "attempted_completion_calls": 6,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.000576",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:160a1cb79acf3bd8112ca277e5ace5b11d875924616fb1780102576ae4edca40",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.8-max",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.8-max",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 5,
+            "prompt_tokens": 33,
+            "reasoning_tokens": null,
+            "total_tokens": 38
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000528",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "stream",
+          "provider_request_id_sha256": "sha256:814095173cf57ab9db88e9d332d80d85b32dc3ac7fea0fe157439c9ba1910655",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.8-max",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.8-max",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 4,
+            "prompt_tokens": 32,
+            "reasoning_tokens": null,
+            "total_tokens": 36
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": 5,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.002652",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "reasoning_not_observed",
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:e45f9a15a09a4f1fd56d1cd0babdba70ef04987f66c6da8bb81feb103dd7a778",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.8-max",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.8-max",
+          "status": "observed_unsupported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 61,
+            "prompt_tokens": 38,
+            "reasoning_tokens": null,
+            "total_tokens": 99
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": false,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_false"
+        },
+        {
+          "cost": {
+            "amount": "0.003876",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:0a8e1c67f2471817a8710c72b8c1045c71f35055423246741815b870407fb452",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.8-max",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.8-max",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 83,
+            "prompt_tokens": 74,
+            "reasoning_tokens": 72,
+            "total_tokens": 157
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": true,
+            "reasoning_tokens": 72,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_true"
+        },
+        {
+          "cost": {
+            "amount": "0.00066",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "structured_output",
+          "provider_request_id_sha256": "sha256:33d72ea22471a4da69c118046a28f6b8eb39ffc5ad487b6a04da409a4f367bb8",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.8-max",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.8-max",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 5,
+            "prompt_tokens": 40,
+            "reasoning_tokens": null,
+            "total_tokens": 45
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": true,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.004692",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "unexpected_finish_reason",
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "tool_and_replay",
+          "provider_request_id_sha256": "sha256:58a8beab159b2206289c1a6d3429aee15d22bebe6a11db7cd4feced2a7e22c79",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.8-max",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.8-max",
+          "status": "inconclusive",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 26,
+            "prompt_tokens": 313,
+            "reasoning_tokens": null,
+            "total_tokens": 339
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": true,
+            "tool_call_count": 1
+          },
+          "variant_id": null
+        }
+      ],
+      "planned_completion_calls": 7,
+      "profile_id": "provider-bailian-cn-beijing-qwen3-8-max",
+      "profile_version": "0.1.0",
+      "requested_model": "qwen3.8-max",
+      "route_id": "bailian-cn-beijing:qwen3.8-max",
+      "status": "stopped_inconclusive",
+      "stopped_after": "tool_and_replay"
+    },
+    {
+      "attempted_completion_calls": 5,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.065184",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 1024,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:1769dd27a3114266603062147750d389a8469c154ce1b437c401e48580be9662",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "kimi/kimi-k3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "kimi/kimi-k3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 92,
+            "completion_tokens": 650,
+            "prompt_tokens": 92,
+            "reasoning_tokens": null,
+            "total_tokens": 742
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.016684",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 1024,
+          "probe": "stream",
+          "provider_request_id_sha256": "sha256:b7a26212ae3b48e497b0c961853b7f62ff6d62d28ac5232f25b3e59a0ea573d4",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "kimi/kimi-k3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "kimi/kimi-k3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 92,
+            "completion_tokens": 165,
+            "prompt_tokens": 92,
+            "reasoning_tokens": null,
+            "total_tokens": 257
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": 152,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.007296",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 2048,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:96394f72a0b3374cd3d22b17a05fe0ccb9961e0e4d55aa69a9b6eec651ed69f8",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "kimi/kimi-k3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "kimi/kimi-k3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 98,
+            "completion_tokens": 71,
+            "prompt_tokens": 98,
+            "reasoning_tokens": null,
+            "total_tokens": 169
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": true,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "reasoning_effort_max"
+        },
+        {
+          "cost": {
+            "amount": "0.005858",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 1024,
+          "probe": "structured_output",
+          "provider_request_id_sha256": "sha256:98f17fb289a661c85a35f4f7a321f1f46c720a9f66d5aadcf39611fadfa5a51e",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "kimi/kimi-k3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "kimi/kimi-k3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 179,
+            "completion_tokens": 55,
+            "prompt_tokens": 179,
+            "reasoning_tokens": null,
+            "total_tokens": 234
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": true,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "reason": "usage_unknown",
+            "status": "unknown"
+          },
+          "error_category": "capability_parameter_rejected",
+          "finish_reason": null,
+          "max_output_tokens": null,
+          "probe": "tool_and_replay",
+          "provider_request_id_sha256": null,
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": null,
+          "reported_model_identity": {
+            "match": "rejected",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "kimi/kimi-k3",
+          "status": "observed_unsupported",
+          "usage": null,
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        }
+      ],
+      "planned_completion_calls": 6,
+      "profile_id": "provider-bailian-cn-beijing-kimi-k3",
+      "profile_version": "0.1.0",
+      "requested_model": "kimi/kimi-k3",
+      "route_id": "bailian-cn-beijing:kimi/kimi-k3",
+      "status": "completed",
+      "stopped_after": null
+    },
+    {
+      "attempted_completion_calls": 4,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.000252",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:5faa590caced8b27d53c31c2d8344ebc2e5ece8c7e6ed179d50bb537ca67ef91",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "glm-5.2",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "glm-5.2",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 5,
+            "prompt_tokens": 14,
+            "reasoning_tokens": null,
+            "total_tokens": 19
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000216",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "stream",
+          "provider_request_id_sha256": "sha256:eb10a6ab479b18dc1b0fd1c51ca6fd0573716e7ce8cf85c3c12c32879f7d6892",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "glm-5.2",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "glm-5.2",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 4,
+            "prompt_tokens": 13,
+            "reasoning_tokens": null,
+            "total_tokens": 17
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": 5,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000544",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "reasoning_not_observed",
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:da3af06f5eb1b7fe6bf2304674b62778cfcb8f0d9af66c0555585ac26eed5736",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "glm-5.2",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "glm-5.2",
+          "status": "observed_unsupported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 14,
+            "prompt_tokens": 19,
+            "reasoning_tokens": null,
+            "total_tokens": 33
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": false,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_false"
+        },
+        {
+          "cost": {
+            "amount": "0.007396",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "output_limit_reached",
+          "finish_reason": "length",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:763d4f95de6da5d426fdac823f4c81dcf863b0ef6e467c3510d8b713833d738e",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "glm-5.2",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "glm-5.2",
+          "status": "inconclusive",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 257,
+            "prompt_tokens": 25,
+            "reasoning_tokens": 256,
+            "total_tokens": 282
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": true,
+            "reasoning_tokens": 256,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "reasoning_effort_high"
+        }
+      ],
+      "planned_completion_calls": 8,
+      "profile_id": "provider-bailian-cn-beijing-glm-5-2",
+      "profile_version": "0.1.0",
+      "requested_model": "glm-5.2",
+      "route_id": "bailian-cn-beijing:glm-5.2",
+      "status": "stopped_inconclusive",
+      "stopped_after": "thinking"
+    },
+    {
+      "attempted_completion_calls": 6,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.00008",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:bef101dc8498d1def0cf2e971b80e8e96b30f5f37ad0fa90e17a071013c25a7b",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.7-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.7-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 5,
+            "prompt_tokens": 20,
+            "reasoning_tokens": null,
+            "total_tokens": 25
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.00007",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "stream",
+          "provider_request_id_sha256": "sha256:9db2b76b288ff1fe1de647ef6f58f2859ddaaf60c8f7b93a0f8e5bff43ae27c3",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.7-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.7-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 4,
+            "prompt_tokens": 19,
+            "reasoning_tokens": null,
+            "total_tokens": 23
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": 5,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000098",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "reasoning_not_observed",
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:c5865231a38073673be8878f5578c7ecaf68999b2dd44aefcd723552ba6aef65",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.7-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.7-plus",
+          "status": "observed_unsupported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 6,
+            "prompt_tokens": 25,
+            "reasoning_tokens": null,
+            "total_tokens": 31
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": false,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_false"
+        },
+        {
+          "cost": {
+            "amount": "0.006262",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:410715e04acbb33b5c0afcaa65e17acf94ddc93ac857b7ef5e44c12ed7f15cc4",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.7-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.7-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 777,
+            "prompt_tokens": 23,
+            "reasoning_tokens": 766,
+            "total_tokens": 800
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": true,
+            "reasoning_tokens": 766,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_true"
+        },
+        {
+          "cost": {
+            "amount": "0.000126",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "structured_output",
+          "provider_request_id_sha256": "sha256:4fc235cb6d633a5bc6a00b5b676ecfd2eab30aa70d9d465ace4e02a1d104ccf9",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.7-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.7-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 9,
+            "prompt_tokens": 27,
+            "reasoning_tokens": null,
+            "total_tokens": 36
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": true,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000816",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "unexpected_finish_reason",
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "tool_and_replay",
+          "provider_request_id_sha256": "sha256:63b249be41d4a2b5e15a5ace81fa9f1cce80344d57d6dce4e3788fdd29db1e02",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3.7-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3.7-plus",
+          "status": "inconclusive",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 26,
+            "prompt_tokens": 304,
+            "reasoning_tokens": null,
+            "total_tokens": 330
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": true,
+            "tool_call_count": 1
+          },
+          "variant_id": null
+        }
+      ],
+      "planned_completion_calls": 7,
+      "profile_id": "provider-bailian-cn-beijing-qwen3-7-plus",
+      "profile_version": "0.1.0",
+      "requested_model": "qwen3.7-plus",
+      "route_id": "bailian-cn-beijing:qwen3.7-plus",
+      "status": "stopped_inconclusive",
+      "stopped_after": "tool_and_replay"
+    },
+    {
+      "attempted_completion_calls": 6,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.000076",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:8c58cfd7605663c5f38d708840ab1489e71f6b0f87ca12bc0afa82bb3f632f0d",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3-vl-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3-vl-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 6,
+            "prompt_tokens": 16,
+            "reasoning_tokens": null,
+            "total_tokens": 22
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": true,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000065",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "stream",
+          "provider_request_id_sha256": "sha256:283190861960ec1f03d870a25ebb5fb835f559cc17e63fd89d6538a99030832b",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3-vl-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3-vl-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 5,
+            "prompt_tokens": 15,
+            "reasoning_tokens": null,
+            "total_tokens": 20
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": 6,
+            "structured_schema_valid": null,
+            "text_only": true,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000511",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "reasoning_not_observed",
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:ab07ee0c8975b0be116fa4f8e4b46f8264654a48eb25dd235c151b358821e622",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3-vl-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3-vl-plus",
+          "status": "observed_unsupported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 49,
+            "prompt_tokens": 21,
+            "reasoning_tokens": null,
+            "total_tokens": 70
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": false,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": true,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_false"
+        },
+        {
+          "cost": {
+            "amount": "0.028293",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:ad5cdb7643e323ab525b273ac3c171aaaca3db210f51e57136a54aef057d2402",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3-vl-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3-vl-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 2827,
+            "prompt_tokens": 23,
+            "reasoning_tokens": 2815,
+            "total_tokens": 2850
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": true,
+            "reasoning_tokens": 2815,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": true,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_true"
+        },
+        {
+          "cost": {
+            "amount": "0.000164",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 64,
+          "probe": "structured_output",
+          "provider_request_id_sha256": "sha256:8d4cd9fe11944998a02fb8188577e20e8d5634b950eab815c85dd14e6f32bb0b",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3-vl-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3-vl-plus",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 9,
+            "prompt_tokens": 74,
+            "reasoning_tokens": null,
+            "total_tokens": 83
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": true,
+            "text_only": true,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000599",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "unexpected_finish_reason",
+          "finish_reason": "stop",
+          "max_output_tokens": 96,
+          "probe": "tool_and_replay",
+          "provider_request_id_sha256": "sha256:8abdb1f4ceb52f827aec53446a1dacae3420890b29ee5d54ef74ca0459eb04c8",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "qwen3-vl-plus",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "qwen3-vl-plus",
+          "status": "inconclusive",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 32,
+            "prompt_tokens": 279,
+            "reasoning_tokens": null,
+            "total_tokens": 311
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": true,
+            "tool_arguments_valid": true,
+            "tool_call_count": 1
+          },
+          "variant_id": null
+        }
+      ],
+      "planned_completion_calls": 7,
+      "profile_id": "provider-bailian-cn-beijing-qwen3-vl-plus",
+      "profile_version": "0.1.0",
+      "requested_model": "qwen3-vl-plus",
+      "route_id": "bailian-cn-beijing:qwen3-vl-plus",
+      "status": "stopped_inconclusive",
+      "stopped_after": "tool_and_replay"
+    },
+    {
+      "attempted_completion_calls": 4,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.0003",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 24,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:b3753d714c5938e50dc61dbc20724087f3263e865387539fa8342b1488c9ba0a",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "deepseek-v4-pro",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "deepseek-v4-pro",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 6,
+            "prompt_tokens": 13,
+            "reasoning_tokens": null,
+            "total_tokens": 19
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000264",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 24,
+          "probe": "stream",
+          "provider_request_id_sha256": "sha256:e4275533a11890cacdc06983a7dd060e76d16dc8bf25ba053b23f2e4d376de1c",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "deepseek-v4-pro",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "deepseek-v4-pro",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 5,
+            "prompt_tokens": 12,
+            "reasoning_tokens": null,
+            "total_tokens": 17
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": 6,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.000348",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "reasoning_not_observed",
+          "finish_reason": "stop",
+          "max_output_tokens": 24,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:f27c302b176e1d76853d01457fc1f1d3d80ec153855c22419837afbbff8ef724",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "deepseek-v4-pro",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "deepseek-v4-pro",
+          "status": "observed_unsupported",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 6,
+            "prompt_tokens": 17,
+            "reasoning_tokens": null,
+            "total_tokens": 23
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": false,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "baseline"
+        },
+        {
+          "cost": {
+            "amount": "0.000804",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "output_limit_reached",
+          "finish_reason": "length",
+          "max_output_tokens": 24,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:fffd0d1f71af2b411cc633b8a6d132dc173ee9914bdddfd3dac352da908adc59",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "deepseek-v4-pro",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "deepseek-v4-pro",
+          "status": "inconclusive",
+          "usage": {
+            "cached_tokens": 0,
+            "completion_tokens": 25,
+            "prompt_tokens": 17,
+            "reasoning_tokens": 24,
+            "total_tokens": 42
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": true,
+            "reasoning_tokens": 24,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "enable_thinking_true"
+        }
+      ],
+      "planned_completion_calls": 9,
+      "profile_id": "provider-bailian-cn-beijing",
+      "profile_version": "0.2.1",
+      "requested_model": "deepseek-v4-pro",
+      "route_id": "bailian-cn-beijing:deepseek-v4-pro",
+      "status": "stopped_inconclusive",
+      "stopped_after": "thinking"
+    },
+    {
+      "attempted_completion_calls": 7,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.00041916",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 128,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:b745da175961ab90c7f7e9688e7ee1aa0d752006f5f3b2315620123042603650",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "MiniMax/MiniMax-M3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "MiniMax/MiniMax-M3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 114,
+            "completion_tokens": 5,
+            "prompt_tokens": 171,
+            "reasoning_tokens": null,
+            "total_tokens": 176
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.00039816",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 128,
+          "probe": "stream",
+          "provider_request_id_sha256": "sha256:938b04d70db5dfff604a5453f42bcdb5d67d1a6986d77fde9adfa38ec9ecaae4",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "MiniMax/MiniMax-M3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "MiniMax/MiniMax-M3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 114,
+            "completion_tokens": 4,
+            "prompt_tokens": 170,
+            "reasoning_tokens": null,
+            "total_tokens": 174
+          },
+          "validation": {
+            "output_match": true,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": 3,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.00045696",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "reasoning_not_observed",
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:435cd366581489f6bcff46ae75aca00e16ec712ce06580aab6572cb440d9d4a1",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "MiniMax/MiniMax-M3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "MiniMax/MiniMax-M3",
+          "status": "observed_unsupported",
+          "usage": {
+            "cached_tokens": 114,
+            "completion_tokens": 6,
+            "prompt_tokens": 176,
+            "reasoning_tokens": null,
+            "total_tokens": 182
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": false,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "thinking_disabled"
+        },
+        {
+          "cost": {
+            "amount": "0.00193956",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 256,
+          "probe": "thinking",
+          "provider_request_id_sha256": "sha256:5c6da55d45457c9ce7e6b315bb8dc7040d2e379f9eb14b496899d7f31a16655f",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "MiniMax/MiniMax-M3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "MiniMax/MiniMax-M3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 114,
+            "completion_tokens": 91,
+            "prompt_tokens": 189,
+            "reasoning_tokens": null,
+            "total_tokens": 280
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": true,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": "thinking_adaptive"
+        },
+        {
+          "cost": {
+            "amount": "0.00044016",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": null,
+          "finish_reason": "stop",
+          "max_output_tokens": 128,
+          "probe": "structured_output",
+          "provider_request_id_sha256": "sha256:d7f1af9880ec024a235732fbac7e33e1b82413c267f2fd467a26963ae947ec43",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "MiniMax/MiniMax-M3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "MiniMax/MiniMax-M3",
+          "status": "observed_supported",
+          "usage": {
+            "cached_tokens": 114,
+            "completion_tokens": 5,
+            "prompt_tokens": 176,
+            "reasoning_tokens": null,
+            "total_tokens": 181
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": true,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        },
+        {
+          "cost": {
+            "amount": "0.00195216",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "output_limit_reached",
+          "finish_reason": "tool_calls",
+          "max_output_tokens": 96,
+          "probe": "tool_and_replay",
+          "provider_request_id_sha256": "sha256:38345c55e7687a09523c9b2fc015d3dfeba90764ad5a8a67898cc53ac904157f",
+          "replay_cost": {
+            "amount": "0.00136836",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "replay_finish_reason": "length",
+          "replay_provider_request_id_sha256": "sha256:95c8d4315ef3392d26626b597fb59ddd916feab7c9012f766f3fb2e4955ce575",
+          "replay_reported_model": "MiniMax/MiniMax-M3",
+          "replay_reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "replay_usage": {
+            "cached_tokens": 114,
+            "completion_tokens": 48,
+            "prompt_tokens": 225,
+            "reasoning_tokens": null,
+            "total_tokens": 273
+          },
+          "reported_model": "MiniMax/MiniMax-M3",
+          "reported_model_identity": {
+            "match": "exact",
+            "policy_id": "pvian.reported-model-identity/exact-v1",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "MiniMax/MiniMax-M3",
+          "status": "inconclusive",
+          "usage": {
+            "cached_tokens": 114,
+            "completion_tokens": 35,
+            "prompt_tokens": 416,
+            "reasoning_tokens": null,
+            "total_tokens": 451
+          },
+          "validation": {
+            "output_match": null,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": false,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": true,
+            "tool_call_count": 1
+          },
+          "variant_id": null
+        }
+      ],
+      "planned_completion_calls": 7,
+      "profile_id": "provider-bailian-cn-beijing-minimax-m3",
+      "profile_version": "0.1.0",
+      "requested_model": "MiniMax/MiniMax-M3",
+      "route_id": "bailian-cn-beijing:MiniMax/MiniMax-M3",
+      "status": "stopped_inconclusive",
+      "stopped_after": "tool_and_replay"
+    },
+    {
+      "attempted_completion_calls": 1,
+      "catalog_discovered": true,
+      "observations": [
+        {
+          "cost": {
+            "amount": "0.0028308",
+            "currency": "CNY",
+            "effective_at": null,
+            "pricing_version": "2026-08-09-official-list",
+            "status": "estimated"
+          },
+          "error_category": "unexpected_output",
+          "finish_reason": "stop",
+          "max_output_tokens": 128,
+          "probe": "message_usage",
+          "provider_request_id_sha256": "sha256:ffac87636da7f373cc327cb739fd74dc5613764899e9691e185d0af3f1360f80",
+          "replay_cost": null,
+          "replay_finish_reason": null,
+          "replay_provider_request_id_sha256": null,
+          "replay_reported_model": null,
+          "replay_reported_model_identity": null,
+          "replay_usage": null,
+          "reported_model": "mimo-v2.5-pro",
+          "reported_model_identity": {
+            "match": "explicit_mapping",
+            "policy_id": "bailian-cn-beijing-xiaomi-mimo-v2-5-pro@1.0.0",
+            "schema_version": "pvian.reported-model-identity-decision/v1"
+          },
+          "requested_model": "xiaomi/mimo-v2.5-pro",
+          "status": "inconclusive",
+          "usage": {
+            "cached_tokens": 192,
+            "completion_tokens": 99,
+            "prompt_tokens": 261,
+            "reasoning_tokens": 0,
+            "total_tokens": 360
+          },
+          "validation": {
+            "output_match": false,
+            "reasoning_field_present": null,
+            "reasoning_tokens": null,
+            "replay_completed": null,
+            "stream_chunks": null,
+            "structured_schema_valid": null,
+            "text_only": false,
+            "tool_arguments_valid": null,
+            "tool_call_count": null
+          },
+          "variant_id": null
+        }
+      ],
+      "planned_completion_calls": 7,
+      "profile_id": "provider-bailian-cn-beijing-xiaomi-mimo-v2-5-pro",
+      "profile_version": "0.2.0",
+      "requested_model": "xiaomi/mimo-v2.5-pro",
+      "route_id": "bailian-cn-beijing:xiaomi/mimo-v2.5-pro",
+      "status": "stopped_inconclusive",
+      "stopped_after": "message_usage"
+    }
+  ],
+  "retry_total_attempts": 1,
+  "schema_version": "pvian.capability-sweep/v1"
+}

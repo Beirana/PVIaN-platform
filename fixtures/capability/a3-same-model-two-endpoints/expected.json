@@ -1,0 +1,6 @@
+{
+  "fixture_id": "A3",
+  "candidate_profile_ids": ["cap-broker-alpha", "cap-official-alpha"],
+  "candidate_endpoint_ids": ["endpoint-broker-alpha", "endpoint-official-alpha"],
+  "must_not_merge": true
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-deepseek-official-openai-compatible",
+  "endpoint_kind": "official_direct",
+  "provider_id": "provider-deepseek-official",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "undated_official_docs",
+  "model_requested": "deepseek-v4-pro",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": "global",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-17T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only endpoint record created from official api-docs.deepseek.com documentation captured 2026-08-17; no controlled qualification observation has run against this endpoint yet.",
+      "The official base URL https://api.deepseek.com carries no path component; OpenAI-compatible chat completions and model listing are documented at /chat/completions and /models."
+    ]
+  }
+}

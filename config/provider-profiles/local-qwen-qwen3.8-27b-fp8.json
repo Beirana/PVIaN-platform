@@ -1,0 +1,103 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-local-qwen-qwen3-8-27b-fp8",
+  "profile_version": "0.1.0",
+  "lifecycle": "candidate",
+  "provider": {
+    "provider_id": "provider-local-qwen",
+    "display_name": "Self-hosted vLLM Qwen3.8-27B-FP8 (SSH-tunneled local endpoint)",
+    "region": "local",
+    "credential_environment_variable": "PVI_PROBE_LOCAL_QWEN_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-local-qwen-openai-compatible",
+      "route_id_prefix": "local-qwen",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_LOCAL_QWEN_OPENAI_BASE_URL",
+      "allowed_hosts": [
+        "127.0.0.1"
+      ],
+      "required_base_path": "/v1",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": [
+      "qwen3_8_27b_fp8"
+    ],
+    "targets": [
+      {
+        "logical_model_id": "qwen3_8_27b_fp8",
+        "catalog_id_patterns": [
+          "^qwen3\\.8-27b-fp8$"
+        ],
+        "source": {
+          "kind": "official_documentation",
+          "url": "http://127.0.0.1:18000/v1/models",
+          "public_document_drift": "self-hosted vLLM deployment; the operator contract fixes base_url/model/api_key as stable values across backend swaps; server catalog reports max_model_len 131072"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": [
+      "allow_network",
+      "confirm_cost"
+    ],
+    "probe_set": [
+      "message",
+      "stream",
+      "thinking",
+      "native_tool_call",
+      "assistant_replay",
+      "tool_result_replay",
+      "usage"
+    ],
+    "request_variants": [
+      {
+        "variant_id": "baseline",
+        "request_overrides": {}
+      }
+    ],
+    "probe_request_policy": {
+      "temperature": null,
+      "seed": null,
+      "max_output_parameter": "max_tokens",
+      "max_output_tokens": {
+        "message": 1024,
+        "stream": 1024,
+        "thinking": 2048,
+        "tool": 2048,
+        "replay": 1024
+      },
+      "tool_choice_mode": "auto",
+      "timeout_seconds": 300,
+      "retry_total_attempts": 1,
+      "fallback": null
+    },
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": [
+        "message",
+        "thinking",
+        "usage"
+      ],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

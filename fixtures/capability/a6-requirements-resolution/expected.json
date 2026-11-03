@@ -1,0 +1,10 @@
+{
+  "fixture_id": "A6",
+  "satisfied": ["tool_calling.representation"],
+  "unsatisfied": ["tool_calling.streaming_arguments"],
+  "unknown": ["reasoning.effective"],
+  "satisfied_evidence_ids": [
+    "evidence-official-tool-doc",
+    "evidence-official-tool-probe"
+  ]
+}

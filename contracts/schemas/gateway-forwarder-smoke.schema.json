@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/gateway-forwarder-smoke.schema.json",
+  "title": "PVIaN sanitized gateway forwarder smoke evidence v1",
+  "description": "Allowlisted metadata from one bounded gateway-forwarder smoke. Prompt and response content, private reasoning, raw bodies, credentials, raw provider request IDs, and remote error text are excluded by additionalProperties=false.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "artifact_id", "evidence_class", "redaction_profile",
+    "captured_at", "catalog", "completion_calls_attempted", "transport_attempts",
+    "retry_attempts", "estimated_list_cost_cny", "attempts"
+  ],
+  "properties": {
+    "schema_version": {"const": "pvian.gateway-forwarder-smoke/v1"},
+    "artifact_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,255}$"},
+    "evidence_class": {"const": "gateway_forwarder_smoke"},
+    "redaction_profile": {"const": "gateway-forwarder-metadata-only/v1"},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gets", "http_status", "provider_request_id_sha256", "target_models_present"],
+      "properties": {
+        "gets": {"const": 1},
+        "http_status": {"const": 200},
+        "provider_request_id_sha256": {"$ref": "#/$defs/sha256_id"},
+        "target_models_present": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "prefixItems": [
+            {"const": "qwen3.8-max"},
+            {"const": "kimi/kimi-k3"},
+            {"const": "glm-5.2"},
+            {"const": "qwen3.7-plus"},
+            {"const": "qwen3-vl-plus"},
+            {"const": "deepseek-v4-pro"},
+            {"const": "MiniMax/MiniMax-M3"},
+            {"const": "xiaomi/mimo-v2.5-pro"}
+          ],
+          "items": false
+        }
+      }
+    },
+    "completion_calls_attempted": {"const": 8},
+    "transport_attempts": {"const": 8},
+    "retry_attempts": {"const": 0},
+    "estimated_list_cost_cny": {"const": "0.01797316"},
+    "attempts": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {"$ref": "#/$defs/attempt"}
+    }
+  },
+  "$defs": {
+    "sha256_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt_tokens", "cached_tokens", "reasoning_tokens", "completion_tokens", "total_tokens"],
+      "properties": {
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "cached_tokens": {"type": "integer", "minimum": 0},
+        "reasoning_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "completion_tokens": {"type": "integer", "minimum": 0},
+        "total_tokens": {"type": "integer", "minimum": 0}
+      }
+    },
+    "cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "currency", "pricing_version", "amount"],
+      "properties": {
+        "status": {"const": "estimated"},
+        "currency": {"const": "CNY"},
+        "pricing_version": {"const": "official-list-captured-2026-08-09"},
+        "amount": {"type": "string", "pattern": "^\\d+(?:\\.\\d+)?$"}
+      }
+    },
+    "attempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordinal", "profile_id", "profile_version", "route_id", "requested_model",
+        "reported_model", "status", "http_status", "stream", "attempt_count",
+        "provider_request_id_sha256", "finish_reason", "usage", "cost",
+        "error_category", "elapsed_ms"
+      ],
+      "properties": {
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 8},
+        "profile_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "profile_version": {"type": "string", "minLength": 1, "maxLength": 64},
+        "route_id": {"type": "string", "minLength": 1, "maxLength": 512},
+        "requested_model": {"type": "string", "minLength": 1, "maxLength": 256},
+        "reported_model": {"type": "string", "minLength": 1, "maxLength": 256},
+        "status": {"enum": ["observed_supported", "observed_truncated", "model_mismatch"]},
+        "http_status": {"const": 200},
+        "stream": {"const": false},
+        "attempt_count": {"const": 1},
+        "provider_request_id_sha256": {"$ref": "#/$defs/sha256_id"},
+        "finish_reason": {"enum": ["stop", "length"]},
+        "usage": {"$ref": "#/$defs/usage"},
+        "cost": {"$ref": "#/$defs/cost"},
+        "error_category": {"enum": [null, "output_limit_reached", "requested_reported_model_mismatch"]},
+        "elapsed_ms": {"type": "null"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "observed_supported"}}, "required": ["status"]},
+          "then": {"properties": {"finish_reason": {"const": "stop"}, "error_category": {"type": "null"}}}
+        },
+        {
+          "if": {"properties": {"status": {"const": "observed_truncated"}}, "required": ["status"]},
+          "then": {"properties": {"finish_reason": {"const": "length"}, "error_category": {"const": "output_limit_reached"}}}
+        },
+        {
+          "if": {"properties": {"status": {"const": "model_mismatch"}}, "required": ["status"]},
+          "then": {"properties": {"error_category": {"const": "requested_reported_model_mismatch"}}}
+        }
+      ]
+    }
+  }
+}

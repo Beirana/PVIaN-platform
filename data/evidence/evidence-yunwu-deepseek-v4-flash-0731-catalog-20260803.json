@@ -1,0 +1,13 @@
+{
+  "schema_version": "pvi.evidence-reference/v1",
+  "evidence_id": "evidence-yunwu-deepseek-v4-flash-0731-catalog-20260803",
+  "source_kind": "operator_note",
+  "host_profile_id": null,
+  "capture_surface": "operator_observation",
+  "sha256": null,
+  "media_type": "text/markdown",
+  "redaction_profile": "qualification-state-summary/v1",
+  "locator": "docs/reviews/deepseek-v4-flash-0731-provider-qualification-2026-08-03.md#yunwu",
+  "captured_at": "2026-08-03T06:21:24.472210Z",
+  "retention_class": "metadata_only"
+}

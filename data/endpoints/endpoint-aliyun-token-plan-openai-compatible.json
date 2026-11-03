@@ -1,0 +1,33 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-aliyun-token-plan-openai-compatible",
+  "endpoint_kind": "official_direct",
+  "provider_id": "provider-aliyun-token-plan",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "compatible-mode_v1_subscription_docs",
+  "model_requested": "qwen3.8-max",
+  "model_reported": null,
+  "model_revision": "token-plan personal catalog also lists qwen3.7-max, qwen3.6-flash, deepseek-v4-pro-0813 (plus image/audio/video models out of scope for the text gateway)",
+  "deployment_id": null,
+  "region": "cn-beijing",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-19T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Official docs captured 2026-08-19: Token Plan personal subscription, OpenAI-compatible base URL https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1, Beijing region only, Credits metering with a 7-day rolling quota (Lite 2500 / Standard 10000 / Pro 40000 Credits).",
+      "Subscription keys are sk-sp- prefixed and isolated from pay-as-you-go keys: the payg PVI_PROBE_BAILIAN_API_KEY and the payg workspace host must never be used against this endpoint, and the sk-sp- key must never be sent to the payg endpoint; mixing does not deduct plan quota by design.",
+      "Subscription renewal replaces the API key (official FAQ); after each renewal the key in .env must be reconfigured before routes degrade with auth failures.",
+      "Operator-accepted ToS gray zone (mirrors the mimo token-plan precedent): the personal plan is documented for interactive use in coding/agent tools and forbids API-automation backends and non-interactive batch calls; the operator directed onboarding on 2026-08-19 knowing this clause, and this platform forwards interactive coding-tool traffic only.",
+      "Identity separation: model names overlap with the pay-as-you-go bailian-cn-beijing routes (e.g. qwen3.8-max, glm-5.2), but subscription endpoint and payg endpoint are different identities per the runbook; never mapped or cross-qualified.",
+      "No per-token list price applies (Credits subscription), so no pricing file exists for this provider and ledger cost estimates are intentionally unknown (pricing_missing), never zero.",
+      "No completion probe, forwarder smoke, or deployed gateway smoke has run against this endpoint yet; every claim above is advertised-layer documentation evidence."
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+# Replace the placeholder host/certificate paths in deployment tooling; do not
+# place client or provider keys in this file.  Keep the gateway bound to
+# loopback and let this reverse proxy be the only controlled-network listener.
+log_format pvian_safe '$remote_addr $request_method $uri $status $body_bytes_sent '
+                      '$request_time $upstream_response_time';
+server {
+    listen 443 ssl http2;
+    server_name gateway.internal.example;
+
+    ssl_certificate     /etc/pvian/tls/fullchain.pem;
+    ssl_certificate_key /etc/pvian/tls/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    access_log /var/log/nginx/pvian-gateway-access.log pvian_safe;
+
+    client_max_body_size 10m;
+    proxy_http_version 1.1;
+    proxy_buffering off;
+    proxy_request_buffering off;
+    proxy_read_timeout 120s;
+
+    location / {
+        proxy_pass http://127.0.0.1:5200;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        # The custom log format intentionally excludes Authorization and bodies.
+    }
+}

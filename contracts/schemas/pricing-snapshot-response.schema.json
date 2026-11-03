@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/pricing-snapshot-response.schema.json",
+  "title": "PVIaN pricing snapshot response v1",
+  "description": "The response object emitted by GET /v1/gateway/pricing/snapshots. Derived from the gateway's loaded pricing facts at request time, with a deterministic snapshot_id and a snapshot_digest over canonical JSON.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "snapshot_digest",
+    "provider",
+    "region",
+    "currency",
+    "public_alias",
+    "route",
+    "upstream_model",
+    "profile_id",
+    "model",
+    "rates",
+    "tiers",
+    "cache_mode",
+    "pricing_version",
+    "effective_at",
+    "captured_at",
+    "valid_until",
+    "source_urls",
+    "source_digests",
+    "output_limits"
+  ],
+  "properties": {
+    "schema_version": {"const": "pvian.pricing-snapshot-response/v1"},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "snapshot_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "provider": {"type": "string", "minLength": 1},
+    "region": {"type": "string", "minLength": 1},
+    "currency": {"type": "string", "minLength": 1},
+    "public_alias": {"type": ["string", "null"]},
+    "route": {"type": ["string", "null"]},
+    "upstream_model": {"type": "string", "minLength": 1},
+    "profile_id": {"type": "string", "minLength": 1},
+    "model": {"type": "string", "minLength": 1},
+    "rates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt", "cached_prompt", "completion", "unit"],
+      "properties": {
+        "prompt": {"type": "number", "minimum": 0},
+        "cached_prompt": {"type": ["number", "null"], "minimum": 0},
+        "completion": {"type": "number", "minimum": 0},
+        "unit": {"const": "per_1m_tokens"}
+      }
+    },
+    "tiers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["prompt_tokens_gt", "prompt_tokens_lte", "rates"],
+        "properties": {
+          "prompt_tokens_gt": {"type": "integer", "minimum": 0},
+          "prompt_tokens_lte": {"type": "integer", "minimum": 1},
+          "rates": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["prompt", "cached_prompt", "completion"],
+            "properties": {
+              "prompt": {"type": "number", "minimum": 0},
+              "cached_prompt": {"type": ["number", "null"], "minimum": 0},
+              "completion": {"type": "number", "minimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "cache_mode": {"enum": ["explicit_cache", "no_cache_rate"]},
+    "pricing_version": {"type": "string", "minLength": 1},
+    "effective_at": {"type": ["string", "null"], "format": "date-time"},
+    "captured_at": {"type": ["string", "null"], "format": "date-time"},
+    "valid_until": {"type": ["string", "null"]},
+    "source_urls": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "uniqueItems": true
+    },
+    "source_digests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "value", "status"],
+        "properties": {
+          "kind": {"const": "content_sha256"},
+          "value": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "status": {"type": "string", "minLength": 1}
+        }
+      },
+      "uniqueItems": true
+    },
+    "output_limits": {
+      "type": ["object", "null"],
+      "description": "Advertised model output/context ceilings sourced from official pages. Null when no limits are bound to this model. Reasoning tokens count toward max_output_tokens on thinking models.",
+      "additionalProperties": false,
+      "required": [
+        "context_window",
+        "max_output_tokens",
+        "max_thinking_chain_tokens",
+        "output_parameter",
+        "thinking_default",
+        "thinking_controls",
+        "recommended_defaults",
+        "confirmation",
+        "source_url",
+        "notes"
+      ],
+      "properties": {
+        "context_window": {"type": "integer", "minimum": 1},
+        "max_output_tokens": {"type": "integer", "minimum": 1},
+        "max_thinking_chain_tokens": {"type": ["integer", "null"], "minimum": 1},
+        "output_parameter": {"type": "string", "minLength": 1},
+        "thinking_default": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "default_effort", "default_thinking_budget", "default_effort_confirmation"],
+          "properties": {
+            "state": {"enum": ["on", "off", "always_on", "adaptive"]},
+            "default_effort": {"type": ["string", "null"], "minLength": 1},
+            "default_thinking_budget": {"type": ["integer", "null"], "minimum": 1},
+            "default_effort_confirmation": {"enum": ["confirmed", "cross_source_unconfirmed"]}
+          }
+        },
+        "thinking_controls": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "recommended_defaults": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["send", "omit", "required_non_reasoning"],
+          "properties": {
+            "send": {"type": "object"},
+            "omit": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1},
+              "uniqueItems": true
+            },
+            "required_non_reasoning": {"type": "object"}
+          }
+        },
+        "confirmation": {"enum": ["confirmed", "cross_source_unconfirmed"]},
+        "source_url": {"type": "string", "minLength": 1},
+        "notes": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

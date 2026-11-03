@@ -1,0 +1,13 @@
+{
+  "schema_version": "pvi.evidence-reference/v1",
+  "evidence_id": "evidence-official-tool-probe",
+  "source_kind": "provider_native",
+  "host_profile_id": null,
+  "capture_surface": "provider_wire",
+  "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "media_type": "application/json",
+  "redaction_profile": "fixture-redacted/v1",
+  "locator": "fixture://official-alpha/native-tool-call",
+  "captured_at": "2026-07-20T00:00:00Z",
+  "retention_class": "standard"
+}

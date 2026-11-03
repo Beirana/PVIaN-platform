@@ -1,0 +1,35 @@
+{
+  "schema_version": "pvian.vendor-matrix-models/v1",
+  "endpoint_kind": "broker_gateway",
+  "api_surface": "openai_compatible_chat_completions",
+  "models": [
+    {
+      "vendor": "openai",
+      "model": "o4-mini",
+      "token_limit_parameter": "max_completion_tokens",
+      "reasoning_effort": "low",
+      "stream": false
+    },
+    {
+      "vendor": "deepseek",
+      "model": "deepseek-v3.2",
+      "token_limit_parameter": "max_tokens",
+      "reasoning_effort": null,
+      "stream": false
+    },
+    {
+      "vendor": "grok",
+      "model": "grok-4-1-fast-reasoning",
+      "token_limit_parameter": "max_tokens",
+      "reasoning_effort": null,
+      "stream": false
+    },
+    {
+      "vendor": "glm",
+      "model": "glm-4.5",
+      "token_limit_parameter": "max_tokens",
+      "reasoning_effort": null,
+      "stream": true
+    }
+  ]
+}

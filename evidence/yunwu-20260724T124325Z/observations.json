@@ -1,0 +1,328 @@
+{
+  "schema_version": "pvian.vendor-matrix-evidence/v1",
+  "session_id": "yunwu-20260724T124325Z",
+  "generated_at": "2026-07-24T12:43:25.683272Z",
+  "endpoint": {
+    "base_url": "https://yunwu.ai/v1",
+    "endpoint_kind": "broker_gateway",
+    "api_surface": "openai_compatible_chat_completions",
+    "timeout_seconds": 45.0,
+    "max_retries": 0
+  },
+  "model_catalog_total": 402,
+  "contains_credentials": false,
+  "contains_raw_prompts": false,
+  "contains_raw_responses": false,
+  "tool_execution_count": 0,
+  "observations": [
+    {
+      "vendor": "openai",
+      "capability": "message",
+      "requested_model": "o4-mini",
+      "reported_model": "o4-mini",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:40:47.085543Z",
+      "completed_at": "2026-07-24T12:40:48.355942Z",
+      "latency_ms": 1270,
+      "input_digest": "sha256:e62d32855d60b55348049d228933a4ad9a95594bb676c69d76be4d3006d44501",
+      "details": {
+        "request_completed": true,
+        "exact_match": true,
+        "output_length": 14,
+        "output_sha256": "3ad864b1224e41f90d54a77af967d9964d5daab5e582102f6ab3c29f94f5fa6b",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 17,
+          "completion_tokens": 23,
+          "total_tokens": 40,
+          "reasoning_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "openai",
+      "capability": "thinking",
+      "requested_model": "o4-mini",
+      "reported_model": "o4-mini",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:40:48.356058Z",
+      "completed_at": "2026-07-24T12:40:50.506313Z",
+      "latency_ms": 2150,
+      "input_digest": "sha256:9e8dfbf1e98869b9564e65dc76023b60bbd4cf7d8a71f0fa81c8f3fdeac864da",
+      "details": {
+        "request_completed": true,
+        "reasoning_exposure": "token_usage_only",
+        "native_reasoning_field_names": [],
+        "reasoning_tokens": 192,
+        "final_exact_match": false,
+        "output_length": 0,
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "finish_reason": "length",
+        "usage": {
+          "prompt_tokens": 42,
+          "completion_tokens": 192,
+          "total_tokens": 234,
+          "reasoning_tokens": 192
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "openai",
+      "capability": "tool_calling",
+      "requested_model": "o4-mini",
+      "reported_model": "o4-mini",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:40:50.506454Z",
+      "completed_at": "2026-07-24T12:40:52.671725Z",
+      "latency_ms": 2165,
+      "input_digest": "sha256:171cbcf811bff181d4f10aa9f3ca331e96dab21bf2188445c7fd00cad3be54de",
+      "details": {
+        "request_completed": true,
+        "native_tool_call_observed": true,
+        "tool_call_count": 1,
+        "arguments_valid_json": true,
+        "arguments_sha256": "491607999719ccaecc2d1146016b2b7f35d85c8d1ed06afc0f4356f2f742a7a6",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "prompt_tokens": 72,
+          "completion_tokens": 28,
+          "total_tokens": 100,
+          "reasoning_tokens": 0
+        },
+        "tool_executed": false
+      },
+      "error": null
+    },
+    {
+      "vendor": "deepseek",
+      "capability": "message",
+      "requested_model": "deepseek-v3.2",
+      "reported_model": "deepseek-v3.2",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:40:52.671859Z",
+      "completed_at": "2026-07-24T12:40:54.439284Z",
+      "latency_ms": 1767,
+      "input_digest": "sha256:679092a991733ccda2b1c16c99991a9991c7c907de3b895f2e92010fff881baf",
+      "details": {
+        "request_completed": true,
+        "exact_match": true,
+        "output_length": 14,
+        "output_sha256": "3ad864b1224e41f90d54a77af967d9964d5daab5e582102f6ab3c29f94f5fa6b",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 16,
+          "completion_tokens": 5,
+          "total_tokens": 21,
+          "reasoning_tokens": null
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "deepseek",
+      "capability": "thinking",
+      "requested_model": "deepseek-v3.2",
+      "reported_model": "deepseek-v3.2",
+      "status": "not_observed",
+      "started_at": "2026-07-24T12:40:54.439414Z",
+      "completed_at": "2026-07-24T12:40:59.153329Z",
+      "latency_ms": 4714,
+      "input_digest": "sha256:d168c0c35d1e5f760ae26c8f0fc18ca8cb85bc0394025c1f0a4088af5c3087c8",
+      "details": {
+        "request_completed": true,
+        "reasoning_exposure": "none_observed",
+        "native_reasoning_field_names": [],
+        "reasoning_tokens": null,
+        "final_exact_match": false,
+        "output_length": 426,
+        "output_sha256": "d98a888d31c8e51ad8e7bfb56198c4dc4b5c0bfe250dc7bf40063b06a2002ead",
+        "finish_reason": "length",
+        "usage": {
+          "prompt_tokens": 40,
+          "completion_tokens": 192,
+          "total_tokens": 232,
+          "reasoning_tokens": null
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "deepseek",
+      "capability": "tool_calling",
+      "requested_model": "deepseek-v3.2",
+      "reported_model": "deepseek-v3.2",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:40:59.153468Z",
+      "completed_at": "2026-07-24T12:41:01.164705Z",
+      "latency_ms": 2011,
+      "input_digest": "sha256:93847f4a725b5208e47d043b2e30a103a17a37b7803c741f3eacce9f7b2ed397",
+      "details": {
+        "request_completed": true,
+        "native_tool_call_observed": true,
+        "tool_call_count": 1,
+        "arguments_valid_json": true,
+        "arguments_sha256": "78fdcd2eede09c080e5543bbe6746cea74c13364fd2d0c15e804a4bfa8eea2f1",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "prompt_tokens": 356,
+          "completion_tokens": 33,
+          "total_tokens": 389,
+          "reasoning_tokens": null
+        },
+        "tool_executed": false
+      },
+      "error": null
+    },
+    {
+      "vendor": "grok",
+      "capability": "message",
+      "requested_model": "grok-4-1-fast-reasoning",
+      "reported_model": "grok-4-1-fast-reasoning",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:41:01.164940Z",
+      "completed_at": "2026-07-24T12:41:07.300472Z",
+      "latency_ms": 6136,
+      "input_digest": "sha256:a13a745fb1fb9cdb4f4a880502c5a3e54ccd22afb27003877b3c0c59b066506e",
+      "details": {
+        "request_completed": true,
+        "exact_match": true,
+        "output_length": 14,
+        "output_sha256": "3ad864b1224e41f90d54a77af967d9964d5daab5e582102f6ab3c29f94f5fa6b",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 203,
+          "completion_tokens": 142,
+          "total_tokens": 345,
+          "reasoning_tokens": 138
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "grok",
+      "capability": "thinking",
+      "requested_model": "grok-4-1-fast-reasoning",
+      "reported_model": "grok-4-1-fast-reasoning",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:41:07.300597Z",
+      "completed_at": "2026-07-24T12:41:19.486793Z",
+      "latency_ms": 12186,
+      "input_digest": "sha256:221812bd9362fd9c34a601781e3b6617f1abce3b676803af10718feddeba9e48",
+      "details": {
+        "request_completed": true,
+        "reasoning_exposure": "visible_reasoning_text",
+        "native_reasoning_field_names": [
+          "reasoning_content"
+        ],
+        "reasoning_tokens": 818,
+        "final_exact_match": false,
+        "output_length": 552,
+        "output_sha256": "9b51d5e10c5af6650594a536594c86085c1c8ed5f755f5f8ef0458e226d06916",
+        "finish_reason": "length",
+        "usage": {
+          "prompt_tokens": 228,
+          "completion_tokens": 1010,
+          "total_tokens": 1238,
+          "reasoning_tokens": 818
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "grok",
+      "capability": "tool_calling",
+      "requested_model": "grok-4-1-fast-reasoning",
+      "reported_model": "grok-4-1-fast-reasoning",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:41:19.486922Z",
+      "completed_at": "2026-07-24T12:41:31.052130Z",
+      "latency_ms": 11565,
+      "input_digest": "sha256:17578aacdb1c4f991bf983fc8151847f2ab58785d0547bdeec0abcd7b31a2141",
+      "details": {
+        "request_completed": true,
+        "native_tool_call_observed": true,
+        "tool_call_count": 1,
+        "arguments_valid_json": true,
+        "arguments_sha256": "491607999719ccaecc2d1146016b2b7f35d85c8d1ed06afc0f4356f2f742a7a6",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "prompt_tokens": 317,
+          "completion_tokens": 266,
+          "total_tokens": 583,
+          "reasoning_tokens": 249
+        },
+        "tool_executed": false
+      },
+      "error": null
+    },
+    {
+      "vendor": "glm",
+      "capability": "message",
+      "requested_model": "glm-4.5",
+      "reported_model": "glm-4.5",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:41:31.052316Z",
+      "completed_at": "2026-07-24T12:41:37.519483Z",
+      "latency_ms": 6467,
+      "input_digest": "sha256:d9b48a0a4f10ec9008128cb28d212441edf663b95fb8c93b5c95b05ea96c7210",
+      "details": {
+        "request_completed": true,
+        "exact_match": true,
+        "output_length": 14,
+        "output_sha256": "3ad864b1224e41f90d54a77af967d9964d5daab5e582102f6ab3c29f94f5fa6b",
+        "finish_reason": "stop",
+        "usage": null
+      },
+      "error": null
+    },
+    {
+      "vendor": "glm",
+      "capability": "thinking",
+      "requested_model": "glm-4.5",
+      "reported_model": "glm-4.5",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:41:37.519626Z",
+      "completed_at": "2026-07-24T12:43:20.449304Z",
+      "latency_ms": 102930,
+      "input_digest": "sha256:3d86755f754a724a14ac3c9765cf167df8fc853da1717fa65f96d41ec7dd49f5",
+      "details": {
+        "request_completed": true,
+        "reasoning_exposure": "visible_reasoning_text",
+        "native_reasoning_field_names": [
+          "reasoning_content"
+        ],
+        "reasoning_tokens": null,
+        "final_exact_match": false,
+        "output_length": 465,
+        "output_sha256": "e41fcc3fc6a200ac6f4b5584ad29d66a4df70d26e6a6ee05d6f1b206bc79bc2e",
+        "finish_reason": "length",
+        "usage": null
+      },
+      "error": null
+    },
+    {
+      "vendor": "glm",
+      "capability": "tool_calling",
+      "requested_model": "glm-4.5",
+      "reported_model": "glm-4.5",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:43:20.449435Z",
+      "completed_at": "2026-07-24T12:43:25.683162Z",
+      "latency_ms": 5234,
+      "input_digest": "sha256:68876d72fd64bd4da26efb4932f98d3aaa4b056482a35c25c06907708a419015",
+      "details": {
+        "request_completed": true,
+        "native_tool_call_observed": true,
+        "tool_call_count": 1,
+        "arguments_valid_json": true,
+        "arguments_sha256": "1f7f7d3e73ad545bdfe4977e9127a80b3016e97a31bc831700735295395e62be",
+        "finish_reason": "tool_calls",
+        "usage": null,
+        "tool_executed": false
+      },
+      "error": null
+    }
+  ]
+}

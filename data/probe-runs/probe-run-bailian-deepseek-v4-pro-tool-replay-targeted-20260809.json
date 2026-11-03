@@ -1,0 +1,18 @@
+{
+  "schema_version": "pvi.probe-run/v1",
+  "probe_run_id": "probe-run-bailian-deepseek-v4-pro-tool-replay-targeted-20260809",
+  "probe_id": "online_native_tool_call_probe",
+  "probe_version": "1.0.0",
+  "subject_profile_id": "cap-bailian-deepseek-v4-pro",
+  "input_digest": null,
+  "configuration_digest": "sha256:ee3feea6e216d79379f99a5dc35d5b68733fde9cc460466d1f2f3bb2f59a854b",
+  "environment_digest": null,
+  "started_at": "2026-08-09T13:29:33.486690Z",
+  "completed_at": "2026-08-09T13:29:33.486690Z",
+  "verdict": "observed_supported",
+  "evidence_ids": [
+    "evidence-bailian-deepseek-v4-pro-official-20260809",
+    "evidence-bailian-deepseek-v4-pro-tool-replay-targeted-20260809"
+  ],
+  "normalization_error_ids": []
+}

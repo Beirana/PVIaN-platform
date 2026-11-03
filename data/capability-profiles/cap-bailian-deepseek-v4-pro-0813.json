@@ -1,0 +1,139 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-bailian-deepseek-v4-pro-0813",
+  "profile_version": "0.2.0",
+  "subject": {
+    "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+    "endpoint_kind": "managed_cloud",
+    "provider_id": "provider-bailian",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "compatible-mode_v1",
+    "model_requested": "deepseek-v4-pro-0813",
+    "model_reported": "deepseek-v4-pro-0813",
+    "model_revision": "DeepSeek flagship snapshot 0813 on the Bailian pay-as-you-go catalog (listed 2026-08-21, 240-model list); distinct from deepseek-v4-pro, the DeepSeek official direct endpoint, and the still-absent Token Plan subscription identity",
+    "deployment_id": null,
+    "region": "cn-beijing",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-21T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised layer from the official Bailian DeepSeek API documentation; observed layer stays not_tested until the authorized qualification probes run.",
+      "Identity separation: the Token Plan subscription catalog does not list this model (11-model list, rechecked 2026-08-21) — the frozen token-plan candidate stays unqualified and is never mapped to this payg identity.",
+      "Context window is not stated on the model page (console pointer only); industry reporting says 1M and stays cross_source_unconfirmed until console evidence.",
+      "Deployment intent (operator 2026-08-21): qualify and serve on a dedicated isolated instance — NOT production 5200 and NOT the 5239 local-qwen gateway.",
+      "2026-08-21 qualification under operator directive (dedicated-instance deployment, not 5200/5239): scoped isolated qualification ENABLED with exact requested/reported identity — message+usage, stream, all four thinking variants (enable_thinking false/true, reasoning_effort high/max), native tool call, assistant replay, tool_result replay all observed_supported. Deployed on dedicated 5246 gateway (overlay .codex_tmp/gateway-5246-bailian-0813); end-to-end smoke 200 with reasoning_tokens detail (thinking on by default)."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    },
+    "structured_output": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "not_tested",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "exposure": "visible_reasoning_text",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-deepseek-v4-pro-0813-20260821"
+      ]
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

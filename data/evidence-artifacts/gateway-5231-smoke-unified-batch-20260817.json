@@ -1,0 +1,112 @@
+{
+  "child_pid": 23560,
+  "completion_calls": 4,
+  "evidence_class": "deployed_gateway_smoke",
+  "manifest": {
+    "aliases": [
+      "pvian/deepseek-official/deepseek-v4-pro",
+      "pvian/deepseek-official/deepseek-v4-flash",
+      "pvian/moonshot-official/kimi-k3",
+      "pvian/openrouter/dots-studio/dots-3-note-preview:free"
+    ],
+    "port": 5231,
+    "profile_versions": {
+      "provider-deepseek-official-v4-flash": "0.1.0-gateway5231.1",
+      "provider-deepseek-official-v4-pro": "0.1.0-gateway5231.1",
+      "provider-moonshot-official-kimi-k3": "0.1.0-gateway5231.1",
+      "provider-openrouter-dots-3-note-free": "0.1.0-gateway5231.1"
+    },
+    "schema_version": "pvian.gateway-5231-overlay/v1",
+    "source_state_files": [
+      "deepseek-official-state.json",
+      "moonshot-official-state.json",
+      "openrouter-state.json"
+    ]
+  },
+  "port": 5231,
+  "results": [
+    {
+      "alias": "pvian/deepseek-official/deepseek-v4-pro",
+      "finish_reason": "length",
+      "http_status": 200,
+      "reported_model": "deepseek-v4-pro",
+      "usage": {
+        "completion_tokens": 64,
+        "completion_tokens_details": {
+          "reasoning_tokens": 64
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 93,
+        "prompt_tokens": 93,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 157
+      }
+    },
+    {
+      "alias": "pvian/deepseek-official/deepseek-v4-flash",
+      "finish_reason": "length",
+      "http_status": 200,
+      "reported_model": "deepseek-v4-flash",
+      "usage": {
+        "completion_tokens": 64,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 93,
+        "prompt_tokens": 93,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 157
+      }
+    },
+    {
+      "alias": "pvian/moonshot-official/kimi-k3",
+      "finish_reason": "length",
+      "http_status": 200,
+      "reported_model": "kimi-k3",
+      "usage": {
+        "completion_tokens": 64,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        },
+        "prompt_tokens": 95,
+        "total_tokens": 159
+      }
+    },
+    {
+      "alias": "pvian/openrouter/dots-studio/dots-3-note-preview:free",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "reported_model": "dots-studio/dots-3-note-preview:free",
+      "usage": {
+        "completion_tokens": 60,
+        "completion_tokens_details": {
+          "audio_tokens": 0,
+          "image_tokens": 0,
+          "reasoning_tokens": 66
+        },
+        "cost": 0,
+        "cost_details": {
+          "upstream_inference_completions_cost": 0,
+          "upstream_inference_cost": 0,
+          "upstream_inference_prompt_cost": 0
+        },
+        "is_byok": false,
+        "prompt_tokens": 21,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "video_tokens": 0
+        },
+        "total_tokens": 81
+      }
+    }
+  ],
+  "schema_version": "pvian.gateway-5231-smoke/v1",
+  "smoked_at": "2026-08-16T17:52:28.484418+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "pvi.probe-run/v1",
+  "probe_run_id": "probe-run-bailian-deepseek-v4-flash-0731-qualification-20260803",
+  "probe_id": "online_text_message_probe",
+  "probe_version": "1.0.0",
+  "subject_profile_id": "cap-bailian-deepseek-v4-flash-0731",
+  "input_digest": null,
+  "configuration_digest": "sha256:a6f394cb2687d6b0d039a4971f2994511b17389c44ff9eb23861bc653cf53e97",
+  "environment_digest": null,
+  "started_at": "2026-08-03T06:21:24.472210Z",
+  "completed_at": "2026-08-03T06:21:24.472210Z",
+  "verdict": "observed_supported",
+  "evidence_ids": [
+    "evidence-bailian-deepseek-v4-flash-0731-qualification-20260803"
+  ],
+  "normalization_error_ids": []
+}

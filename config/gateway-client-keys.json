@@ -1,0 +1,16 @@
+{
+  "schema_version": "pvian.gateway-client-key-registry/v1",
+  "registry_version": "1.0.0",
+  "keys": [
+    {
+      "key_id": "internal-primary",
+      "status": "active",
+      "secret_environment_variable": "PVI_GATEWAY_CLIENT_KEY_INTERNAL_PRIMARY"
+    },
+    {
+      "key_id": "internal-previous",
+      "status": "revoked",
+      "secret_environment_variable": "PVI_GATEWAY_CLIENT_KEY_INTERNAL_PREVIOUS"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "pvi.probe-run/v1",
+  "probe_run_id": "probe-run-official-tool",
+  "probe_id": "native_tool_call_probe",
+  "probe_version": "1.0.0",
+  "subject_profile_id": "cap-official-alpha",
+  "input_digest": "sha256:fixture-input",
+  "configuration_digest": "sha256:fixture-configuration",
+  "environment_digest": "sha256:fixture-environment",
+  "started_at": "2026-07-20T00:00:00Z",
+  "completed_at": "2026-07-20T00:00:01Z",
+  "verdict": "observed_supported",
+  "evidence_ids": ["evidence-official-tool-probe"],
+  "normalization_error_ids": []
+}

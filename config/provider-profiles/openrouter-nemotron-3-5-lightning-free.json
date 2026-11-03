@@ -1,0 +1,100 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-openrouter-nemotron-3-5-lightning-free",
+  "profile_version": "0.1.0",
+  "lifecycle": "candidate",
+  "provider": {
+    "provider_id": "provider-openrouter",
+    "display_name": "OpenRouter aggregation gateway",
+    "region": "global",
+    "credential_environment_variable": "PVI_PROBE_OPENROUTER_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-openrouter-openai-compatible",
+      "route_id_prefix": "openrouter",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_OPENROUTER_OPENAI_BASE_URL",
+      "allowed_hosts": [
+        "openrouter.ai"
+      ],
+      "required_base_path": "/api/v1",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": [
+      "nemotron_3_5_lightning_free"
+    ],
+    "targets": [
+      {
+        "logical_model_id": "nemotron_3_5_lightning_free",
+        "catalog_id_patterns": [
+          "^nvidia/nemotron-3.5-lightning:free$"
+        ],
+        "source": {
+          "kind": "official_documentation",
+          "url": "https://openrouter.ai/api/v1/models"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": [
+      "allow_network",
+      "confirm_cost"
+    ],
+    "probe_set": [
+      "message",
+      "stream",
+      "thinking",
+      "native_tool_call",
+      "assistant_replay",
+      "tool_result_replay",
+      "usage"
+    ],
+    "request_variants": [
+      {
+        "variant_id": "baseline",
+        "request_overrides": {}
+      },
+      {
+        "variant_id": "reasoning_effort_low",
+        "request_overrides": {"reasoning": {"effort": "low"}}
+      },
+      {
+        "variant_id": "reasoning_effort_high",
+        "request_overrides": {"reasoning": {"effort": "high"}}
+      }
+    ],
+    "probe_request_policy": {
+      "temperature": null,
+      "seed": null,
+      "max_output_parameter": "max_tokens",
+      "max_output_tokens": {"message": 128, "stream": 128, "thinking": 256, "tool": 256, "replay": 128},
+      "tool_choice_mode": "auto",
+      "timeout_seconds": 300,
+      "retry_total_attempts": 1,
+      "fallback": null
+    },
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": ["message", "thinking", "usage"],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

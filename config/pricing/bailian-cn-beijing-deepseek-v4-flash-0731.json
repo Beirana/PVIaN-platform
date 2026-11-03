@@ -1,0 +1,16 @@
+{
+  "schema_version": "pvian.local-pricing/v1",
+  "pricing_version": "2026-08-03",
+  "effective_at": "2026-08-03T00:00:00Z",
+  "provider": "bailian",
+  "profile_id": "provider-bailian-cn-beijing-deepseek-v4-flash-0731",
+  "region": "cn-beijing",
+  "model": "deepseek-v4-flash-0731",
+  "currency": "CNY",
+  "unit": "per_1m_tokens",
+  "rates": {
+    "input": 1,
+    "cached_input": 0.2,
+    "output": 2
+  }
+}

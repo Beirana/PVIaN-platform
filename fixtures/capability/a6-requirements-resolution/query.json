@@ -1,0 +1,9 @@
+{
+  "model": "fixture-model-alpha",
+  "endpoint_id": "endpoint-official-alpha",
+  "requirements": {
+    "reasoning.effective": "supported",
+    "tool_calling.representation": "native_structured",
+    "tool_calling.streaming_arguments": "supported"
+  }
+}

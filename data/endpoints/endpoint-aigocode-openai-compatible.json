@@ -1,0 +1,32 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-aigocode-openai-compatible",
+  "endpoint_kind": "broker_gateway",
+  "provider_id": "provider-aigocode",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "v1_station_docs",
+  "model_requested": "gpt-5.6-sol",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": "global",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-18T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Station docs captured 2026-08-17; read-only per-token catalog observation captured 2026-08-18. No completion probe, forwarder smoke, or deployed gateway smoke has run against this endpoint yet.",
+      "OpenAI-compatible base URL https://api.aigocode.com/v1 with Authorization: Bearer. Third-party references to api.aigocode.app exist and also serve the catalog; only the docs-published api.aigocode.com host is allowlisted here and any live mismatch will fail closed.",
+      "Per-vendor tokens are mandatory: catalog scoping verified read-only 2026-08-18 across the four operator-created tokens (CODEX_1.2 -> 7 OpenAI-side models, CLAUDE_3.9 -> 9 Claude models, GROK_2.5 -> 2 grok models, GEMINI_1 -> 4 gemini models; zero cross-vendor visibility). Profiles bind the matching credential variable per vendor group.",
+      "Station WAF blocks generic Python User-Agents with Cloudflare error 1010; browser-style and OpenAI-SDK-style UAs pass (verified 2026-08-18, read-only). The gateway/probe HTTP stack must be confirmed live before qualification.",
+      "Broker/relay endpoint: the station docs state console and server-side configuration always take precedence over the published model list, so requested/reported identity must be verified by live catalog and probes for every model.",
+      "No per-token station prices are public (console login wall), so no pricing files exist for this provider and ledger cost estimates are intentionally unknown."
+    ]
+  }
+}

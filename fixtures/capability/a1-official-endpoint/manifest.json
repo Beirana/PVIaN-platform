@@ -1,0 +1,11 @@
+{
+  "fixture_id": "A1",
+  "description": "官方端点的原生结构化工具调用有声明和受控观察证据。",
+  "profile_id": "cap-official-alpha",
+  "assertions": {
+    "tool_calling.advertised": "supported",
+    "tool_calling.observed": "supported",
+    "tool_calling.effective": "supported",
+    "tool_calling.representation": "native_structured"
+  }
+}

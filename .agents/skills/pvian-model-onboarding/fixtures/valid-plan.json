@@ -1,0 +1,54 @@
+{
+  "schema_version": "pvian.model-onboarding-plan/v1",
+  "runbook_version": "pvian-model-extension-runbook/v1",
+  "runbook_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "models": [
+    {
+      "requested_model": "qwen3-vl-plus",
+      "provider": "bailian",
+      "region": "cn-beijing",
+      "profile_id": "bailian-cn-beijing-qwen3-vl-plus",
+      "profile_version": "2026-08-09.candidate.1",
+      "route_id": "bailian-cn-beijing:qwen3-vl-plus",
+      "public_alias": "pvian/bailian-cn-beijing/qwen3-vl-plus",
+      "capability_calls": {
+        "message_usage": 1,
+        "stream": 1,
+        "thinking": 2,
+        "tool_initial": 1,
+        "tool_replay": 1,
+        "structured_output": 1
+      },
+      "completion_calls_max": 7,
+      "vl_text_only": true
+    }
+  ],
+  "catalog_gets": 1,
+  "provider_completion_calls_max": 7,
+  "gateway_completion_calls_max": 1,
+  "scientific_completion_calls": 0,
+  "total_completion_calls_max": 8,
+  "retry_total_attempts": 1,
+  "fallback": null,
+  "required_live_flags": ["allow_network", "confirm_cost"],
+  "cost_accounting_required": true,
+  "runtime_cost_cap": null,
+  "runtime_token_cap": null,
+  "evidence_classes": {
+    "offline": true,
+    "official_catalog": true,
+    "provider_probe": true,
+    "forwarder_smoke": true,
+    "deployed_gateway_smoke": true,
+    "scientific_run": false
+  },
+  "identity_mappings": [],
+  "implementation_files": ["src/safe_gateway.py"],
+  "proof_gates": {
+    "schema_validation": true,
+    "focused_tests": true,
+    "binding_tests": true,
+    "wire_evidence_after_live": true
+  },
+  "live_authorization_id": null
+}

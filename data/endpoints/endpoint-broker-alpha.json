@@ -1,0 +1,25 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "1.0.0",
+  "endpoint_id": "endpoint-broker-alpha",
+  "endpoint_kind": "broker_gateway",
+  "provider_id": "provider-fixture-broker",
+  "api_surface": "openai_compatible_fixture",
+  "api_version": "unknown",
+  "model_requested": "fixture-model-alpha",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": null,
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-07-20T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "unknown",
+    "protocol_fidelity_assurance": "failed",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "lossy_translation",
+    "usage_notes": ["OpenAI-compatible 只描述外形；工具参数流和模型身份未验证。"]
+  }
+}

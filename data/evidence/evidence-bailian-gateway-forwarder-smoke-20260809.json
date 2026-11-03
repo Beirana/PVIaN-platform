@@ -1,0 +1,13 @@
+{
+  "schema_version": "pvi.evidence-reference/v1",
+  "evidence_id": "evidence-bailian-gateway-forwarder-smoke-20260809",
+  "source_kind": "managed_cloud",
+  "host_profile_id": "provider-bailian-cn-beijing",
+  "capture_surface": "gateway_wire",
+  "sha256": "d79242efe746b04426c3ae15adb91f98c3a9b7443a2b1911217a0c0e1d3a7f33",
+  "media_type": "application/vnd.pvian.gateway-forwarder-smoke+json",
+  "redaction_profile": "gateway-forwarder-metadata-only/v1",
+  "locator": "data/evidence-artifacts/gateway-forwarder-smoke-bailian-candidates-20260809.json",
+  "captured_at": "2026-08-09T11:27:20Z",
+  "retention_class": "metadata_only"
+}

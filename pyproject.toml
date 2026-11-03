@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pvian-platform"
+version = "0.5.1"
+description = "Provider Vendor Ingress & Normalization Platform"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "fastapi>=0.116,<1",
+  "jsonschema>=4.25,<5",
+  "pydantic>=2.11,<3",
+  "pydantic-settings>=2.10,<3",
+  "PyYAML>=6.0,<7",
+  "httpx>=0.28,<1",
+  "python-dotenv>=1.2,<2",
+  "uvicorn[standard]>=0.35,<1",
+]
+
+[project.optional-dependencies]
+probe = [
+  "openai>=2.48,<3",
+]
+dev = [
+  "httpx>=0.28,<1",
+  "pytest>=8.4,<10",
+  "pytest-asyncio>=0.24,<2",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+pvi-probe = "pvi.probe_runner.cli:main"
+pvian-probe = "pvian_probe.cli:main"
+pvian-gateway = "pvian_gateway.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pvi", "src/pvian_probe", "src/pvian_gateway"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

@@ -1,0 +1,13 @@
+{
+  "schema_version": "pvi.evidence-reference/v1",
+  "evidence_id": "evidence-beta-advertised",
+  "source_kind": "official_document",
+  "host_profile_id": null,
+  "capture_surface": "operator_observation",
+  "sha256": null,
+  "media_type": "text/markdown",
+  "redaction_profile": "fixture-metadata-only/v1",
+  "locator": "fixture://official-beta/advertised-only",
+  "captured_at": "2026-07-20T00:00:00Z",
+  "retention_class": "metadata_only"
+}

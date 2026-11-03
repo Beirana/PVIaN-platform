@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/gateway-5220-smoke.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evidence_class", "port", "models_http_status", "completion_calls_attempted", "retry_total_attempts", "fallback", "completed_at", "results"],
+  "properties": {
+    "schema_version": {"const": "pvian.gateway-5220-smoke/v1"},
+    "evidence_class": {"const": "isolated_gateway_smoke"},
+    "port": {"const": 5220},
+    "models_http_status": {"const": 200},
+    "completion_calls_attempted": {"const": 8},
+    "retry_total_attempts": {"const": 1},
+    "fallback": {"type": "null"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "results": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"$ref": "#/$defs/result"}}
+  },
+  "$defs": {
+    "hash": {"type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$"},
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "policy_id", "match"],
+      "properties": {
+        "schema_version": {"const": "pvian.reported-model-identity-decision/v1"},
+        "policy_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "match": {"enum": ["exact", "explicit_mapping", "rejected"]}
+      }
+    },
+    "usage": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["prompt_tokens", "cached_tokens", "reasoning_tokens", "completion_tokens", "total_tokens"],
+      "properties": {
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "cached_tokens": {"type": "integer", "minimum": 0},
+        "reasoning_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "completion_tokens": {"type": "integer", "minimum": 0},
+        "total_tokens": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "cost": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["status", "reason"], "properties": {"status": {"const": "unknown"}, "reason": {"enum": ["usage_unknown", "pricing_missing", "pricing_tier_missing", "cached_input_pricing_unknown"]}}},
+        {"type": "object", "additionalProperties": false, "required": ["status", "currency", "pricing_version", "effective_at", "amount"], "properties": {"status": {"const": "estimated"}, "currency": {"const": "CNY"}, "pricing_version": {"type": "string", "minLength": 1}, "effective_at": {"type": ["string", "null"]}, "amount": {"type": "string", "pattern": "^[0-9]+(?:\\.[0-9]+)?$"}}}
+      ]
+    },
+    "headers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x-pvian-route-id", "x-pvian-profile-id", "x-pvian-profile-version", "x-pvian-endpoint-id", "x-pvian-provider-id", "x-pvian-upstream-model", "x-pvian-public-model", "x-pvian-alias-facade"],
+      "properties": {
+        "x-pvian-route-id": {"type": ["string", "null"], "maxLength": 256},
+        "x-pvian-profile-id": {"type": ["string", "null"], "maxLength": 128},
+        "x-pvian-profile-version": {"type": ["string", "null"], "maxLength": 64},
+        "x-pvian-endpoint-id": {"type": ["string", "null"], "maxLength": 128},
+        "x-pvian-provider-id": {"type": ["string", "null"], "maxLength": 128},
+        "x-pvian-upstream-model": {"type": ["string", "null"], "maxLength": 128},
+        "x-pvian-public-model": {"type": ["string", "null"], "maxLength": 256},
+        "x-pvian-alias-facade": {"type": ["string", "null"], "maxLength": 128}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alias", "requested_model", "reported_model", "reported_model_identity", "http_status", "finish_reason", "usage", "cost", "gateway_request_id_sha256", "upstream_request_id_sha256", "safe_headers", "error_category", "status"],
+      "properties": {
+        "alias": {"type": "string", "minLength": 1, "maxLength": 256},
+        "requested_model": {"type": "string", "minLength": 1, "maxLength": 128},
+        "reported_model": {"type": ["string", "null"], "maxLength": 128},
+        "reported_model_identity": {"$ref": "#/$defs/identity"},
+        "http_status": {"type": ["integer", "null"], "minimum": 100, "maximum": 599},
+        "finish_reason": {"type": ["string", "null"], "maxLength": 64},
+        "usage": {"$ref": "#/$defs/usage"},
+        "cost": {"$ref": "#/$defs/cost"},
+        "gateway_request_id_sha256": {"$ref": "#/$defs/hash"},
+        "upstream_request_id_sha256": {"$ref": "#/$defs/hash"},
+        "safe_headers": {"$ref": "#/$defs/headers"},
+        "error_category": {"type": ["string", "null"], "enum": [null, "transport_error", "http_error", "evidence_incomplete"]},
+        "status": {"enum": ["observed_supported", "inconclusive"]}
+      }
+    }
+  }
+}

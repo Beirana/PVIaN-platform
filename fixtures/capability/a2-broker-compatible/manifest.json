@@ -1,0 +1,11 @@
+{
+  "fixture_id": "A2",
+  "description": "OpenAI-compatible 中转端点不自动视为 native/exact。",
+  "profile_id": "cap-broker-alpha",
+  "assertions": {
+    "assurance.protocol_fidelity": "lossy_translation",
+    "tool_calling.effective": "unknown",
+    "tool_calling.representation": "unknown",
+    "tool_calling.streaming_arguments": "unknown"
+  }
+}

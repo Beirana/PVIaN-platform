@@ -1,0 +1,143 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-aigocode-grok-4-6",
+  "profile_version": "0.3.0",
+  "subject": {
+    "endpoint_id": "endpoint-aigocode-openai-compatible",
+    "endpoint_kind": "broker_gateway",
+    "provider_id": "provider-aigocode",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "v1_station_docs",
+    "model_requested": "grok-4.6",
+    "model_reported": null,
+    "model_revision": "xAI Grok 4.6 (official docs 2026-08-18: 500000 ctx, no stated text output limit; USD 2 in / 6 out per 1M; configurable reasoning) as served by the AiGoCode station",
+    "deployment_id": null,
+    "region": "global",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-18T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only capability layer plus read-only catalog observation; no completion probe, forwarder smoke, or deployed gateway smoke has run for this identity yet.",
+      "Per-vendor station token: this model is reachable only with its group key (scoping verified read-only 2026-08-18: each of the four tokens lists exactly one vendor, zero cross-vendor visibility).",
+      "GROK token catalog (2026-08-18): 2 models grok-4.5, grok-4.6.",
+      "Station WAF blocks generic Python User-Agents with Cloudflare 1010; browser-style and OpenAI-SDK-style UAs pass (verified 2026-08-18). The gateway/probe HTTP stack must be confirmed live before qualification.",
+      "Station per-token prices sit behind the console login, so no pricing file exists for this provider and ledger cost estimates are intentionally unknown (pricing_missing), never zero.",
+      "Advertised specs come from the upstream vendor official pages and are unverified for this relay (the station may cap context/output below vendor maxima).",
+      "2026-08-18 live gates under user authorization (34 completions total for the batch): qualification ENABLED with exact requested/reported identity; reasoning observed across baseline/low/high variants with visible reasoning_content and reasoning_tokens in usage (198/83/125); forwarder smoke 200 exact identity; isolated 5237 gateway smoke 200 exact identity with station cost_in_usd_ticks passthrough. Valid until 2026-08-25 in the isolated state.",
+      "2026-08-19 targeted capability verification (operator-requested; stream/tool-call/tool-replay/structured-output per model, max_tokens<=256): stream 200 with 14 reasoning deltas + content deltas and [DONE]; native tool call with valid arguments; tool-result replay 200; json_object parses. All five capabilities functional; only route with visible reasoning."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817",
+        "evidence-aigocode-catalog-20260818"
+      ]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "structured_output": {
+      "advertised": "unknown",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "supported",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "exposure": "visible_reasoning_text",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-aigocode-docs-20260817"
+      ]
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

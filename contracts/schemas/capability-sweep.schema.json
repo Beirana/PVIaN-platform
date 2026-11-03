@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/capability-sweep.schema.json",
+  "title": "PVIaN provider capability sweep evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "evidence_class", "completed_at", "catalog_gets",
+    "catalog_request_id_sha256", "completion_call_budget",
+    "completion_calls_attempted", "retry_total_attempts", "fallback",
+    "content_policy", "global_stop", "results"
+  ],
+  "properties": {
+    "schema_version": {"const": "pvian.capability-sweep/v1"},
+    "evidence_class": {"const": "provider_capability_sweep"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "catalog_gets": {"const": 1},
+    "catalog_request_id_sha256": {"$ref": "#/$defs/hash_or_null"},
+    "completion_call_budget": {"const": 58},
+    "completion_calls_attempted": {"type": "integer", "minimum": 0, "maximum": 58},
+    "retry_total_attempts": {"const": 1},
+    "fallback": {"type": "null"},
+    "content_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "persist_raw_content", "persist_private_reasoning",
+        "persist_raw_provider_body", "persist_tool_arguments"
+      ],
+      "properties": {
+        "persist_raw_content": {"const": false},
+        "persist_private_reasoning": {"const": false},
+        "persist_raw_provider_body": {"const": false},
+        "persist_tool_arguments": {"const": false}
+      }
+    },
+    "global_stop": {
+      "type": ["string", "null"],
+      "enum": [null, "authentication", "rate_limited", "completion call budget exceeded", "transport_or_client_error", "timeout", "upstream_5xx", "upstream_protocol"]
+    },
+    "sweep_revision": {
+      "type": "string",
+      "pattern": "^v[1-9][0-9]*$",
+      "maxLength": 16
+    },
+    "supersedes_sha256": {
+      "$ref": "#/$defs/hash_or_null"
+    },
+    "results": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 8,
+      "items": {"$ref": "#/$defs/model_result"}
+    }
+  },
+  "$defs": {
+    "hash_or_null": {
+      "type": ["string", "null"],
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "policy_id", "match"],
+      "properties": {
+        "schema_version": {"const": "pvian.reported-model-identity-decision/v1"},
+        "policy_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "match": {"enum": ["exact", "explicit_mapping", "rejected"]}
+      }
+    },
+    "usage": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["prompt_tokens", "cached_tokens", "reasoning_tokens", "completion_tokens", "total_tokens"],
+      "properties": {
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "cached_tokens": {"type": "integer", "minimum": 0},
+        "reasoning_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "completion_tokens": {"type": "integer", "minimum": 0},
+        "total_tokens": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "cost": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "reason"],
+          "properties": {
+            "status": {"const": "unknown"},
+            "reason": {"enum": ["usage_unknown", "pricing_missing", "pricing_tier_missing", "cached_input_pricing_unknown"]}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "currency", "pricing_version", "effective_at", "amount"],
+          "properties": {
+            "status": {"const": "estimated"},
+            "currency": {"const": "CNY"},
+            "pricing_version": {"type": "string", "minLength": 1, "maxLength": 128},
+            "effective_at": {"type": ["string", "null"]},
+            "amount": {"type": "string", "pattern": "^[0-9]+(?:\\.[0-9]+)?$"}
+          }
+        }
+      ]
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "output_match", "stream_chunks", "reasoning_field_present",
+        "reasoning_tokens", "tool_call_count", "tool_arguments_valid",
+        "replay_completed", "structured_schema_valid", "text_only"
+      ],
+      "properties": {
+        "output_match": {"type": ["boolean", "null"]},
+        "output_nonempty": {"type": ["boolean", "null"]},
+        "stream_chunks": {"type": ["integer", "null"], "minimum": 0},
+        "reasoning_field_present": {"type": ["boolean", "null"]},
+        "reasoning_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "tool_call_count": {"type": ["integer", "null"], "minimum": 0},
+        "tool_arguments_valid": {"type": ["boolean", "null"]},
+        "replay_completed": {"type": ["boolean", "null"]},
+        "structured_schema_valid": {"type": ["boolean", "null"]},
+        "finish_protocol_conformant": {"type": ["boolean", "null"]},
+        "text_only": {"type": "boolean"}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe", "variant_id", "status", "requested_model", "reported_model",
+        "reported_model_identity", "finish_reason", "usage", "cost",
+        "provider_request_id_sha256", "replay_reported_model",
+        "replay_reported_model_identity", "replay_finish_reason", "replay_usage",
+        "replay_cost", "replay_provider_request_id_sha256", "max_output_tokens",
+        "validation", "error_category"
+      ],
+      "properties": {
+        "probe": {"enum": ["message_usage", "stream", "thinking", "tool_and_replay", "structured_output"]},
+        "variant_id": {"type": ["string", "null"], "maxLength": 128},
+        "status": {"enum": ["observed_supported", "observed_unsupported", "inconclusive"]},
+        "requested_model": {"type": "string", "minLength": 1, "maxLength": 128},
+        "reported_model": {"type": ["string", "null"], "maxLength": 128},
+        "reported_model_identity": {"$ref": "#/$defs/identity"},
+        "finish_reason": {"type": ["string", "null"], "maxLength": 64},
+        "usage": {"$ref": "#/$defs/usage"},
+        "cost": {"$ref": "#/$defs/cost"},
+        "provider_request_id_sha256": {"$ref": "#/$defs/hash_or_null"},
+        "replay_reported_model": {"type": ["string", "null"], "maxLength": 128},
+        "replay_reported_model_identity": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/identity"}
+          ]
+        },
+        "replay_finish_reason": {"type": ["string", "null"], "maxLength": 64},
+        "replay_usage": {"$ref": "#/$defs/usage"},
+        "replay_cost": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/cost"}
+          ]
+        },
+        "replay_provider_request_id_sha256": {"$ref": "#/$defs/hash_or_null"},
+        "max_output_tokens": {"type": ["integer", "null"], "minimum": 1},
+        "validation": {"$ref": "#/$defs/validation"},
+        "error_category": {
+          "type": ["string", "null"],
+          "enum": [null, "usage_missing", "provider_request_id_missing", "empty_output", "unexpected_output", "invalid_stream", "reasoning_not_observed", "invalid_tool_call", "tool_replay_incomplete", "structured_schema_invalid", "reported_model_rejected", "output_limit_reached", "finish_reason_missing", "unexpected_finish_reason", "capability_parameter_rejected", "timeout", "upstream_5xx", "upstream_protocol", "transport_or_client_error"]
+        }
+      }
+    },
+    "model_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_model", "profile_id", "profile_version", "route_id",
+        "catalog_discovered", "planned_completion_calls",
+        "attempted_completion_calls", "status", "stopped_after", "observations"
+      ],
+      "properties": {
+        "requested_model": {"type": "string", "minLength": 1, "maxLength": 128},
+        "profile_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "profile_version": {"type": "string", "minLength": 1, "maxLength": 64},
+        "route_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "catalog_discovered": {"type": "boolean"},
+        "planned_completion_calls": {"type": "integer", "minimum": 5, "maximum": 9},
+        "attempted_completion_calls": {"type": "integer", "minimum": 0, "maximum": 9},
+        "status": {"enum": ["completed", "not_discovered", "stopped_inconclusive", "global_stop"]},
+        "stopped_after": {"type": ["string", "null"], "enum": [null, "message_usage", "stream", "thinking", "tool_and_replay", "structured_output"]},
+        "observations": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/observation"}
+        }
+      }
+    }
+  }
+}

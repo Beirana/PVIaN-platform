@@ -1,0 +1,46 @@
+services:
+  pvi-capability:
+    build: .
+    environment:
+      PVI_HOST: "0.0.0.0"
+      PVI_PORT: "5100"
+      PVI_DATA_DIR: "/app/data"
+      PVI_CONTRACT_DIR: "/app/contracts"
+      PVI_FAIL_STARTUP_ON_INVALID_DATA: "true"
+    ports:
+      - "127.0.0.1:5100:5100"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:5100/healthz')"
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  pvian-gateway:
+    build: .
+    command: ["pvian-gateway", "--host", "0.0.0.0", "--port", "5200"]
+    env_file:
+      - .env
+    environment:
+      PVI_GATEWAY_PROFILE_DIR: "/app/config/provider-profiles"
+      PVI_GATEWAY_CLIENT_KEY_REGISTRY_FILE: "/app/config/gateway-client-keys.json"
+      PVI_GATEWAY_ALIAS_REGISTRY_FILE: "/app/config/public-model-aliases.json"
+      PVI_GATEWAY_STATE_FILE: "/var/lib/pvian/qualification-state.json"
+      PVI_GATEWAY_HOST: "0.0.0.0"
+      PVI_GATEWAY_PORT: "5200"
+    ports:
+      - "127.0.0.1:5200:5200"
+    volumes:
+      - ./var/gateway:/var/lib/pvian
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:5200/healthz')"
+      interval: 10s
+      timeout: 3s
+      retries: 5

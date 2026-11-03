@@ -1,0 +1,295 @@
+{
+  "schema_version": "pvian.vendor-matrix-evidence/v1",
+  "session_id": "yunwu-20260724T123728Z",
+  "generated_at": "2026-07-24T12:37:28.673471Z",
+  "endpoint": {
+    "base_url": "https://yunwu.ai/v1",
+    "endpoint_kind": "broker_gateway",
+    "api_surface": "openai_compatible_chat_completions",
+    "timeout_seconds": 45.0,
+    "max_retries": 0
+  },
+  "model_catalog_total": 402,
+  "contains_credentials": false,
+  "contains_raw_prompts": false,
+  "contains_raw_responses": false,
+  "tool_execution_count": 0,
+  "observations": [
+    {
+      "vendor": "openai",
+      "capability": "message",
+      "requested_model": "gpt-5.4-mini",
+      "reported_model": "gpt-5.4-mini",
+      "status": "inconclusive",
+      "started_at": "2026-07-24T12:36:57.871832Z",
+      "completed_at": "2026-07-24T12:37:01.343362Z",
+      "latency_ms": 3472,
+      "input_digest": "sha256:70085b57a318443ead399917e285e3ebe70e6bcaf718e8f1ba7f5de1436714ef",
+      "details": {
+        "request_completed": true,
+        "exact_match": false,
+        "output_length": 0,
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 692,
+          "completion_tokens": 1122,
+          "total_tokens": 1814,
+          "reasoning_tokens": null
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "openai",
+      "capability": "thinking",
+      "requested_model": "gpt-5.4-mini",
+      "reported_model": "gpt-5.4-mini",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:37:01.343505Z",
+      "completed_at": "2026-07-24T12:37:04.810185Z",
+      "latency_ms": 3467,
+      "input_digest": "sha256:d07cbba5ed12fe3d47a4194d9267d634fa8ae7acbbc00b0df10dbab14efd3581",
+      "details": {
+        "request_completed": true,
+        "reasoning_exposure": "visible_reasoning_text",
+        "native_reasoning_field_names": [
+          "reasoning_content"
+        ],
+        "reasoning_tokens": null,
+        "final_exact_match": false,
+        "output_length": 0,
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 716,
+          "completion_tokens": 1157,
+          "total_tokens": 1873,
+          "reasoning_tokens": null
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "openai",
+      "capability": "tool_calling",
+      "requested_model": "gpt-5.4-mini",
+      "reported_model": "gpt-5.4-mini",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:37:04.810335Z",
+      "completed_at": "2026-07-24T12:37:10.051215Z",
+      "latency_ms": 5241,
+      "input_digest": "sha256:de847ecd09be7b5a31d86a1947b9475bc4609cb35c78bc9f953c409ded39d225",
+      "details": {
+        "request_completed": true,
+        "native_tool_call_observed": true,
+        "tool_call_count": 1,
+        "arguments_valid_json": true,
+        "arguments_sha256": "491607999719ccaecc2d1146016b2b7f35d85c8d1ed06afc0f4356f2f742a7a6",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "prompt_tokens": 2714,
+          "completion_tokens": 25,
+          "total_tokens": 2739,
+          "reasoning_tokens": 0
+        },
+        "tool_executed": false
+      },
+      "error": null
+    },
+    {
+      "vendor": "deepseek",
+      "capability": "message",
+      "requested_model": "deepseek-v3-1-think-250821",
+      "reported_model": null,
+      "status": "inconclusive",
+      "started_at": "2026-07-24T12:37:10.051347Z",
+      "completed_at": "2026-07-24T12:37:10.640658Z",
+      "latency_ms": 589,
+      "input_digest": "sha256:bdc9d7d60958667485f103aee9b69fa3658e0a0151317e86dc608bc7ef2f4495",
+      "details": {
+        "request_completed": false
+      },
+      "error": {
+        "type": "RateLimitError",
+        "status_code": 429,
+        "message": "Error code: 429 - {'error': {'message': '当前分组上游负载已饱和，请稍后再试 (request id: 20260724203708973723894MKkNu25K)', 'type': 'new_api_error', 'param': '', 'code': ''}}"
+      }
+    },
+    {
+      "vendor": "deepseek",
+      "capability": "thinking",
+      "requested_model": "deepseek-v3-1-think-250821",
+      "reported_model": null,
+      "status": "inconclusive",
+      "started_at": "2026-07-24T12:37:10.640812Z",
+      "completed_at": "2026-07-24T12:37:11.191399Z",
+      "latency_ms": 551,
+      "input_digest": "sha256:89d14ea9bb4d21b45d1ce0aba551fde217e401de6004492651c745dd5dfe029d",
+      "details": {
+        "request_completed": false
+      },
+      "error": {
+        "type": "RateLimitError",
+        "status_code": 429,
+        "message": "Error code: 429 - {'error': {'message': '当前分组上游负载已饱和，请稍后再试 (request id: 20260724203709559334591MVSj2J89)', 'type': 'new_api_error', 'param': '', 'code': ''}}"
+      }
+    },
+    {
+      "vendor": "deepseek",
+      "capability": "tool_calling",
+      "requested_model": "deepseek-v3-1-think-250821",
+      "reported_model": null,
+      "status": "inconclusive",
+      "started_at": "2026-07-24T12:37:11.191553Z",
+      "completed_at": "2026-07-24T12:37:11.874699Z",
+      "latency_ms": 683,
+      "input_digest": "sha256:2dd9b6767ac3d01193e9e6494c6df9226a9c464677130b68d43f0e95971a7bc4",
+      "details": {
+        "request_completed": false
+      },
+      "error": {
+        "type": "RateLimitError",
+        "status_code": 429,
+        "message": "Error code: 429 - {'error': {'message': '当前分组上游负载已饱和，请稍后再试 (request id: 202607242037101088727978qCMFMYx)', 'type': 'new_api_error', 'param': '', 'code': ''}}"
+      }
+    },
+    {
+      "vendor": "grok",
+      "capability": "message",
+      "requested_model": "grok-4-1-fast-reasoning",
+      "reported_model": "grok-4-1-fast-reasoning",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:37:11.874877Z",
+      "completed_at": "2026-07-24T12:37:14.438564Z",
+      "latency_ms": 2564,
+      "input_digest": "sha256:5a1d17f8d9d488557b72a270c220f6406c144a50997ef8cec1d34ee47186f142",
+      "details": {
+        "request_completed": true,
+        "exact_match": true,
+        "output_length": 14,
+        "output_sha256": "3ad864b1224e41f90d54a77af967d9964d5daab5e582102f6ab3c29f94f5fa6b",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 203,
+          "completion_tokens": 126,
+          "total_tokens": 329,
+          "reasoning_tokens": 122
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "grok",
+      "capability": "thinking",
+      "requested_model": "grok-4-1-fast-reasoning",
+      "reported_model": "grok-4-1-fast-reasoning",
+      "status": "not_observed",
+      "started_at": "2026-07-24T12:37:14.438661Z",
+      "completed_at": "2026-07-24T12:37:18.914622Z",
+      "latency_ms": 4476,
+      "input_digest": "sha256:f71b2c59aa5733aa2b33ccde9747ec3a6d40e9e3859b54d3a6a62941565aafa6",
+      "details": {
+        "request_completed": true,
+        "reasoning_exposure": "none_observed",
+        "native_reasoning_field_names": [],
+        "reasoning_tokens": 0,
+        "final_exact_match": true,
+        "output_length": 12,
+        "output_sha256": "dee02292ea8ee355387999d9e49268db18e4371d0291223f9a254418b698becb",
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 342,
+          "completion_tokens": 5,
+          "total_tokens": 347,
+          "reasoning_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "vendor": "grok",
+      "capability": "tool_calling",
+      "requested_model": "grok-4-1-fast-reasoning",
+      "reported_model": "grok-4-1-fast-reasoning",
+      "status": "observed_supported",
+      "started_at": "2026-07-24T12:37:18.914821Z",
+      "completed_at": "2026-07-24T12:37:24.695960Z",
+      "latency_ms": 5781,
+      "input_digest": "sha256:ace6f3c4a243af71d4d7e0d4556c64532a88456285659d51dcf66f2a1035cdf2",
+      "details": {
+        "request_completed": true,
+        "native_tool_call_observed": true,
+        "tool_call_count": 1,
+        "arguments_valid_json": true,
+        "arguments_sha256": "491607999719ccaecc2d1146016b2b7f35d85c8d1ed06afc0f4356f2f742a7a6",
+        "finish_reason": "tool_calls",
+        "usage": {
+          "prompt_tokens": 523,
+          "completion_tokens": 31,
+          "total_tokens": 554,
+          "reasoning_tokens": 0
+        },
+        "tool_executed": false
+      },
+      "error": null
+    },
+    {
+      "vendor": "glm",
+      "capability": "message",
+      "requested_model": "glm-4.5",
+      "reported_model": null,
+      "status": "inconclusive",
+      "started_at": "2026-07-24T12:37:24.696120Z",
+      "completed_at": "2026-07-24T12:37:26.243787Z",
+      "latency_ms": 1548,
+      "input_digest": "sha256:f0031b52874aa3d0fbf7d7b12745aa9f341682ad3b08210ffac839fbf22b72c9",
+      "details": {
+        "request_completed": false
+      },
+      "error": {
+        "type": "RateLimitError",
+        "status_code": 429,
+        "message": "Error code: 429 - {'error': {'message': 'This model only support stream mode, please enable the stream parameter to access the model. (request id: 20260724203723614822032hU5cx5Qc)', 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_parameter_error'}}"
+      }
+    },
+    {
+      "vendor": "glm",
+      "capability": "thinking",
+      "requested_model": "glm-4.5",
+      "reported_model": null,
+      "status": "inconclusive",
+      "started_at": "2026-07-24T12:37:26.243952Z",
+      "completed_at": "2026-07-24T12:37:27.191882Z",
+      "latency_ms": 948,
+      "input_digest": "sha256:e5a3cffb1828f76b8933468512c04dba8d226d1ffcbec0adaafa715f7c9d0787",
+      "details": {
+        "request_completed": false
+      },
+      "error": {
+        "type": "RateLimitError",
+        "status_code": 429,
+        "message": "Error code: 429 - {'error': {'message': 'This model only support stream mode, please enable the stream parameter to access the model. (request id: 20260724203725161465206Ud7xrjNO)', 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_parameter_error'}}"
+      }
+    },
+    {
+      "vendor": "glm",
+      "capability": "tool_calling",
+      "requested_model": "glm-4.5",
+      "reported_model": null,
+      "status": "inconclusive",
+      "started_at": "2026-07-24T12:37:27.192076Z",
+      "completed_at": "2026-07-24T12:37:28.673297Z",
+      "latency_ms": 1481,
+      "input_digest": "sha256:89d3cdc5b9f9056e4fd998e103df5dc07176ef404270fb01bc5af746b3e25811",
+      "details": {
+        "request_completed": false
+      },
+      "error": {
+        "type": "RateLimitError",
+        "status_code": 429,
+        "message": "Error code: 429 - {'error': {'message': 'This model only support stream mode, please enable the stream parameter to access the model. (request id: 20260724203726111950138F6dnyB0n)', 'type': 'invalid_request_error', 'param': '', 'code': 'invalid_parameter_error'}}"
+      }
+    }
+  ]
+}

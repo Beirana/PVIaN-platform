@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/probe-run.schema.json",
+  "title": "PVI Probe Run v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "probe_run_id",
+    "probe_id",
+    "probe_version",
+    "subject_profile_id",
+    "input_digest",
+    "configuration_digest",
+    "environment_digest",
+    "started_at",
+    "completed_at",
+    "verdict",
+    "evidence_ids",
+    "normalization_error_ids"
+  ],
+  "properties": {
+    "schema_version": { "const": "pvi.probe-run/v1" },
+    "probe_run_id": { "type": "string", "minLength": 1 },
+    "probe_id": { "type": "string", "minLength": 1 },
+    "probe_version": { "type": "string", "minLength": 1 },
+    "subject_profile_id": { "type": "string", "minLength": 1 },
+    "input_digest": { "type": ["string", "null"] },
+    "configuration_digest": { "type": ["string", "null"] },
+    "environment_digest": { "type": ["string", "null"] },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" },
+    "verdict": {
+      "enum": [
+        "observed_supported",
+        "observed_unsupported",
+        "inconclusive",
+        "not_applicable",
+        "aborted"
+      ]
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "normalization_error_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  }
+}

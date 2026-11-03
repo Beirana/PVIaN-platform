@@ -1,0 +1,190 @@
+{
+  "schema_version": "pvian.public-model-aliases/v1",
+  "registry_version": "1.12.0",
+  "aliases": [
+    {
+      "alias": "pvian/bailian-cn-beijing/qwen3.8-max",
+      "profile_id": "provider-bailian-cn-beijing-qwen3-8-max",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:qwen3.8-max",
+      "upstream_model": "qwen3.8-max"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/kimi/kimi-k3",
+      "profile_id": "provider-bailian-cn-beijing-kimi-k3",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:kimi/kimi-k3",
+      "upstream_model": "kimi/kimi-k3"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/glm-5.2",
+      "profile_id": "provider-bailian-cn-beijing-glm-5-2",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:glm-5.2",
+      "upstream_model": "glm-5.2"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/qwen3.7-plus",
+      "profile_id": "provider-bailian-cn-beijing-qwen3-7-plus",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:qwen3.7-plus",
+      "upstream_model": "qwen3.7-plus"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/qwen3-vl-plus",
+      "profile_id": "provider-bailian-cn-beijing-qwen3-vl-plus",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:qwen3-vl-plus",
+      "upstream_model": "qwen3-vl-plus"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/MiniMax/MiniMax-M3",
+      "profile_id": "provider-bailian-cn-beijing-minimax-m3",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:MiniMax/MiniMax-M3",
+      "upstream_model": "MiniMax/MiniMax-M3"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/xiaomi/mimo-v2.5-pro",
+      "profile_id": "provider-bailian-cn-beijing-xiaomi-mimo-v2-5-pro",
+      "profile_version": "0.2.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:xiaomi/mimo-v2.5-pro",
+      "upstream_model": "xiaomi/mimo-v2.5-pro"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/deepseek-v4-pro",
+      "profile_id": "provider-bailian-cn-beijing",
+      "profile_version": "0.2.1",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:deepseek-v4-pro",
+      "upstream_model": "deepseek-v4-pro"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/deepseek-v4-flash-0731",
+      "profile_id": "provider-bailian-cn-beijing-deepseek-v4-flash-0731",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:deepseek-v4-flash-0731",
+      "upstream_model": "deepseek-v4-flash-0731"
+    },
+    {
+      "alias": "pvian/deepseek-official/deepseek-v4-pro",
+      "profile_id": "provider-deepseek-official-v4-pro",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-deepseek-official-openai-compatible",
+      "route_id": "deepseek-official:deepseek-v4-pro",
+      "upstream_model": "deepseek-v4-pro"
+    },
+    {
+      "alias": "pvian/deepseek-official/deepseek-v4-flash",
+      "profile_id": "provider-deepseek-official-v4-flash",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-deepseek-official-openai-compatible",
+      "route_id": "deepseek-official:deepseek-v4-flash",
+      "upstream_model": "deepseek-v4-flash"
+    },
+    {
+      "alias": "pvian/moonshot-official/kimi-k3",
+      "profile_id": "provider-moonshot-official-kimi-k3",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-moonshot-official-openai-compatible",
+      "route_id": "moonshot-official:kimi-k3",
+      "upstream_model": "kimi-k3"
+    },
+    {
+      "alias": "pvian/openrouter/anthropic/claude-sonnet-5",
+      "profile_id": "provider-openrouter-claude-sonnet-5",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-openrouter-openai-compatible",
+      "route_id": "openrouter:anthropic/claude-sonnet-5",
+      "upstream_model": "anthropic/claude-sonnet-5"
+    },
+    {
+      "alias": "pvian/openrouter/openai/gpt-5.6-sol",
+      "profile_id": "provider-openrouter-gpt-5-6-sol",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-openrouter-openai-compatible",
+      "route_id": "openrouter:openai/gpt-5.6-sol",
+      "upstream_model": "openai/gpt-5.6-sol"
+    },
+    {
+      "alias": "pvian/openrouter/dots-studio/dots-3-note-preview:free",
+      "profile_id": "provider-openrouter-dots-3-note-free",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-openrouter-openai-compatible",
+      "route_id": "openrouter:dots-studio/dots-3-note-preview:free",
+      "upstream_model": "dots-studio/dots-3-note-preview:free"
+    },
+    {
+      "alias": "pvian/openrouter/nvidia/nemotron-3.5-lightning:free",
+      "profile_id": "provider-openrouter-nemotron-3-5-lightning-free",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-openrouter-openai-compatible",
+      "route_id": "openrouter:nvidia/nemotron-3.5-lightning:free",
+      "upstream_model": "nvidia/nemotron-3.5-lightning:free"
+    },
+    {
+      "alias": "pvian/bigmodel-coding/glm-5.3",
+      "profile_id": "provider-bigmodel-coding-glm-5-3",
+      "profile_version": "0.2.0",
+      "endpoint_id": "endpoint-bigmodel-coding-openai-compatible",
+      "route_id": "bigmodel-coding:glm-5.3",
+      "upstream_model": "glm-5.3"
+    },
+    {
+      "alias": "pvian/local-qwen/qwen3.8-27b-fp8",
+      "profile_id": "provider-local-qwen-qwen3-8-27b-fp8",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-local-qwen-openai-compatible",
+      "route_id": "local-qwen:qwen3.8-27b-fp8",
+      "upstream_model": "qwen3.8-27b-fp8"
+    },
+    {
+      "alias": "pvian/aliyun-token-plan/qwen3.8-max",
+      "profile_id": "provider-aliyun-token-plan-qwen3-8-max",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-aliyun-token-plan-openai-compatible",
+      "route_id": "aliyun-token-plan:qwen3.8-max",
+      "upstream_model": "qwen3.8-max"
+    },
+    {
+      "alias": "pvian/aliyun-token-plan/qwen3.7-max",
+      "profile_id": "provider-aliyun-token-plan-qwen3-7-max",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-aliyun-token-plan-openai-compatible",
+      "route_id": "aliyun-token-plan:qwen3.7-max",
+      "upstream_model": "qwen3.7-max"
+    },
+    {
+      "alias": "pvian/aliyun-token-plan/qwen3.6-flash",
+      "profile_id": "provider-aliyun-token-plan-qwen3-6-flash",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-aliyun-token-plan-openai-compatible",
+      "route_id": "aliyun-token-plan:qwen3.6-flash",
+      "upstream_model": "qwen3.6-flash"
+    },
+    {
+      "alias": "pvian/aliyun-token-plan/deepseek-v4-pro-0813",
+      "profile_id": "provider-aliyun-token-plan-deepseek-v4-pro-0813",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-aliyun-token-plan-openai-compatible",
+      "route_id": "aliyun-token-plan:deepseek-v4-pro-0813",
+      "upstream_model": "deepseek-v4-pro-0813"
+    },
+    {
+      "alias": "pvian/bailian-cn-beijing/deepseek-v4-pro-0813",
+      "profile_id": "provider-bailian-cn-beijing-deepseek-v4-pro-0813",
+      "profile_version": "0.1.0",
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id": "bailian-cn-beijing:deepseek-v4-pro-0813",
+      "upstream_model": "deepseek-v4-pro-0813"
+    }
+  ]
+}

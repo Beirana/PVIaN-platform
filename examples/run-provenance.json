@@ -1,0 +1,11 @@
+{
+  "pvi_capability_check": {
+    "status": "available",
+    "endpoint_id": "endpoint-official-alpha",
+    "profile_id": "cap-official-alpha",
+    "profile_version": "1.0.0",
+    "query_id": "query-fixture-placeholder",
+    "data_version": "sha256:fixture-placeholder"
+  },
+  "model_call_path": "existing-platform-adapter"
+}

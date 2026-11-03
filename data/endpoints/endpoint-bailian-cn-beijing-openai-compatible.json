@@ -1,0 +1,28 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "1.0.0",
+  "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+  "endpoint_kind": "managed_cloud",
+  "provider_id": "provider-bailian",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "compatible-mode/v1",
+  "model_requested": "deepseek-v4-flash-0731",
+  "model_reported": "deepseek-v4-flash-0731",
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": "cn-beijing",
+  "relevant_configuration_digest": "sha256:a6f394cb2687d6b0d039a4971f2994511b17389c44ff9eb23861bc653cf53e97",
+  "observed_at": "2026-08-03T06:21:24.472210Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "unknown",
+    "protocol_fidelity_assurance": "declared_unverified",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Qualification observed exact requested/reported model identity; this does not prove upstream weight provenance.",
+      "The record covers only the controlled 2026-08-03 qualification window and is not an SLA."
+    ]
+  }
+}

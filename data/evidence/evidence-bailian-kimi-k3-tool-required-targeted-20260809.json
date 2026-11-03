@@ -1,0 +1,13 @@
+{
+  "schema_version": "pvi.evidence-reference/v1",
+  "evidence_id": "evidence-bailian-kimi-k3-tool-required-targeted-20260809",
+  "source_kind": "managed_cloud",
+  "host_profile_id": "provider-bailian-cn-beijing-kimi-k3",
+  "capture_surface": "provider_wire",
+  "sha256": "fddc8bcdf8e1ad593db0ae120a5141c05468a6b1bcc1d6f933ae5c017c32287e",
+  "media_type": "application/vnd.pvian.targeted-capability-probe+json",
+  "redaction_profile": "provider-capability-targeted-metadata-only/v1",
+  "locator": "data/evidence-artifacts/provider-capability-targeted-kimi-k3-tool-required-20260809.json",
+  "captured_at": "2026-08-09T13:23:55.069096Z",
+  "retention_class": "metadata_only"
+}

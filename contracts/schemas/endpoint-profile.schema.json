@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/endpoint-profile.schema.json",
+  "title": "PVI Endpoint Profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_version",
+    "endpoint_id",
+    "endpoint_kind",
+    "provider_id",
+    "api_surface",
+    "api_version",
+    "model_requested",
+    "model_reported",
+    "model_revision",
+    "deployment_id",
+    "region",
+    "relevant_configuration_digest",
+    "observed_at",
+    "assurance"
+  ],
+  "properties": {
+    "schema_version": { "const": "pvi.endpoint-profile/v1" },
+    "profile_version": { "type": "string", "minLength": 1 },
+    "endpoint_id": { "type": "string", "minLength": 1 },
+    "endpoint_kind": { "$ref": "#/$defs/endpoint_kind" },
+    "provider_id": { "type": "string", "minLength": 1 },
+    "api_surface": { "type": "string", "minLength": 1 },
+    "api_version": { "type": "string", "minLength": 1 },
+    "model_requested": { "type": "string", "minLength": 1 },
+    "model_reported": { "type": ["string", "null"] },
+    "model_revision": { "type": "string", "minLength": 1 },
+    "deployment_id": { "type": ["string", "null"] },
+    "region": { "type": ["string", "null"] },
+    "relevant_configuration_digest": { "type": ["string", "null"] },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "assurance": { "$ref": "#/$defs/assurance" }
+  },
+  "$defs": {
+    "endpoint_kind": {
+      "enum": [
+        "official_direct",
+        "managed_cloud",
+        "broker_gateway",
+        "self_hosted_gateway",
+        "local_open_weights",
+        "local_opaque_runtime",
+        "unknown"
+      ]
+    },
+    "assurance_status": {
+      "enum": ["verified", "governed", "declared_unverified", "unknown", "failed"]
+    },
+    "protocol_fidelity": {
+      "enum": [
+        "native",
+        "documented_translation",
+        "observed_translation",
+        "lossy_translation",
+        "unknown"
+      ]
+    },
+    "assurance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_assurance",
+        "model_provenance_assurance",
+        "protocol_fidelity_assurance",
+        "data_handling_assurance",
+        "operational_assurance",
+        "protocol_fidelity",
+        "usage_notes"
+      ],
+      "properties": {
+        "identity_assurance": { "$ref": "#/$defs/assurance_status" },
+        "model_provenance_assurance": { "$ref": "#/$defs/assurance_status" },
+        "protocol_fidelity_assurance": { "$ref": "#/$defs/assurance_status" },
+        "data_handling_assurance": { "$ref": "#/$defs/assurance_status" },
+        "operational_assurance": { "$ref": "#/$defs/assurance_status" },
+        "protocol_fidelity": { "$ref": "#/$defs/protocol_fidelity" },
+        "usage_notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

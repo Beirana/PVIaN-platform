@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  PVIaN Gateway — At-logon auto-start task definition.
+
+  Trigger: At log on (current user). Not "At system startup" — that would
+  require auto-login (plaintext password in registry) or a SYSTEM account,
+  both of which conflict with the security baseline (§8). The gateway starts
+  after the user logs in.
+
+  Key properties (per workorder review §C risk):
+    - ExecutionTimeLimit PT0S: unlimited. The default PT72H would kill the
+      gateway on the 3rd day.
+    - MultipleInstancesPolicy IgnoreNew: if a second trigger fires while the
+      gateway is already running, the new instance is silently dropped instead
+      of creating a duplicate listener (infra-runbook §4.3).
+    - Delay PT60S after logon: gives the network stack (TUN/proxy) time to
+      come up before the launcher's upstream preflight runs.
+    - Restart on failure 3x at 60s intervals.
+
+  Import with:
+    schtasks /Create /TN "PVIaN-Gateway-AtLogon" /XML deploy\pvian-gateway-at-logon.xml
+
+  Disable before manual maintenance:
+    schtasks /Change /TN "PVIaN-Gateway-AtLogon" /Disable
+  Re-enable after:
+    schtasks /Change /TN "PVIaN-Gateway-AtLogon" /Enable
+-->
+<Task xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>PVIaN transparent gateway — auto-start at user logon. Starts scripts/gateway_service.py start via the venv pythonw.</Description>
+    <URI>\PVIaN-Gateway-AtLogon</URI>
+  </RegistrationInfo>
+  <Triggers>
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+      <Delay>PT60S</Delay>
+    </LogonTrigger>
+  </Triggers>
+  <Principals>
+    <Principal>
+      <UserId>YOUR_WINDOWS_USERNAME</UserId>
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>false</AllowHardTerminate>
+    <StartWhenAvailable>false</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
+    <Priority>7</Priority>
+    <RestartOnFailure>
+      <Interval>PT1M</Interval>
+      <Count>3</Count>
+    </RestartOnFailure>
+  </Settings>
+  <Actions>
+    <Exec>
+      <Command>C:\path\to\PVIaN-platform\.venv\Scripts\pythonw.exe</Command>
+      <Arguments>scripts\launch_gateway.py</Arguments>
+      <WorkingDirectory>C:\path\to\PVIaN-platform</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

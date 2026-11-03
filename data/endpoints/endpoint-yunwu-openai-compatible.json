@@ -1,0 +1,28 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "1.0.0",
+  "endpoint_id": "endpoint-yunwu-openai-compatible",
+  "endpoint_kind": "broker_gateway",
+  "provider_id": "provider-yunwu",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "v1",
+  "model_requested": "gpt-4o-mini",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": null,
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-07-24T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "unknown",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "端点和模型名来自操作方配置；在人工审核在线 Probe 证据前不视为供应商能力结论。",
+      "OpenAI-compatible 仅描述请求外形，不证明模型身份、工具语义或流式保真度。"
+    ]
+  }
+}

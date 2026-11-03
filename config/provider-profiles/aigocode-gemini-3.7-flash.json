@@ -1,0 +1,114 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-aigocode-gemini-3-7-flash",
+  "profile_version": "0.1.1",
+  "lifecycle": "candidate",
+  "provider": {
+    "provider_id": "provider-aigocode",
+    "display_name": "AiGoCode relay gateway (OpenAI-compatible, per-vendor tokens)",
+    "region": "global",
+    "credential_environment_variable": "PVI_PROBE_AIGOCODE_GEMINI_1_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-aigocode-openai-compatible",
+      "route_id_prefix": "aigocode",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_AIGOCODE_OPENAI_BASE_URL",
+      "allowed_hosts": [
+        "api.aigocode.com"
+      ],
+      "required_base_path": "/v1",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": [
+      "gemini_3_7_flash"
+    ],
+    "targets": [
+      {
+        "logical_model_id": "gemini_3_7_flash",
+        "catalog_id_patterns": [
+          "^gemini-3\\.7-flash$"
+        ],
+        "source": {
+          "kind": "official_documentation",
+          "url": "https://docs.aigocode.com/docs/api/models",
+          "public_document_drift": "observed in the GEMINI-group token catalog 2026-08-18; distinct identity from 3.5/3.6 flash and any pro variant"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": [
+      "allow_network",
+      "confirm_cost"
+    ],
+    "probe_set": [
+      "message",
+      "stream",
+      "thinking",
+      "native_tool_call",
+      "assistant_replay",
+      "tool_result_replay",
+      "usage"
+    ],
+    "request_variants": [
+      {
+        "variant_id": "baseline",
+        "request_overrides": {}
+      },
+      {
+        "variant_id": "reasoning_effort_low",
+        "request_overrides": {
+          "reasoning_effort": "low"
+        }
+      },
+      {
+        "variant_id": "reasoning_effort_high",
+        "request_overrides": {
+          "reasoning_effort": "high"
+        }
+      }
+    ],
+    "probe_request_policy": {
+      "temperature": null,
+      "seed": null,
+      "max_output_parameter": "max_tokens",
+      "max_output_tokens": {
+        "message": 128,
+        "stream": 128,
+        "thinking": 256,
+        "tool": 256,
+        "replay": 128
+      },
+      "tool_choice_mode": "auto",
+      "timeout_seconds": 300,
+      "retry_total_attempts": 1,
+      "fallback": null
+    },
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": [
+        "message",
+        "usage"
+      ],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

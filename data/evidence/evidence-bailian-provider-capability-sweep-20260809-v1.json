@@ -1,0 +1,13 @@
+{
+  "schema_version": "pvi.evidence-reference/v1",
+  "evidence_id": "evidence-bailian-provider-capability-sweep-20260809-v1",
+  "source_kind": "managed_cloud",
+  "host_profile_id": null,
+  "capture_surface": "provider_wire",
+  "sha256": "22a5ba2dd2e11ddfdcfbfea69867d18a5e9862fb5c7244a4a806e678ef899223",
+  "media_type": "application/vnd.pvian.capability-sweep+json",
+  "redaction_profile": "provider-capability-sweep-metadata-only/v1",
+  "locator": "data/evidence-artifacts/provider-capability-sweep-bailian-20260809.json",
+  "captured_at": "2026-08-09T13:03:10.753306Z",
+  "retention_class": "metadata_only"
+}

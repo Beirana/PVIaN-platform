@@ -1,0 +1,17 @@
+{
+  "schema_version": "pvi.probe-run/v1",
+  "probe_run_id": "probe-run-yunwu-deepseek-v4-flash-0731-catalog-20260803",
+  "probe_id": "online_text_message_probe",
+  "probe_version": "1.0.0",
+  "subject_profile_id": "cap-yunwu-deepseek-v4-flash-0731",
+  "input_digest": null,
+  "configuration_digest": null,
+  "environment_digest": null,
+  "started_at": "2026-08-03T06:21:24.472210Z",
+  "completed_at": "2026-08-03T06:21:24.472210Z",
+  "verdict": "not_applicable",
+  "evidence_ids": [
+    "evidence-yunwu-deepseek-v4-flash-0731-catalog-20260803"
+  ],
+  "normalization_error_ids": []
+}

@@ -1,0 +1,117 @@
+schema_version: pvi.probe-catalog/v1
+probes:
+  - probe_id: text_message_probe
+    probe_version: 1.0.0
+    description: 验证基础文本消息接口形状。
+    capability_path: messages
+    offline_only: true
+  - probe_id: role_support_probe
+    probe_version: 1.0.0
+    description: 验证消息角色支持。
+    capability_path: messages.roles
+    offline_only: true
+  - probe_id: multimodal_content_probe
+    probe_version: 1.0.0
+    description: 验证富内容和多模态输入形状。
+    capability_path: multimodal
+    offline_only: true
+  - probe_id: structured_output_probe
+    probe_version: 1.0.0
+    description: 验证结构化输出行为。
+    capability_path: structured_output
+    offline_only: true
+  - probe_id: native_tool_call_probe
+    probe_version: 1.0.0
+    description: 验证原生结构化工具调用。
+    capability_path: tool_calling.representation
+    offline_only: true
+  - probe_id: text_simulated_tool_probe
+    probe_version: 1.0.0
+    description: 识别文本模拟工具调用。
+    capability_path: tool_calling.representation
+    offline_only: true
+  - probe_id: multiple_tool_call_probe
+    probe_version: 1.0.0
+    description: 验证单轮多个工具调用。
+    capability_path: tool_calling.multiple_calls_per_turn
+    offline_only: true
+  - probe_id: streaming_arguments_probe
+    probe_version: 1.0.0
+    description: 验证工具参数流和半包。
+    capability_path: tool_calling.streaming_arguments
+    offline_only: true
+  - probe_id: invalid_json_probe
+    probe_version: 1.0.0
+    description: 验证无效 JSON 的显式失败。
+    capability_path: structured_output
+    offline_only: true
+  - probe_id: stream_interruption_probe
+    probe_version: 1.0.0
+    description: 验证流中断语义。
+    capability_path: streaming
+    offline_only: true
+  - probe_id: tool_result_correlation_probe
+    probe_version: 1.0.0
+    description: 验证 call/result 稳定关联。
+    capability_path: tool_calling.stable_call_result_correlation
+    offline_only: true
+  - probe_id: reasoning_exposure_probe
+    probe_version: 1.0.0
+    description: 验证 reasoning 暴露形态。
+    capability_path: reasoning.exposure
+    offline_only: true
+  - probe_id: continuation_artifact_probe
+    probe_version: 1.0.0
+    description: 验证不透明续接 artifact。
+    capability_path: reasoning.continuation_artifact
+    offline_only: true
+  - probe_id: usage_probe
+    probe_version: 1.0.0
+    description: 验证 usage 报告。
+    capability_path: usage_context
+    offline_only: true
+  - probe_id: seed_repeatability_probe
+    probe_version: 1.0.0
+    description: 验证 seed 控制而非推断概率分布。
+    capability_path: sampling_observability.seed_control
+    offline_only: true
+  - probe_id: logprobs_probe
+    probe_version: 1.0.0
+    description: 验证 top-k logprobs。
+    capability_path: sampling_observability.top_k_logprobs
+    offline_only: true
+  - probe_id: full_logits_probe
+    probe_version: 1.0.0
+    description: 验证完整词表 logits。
+    capability_path: sampling_observability.full_vocab_logits
+    offline_only: true
+  - probe_id: unknown_event_probe
+    probe_version: 1.0.0
+    description: 验证未知事件保持未知。
+    capability_path: streaming
+    offline_only: true
+  - probe_id: gateway_fidelity_probe
+    probe_version: 1.0.0
+    description: 验证网关翻译保真度。
+    capability_path: protocol_fidelity
+    offline_only: true
+  - probe_id: online_text_message_probe
+    probe_version: 1.0.0
+    description: 受控发送合成文本请求，验证基础文本调用和 usage 元数据。
+    capability_path: messages
+    offline_only: false
+  - probe_id: online_native_tool_call_probe
+    probe_version: 1.0.0
+    description: 受控发送无副作用合成工具定义，验证原生结构化工具调用。
+    capability_path: tool_calling.representation
+    offline_only: false
+  - probe_id: online_streaming_probe
+    probe_version: 1.0.0
+    description: 受控发送合成流式请求，验证流传输、结束原因和 usage 元数据。
+    capability_path: streaming
+    offline_only: false
+  - probe_id: provider_capability_sweep_probe
+    probe_version: 1.0.0
+    description: Controlled provider sweep of message, usage, stream, reasoning, structured output, and native tool replay capabilities.
+    capability_path: model_api_capabilities
+    offline_only: false

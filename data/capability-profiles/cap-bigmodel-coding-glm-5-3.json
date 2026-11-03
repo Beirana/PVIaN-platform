@@ -1,0 +1,142 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-bigmodel-coding-glm-5-3",
+  "profile_version": "0.1.0",
+  "subject": {
+    "endpoint_id": "endpoint-bigmodel-coding-openai-compatible",
+    "endpoint_kind": "official_direct",
+    "provider_id": "provider-bigmodel-coding",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "v4_coding_plan_docs",
+    "model_requested": "glm-5.3",
+    "model_reported": null,
+    "model_revision": "GLM-5.3 flagship (official model card 2026-08-17; pay-as-you-go API not yet live, Coding Plan exclusive at capture time)",
+    "deployment_id": null,
+    "region": "cn",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-17T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised-only profile from the official Zhipu docs (docs.bigmodel.cn model card + coding-plan pages) captured 2026-08-17; no provider probe, forwarder smoke, or deployed gateway smoke has run for this identity.",
+      "Subscription endpoint https://open.bigmodel.cn/api/coding/paas/v4 with a Coding-Plan key; keys and base paths are not interchangeable with the pay-as-you-go endpoint on the same host, and the plan is a separate product from Alibaba Token Plan despite similar naming.",
+      "Distinct identity from the Bailian-hosted glm-5.2 route (different vendor channel, provider, and model version) and from any future standard-endpoint glm-5.3; per the extension runbook these are never interchangeable.",
+      "Billing is subscription (window/quota-based prompt allowance); no per-token list price exists, so usage ledger cost estimates are intentionally unknown (pricing_missing), never zero. This is the first subscription-billed provider in the catalog.",
+      "Thinking is always on and cannot be disabled (thinking.type supports enabled only); reasoning_effort accepts low/high/max with default max; the coding-plan docs' effort-tier mapping folds minimal/light/low into the low tier.",
+      "glm-5.3[1m] (1M-context suffix convention referenced by the Claude Code tooling docs) is a separate identity not covered by this profile; the model card documents 1M context as the default spec.",
+      "The plan is officially restricted to supported coding tools and product environments (whitelist includes Claude Code, Codex, OpenCode, ZCode, Cursor and others); a local transparent gateway in front of whitelisted tools is an operator-accepted gray zone, recorded here deliberately.",
+      "General-agent tools (OpenClaw, Cherry Studio, Hermes Agent) are second-class on this plan (queueing/fair-use under load) per the official docs."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    },
+    "multimodal": {
+      "advertised": "unsupported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    },
+    "structured_output": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "not_tested",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "exposure": "unknown",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bigmodel-coding-glm-5-3-docs-20260817"
+      ]
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

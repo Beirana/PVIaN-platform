@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/gateway-attempt-evidence.schema.json",
+  "title": "PVIaN redacted gateway terminal attempt evidence v2",
+  "description": "One gateway transport attempt. request_id is the gateway-generated opaque ID; attempt_count=1 means this gateway made exactly one transport attempt and is not a logical-call retry ordinal. Provider IDs from the allowlisted x-request-id/request-id/x-dashscope-request-id/x-acs-request-id headers are retained only as upstream_request_id_sha256. Request/response bodies, prompts, public output, private reasoning and remote error text are excluded by additionalProperties=false.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "recorded_at", "request_id", "logical_call_id", "route_id", "provider", "region",
+    "requested_model", "reported_model", "status", "stream", "usage", "cost_status",
+    "estimated_list_cost_cny", "pricing_version", "estimate", "attempt_count",
+    "upstream_request_id_sha256", "upstream_status_code", "finish_reason", "error_category",
+    "elapsed_ms"
+  ],
+  "properties": {
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 256},
+    "logical_call_id": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"},
+    "route_id": {"type": "string", "minLength": 1, "maxLength": 512},
+    "provider": {"type": "string", "minLength": 1, "maxLength": 128},
+    "region": {"type": "string", "minLength": 1, "maxLength": 128},
+    "requested_model": {"type": "string", "minLength": 1, "maxLength": 256},
+    "reported_model": {"type": ["string", "null"], "minLength": 1, "maxLength": 256},
+    "status": {"enum": ["completed", "stream_interrupted", "transport_error", "upstream_error"]},
+    "stream": {"type": "boolean"},
+    "usage": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["prompt_tokens", "cached_tokens", "reasoning_tokens", "completion_tokens", "total_tokens"],
+      "properties": {
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "cached_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "reasoning_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "completion_tokens": {"type": "integer", "minimum": 0},
+        "total_tokens": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "cost_status": {"enum": ["estimated", "unknown"]},
+    "estimated_list_cost_cny": {"type": ["string", "null"], "pattern": "^\\d+(?:\\.\\d+)?$"},
+    "pricing_version": {"type": ["string", "null"], "minLength": 1, "maxLength": 128},
+    "estimate": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false, "required": ["status", "reason"],
+          "properties": {
+            "status": {"const": "unknown"},
+            "reason": {"enum": ["usage_unknown", "pricing_missing", "pricing_tier_missing", "cached_input_pricing_unknown", "reported_model_mismatch"]}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "currency", "pricing_version", "effective_at", "amount"],
+          "properties": {
+            "status": {"const": "estimated"},
+            "currency": {"const": "CNY"},
+            "pricing_version": {"type": "string", "minLength": 1},
+            "effective_at": {"type": ["string", "null"]},
+            "amount": {"type": "string", "pattern": "^\\d+(?:\\.\\d+)?$"}
+          }
+        }
+      ]
+    },
+    "attempt_count": {"const": 1, "description": "Gateway transport attempts for this inbound request; proves no implicit gateway retry."},
+    "upstream_request_id_sha256": {"type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$"},
+    "upstream_status_code": {"type": ["integer", "null"], "minimum": 100, "maximum": 599},
+    "finish_reason": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9_.-]{1,64}$"},
+    "error_category": {"type": ["string", "null"], "enum": [null, "transport_error", "rate_limited", "upstream_5xx", "timeout", "upstream_protocol_or_auth", "upstream_error"]},
+    "elapsed_ms": {"type": ["integer", "null"], "minimum": 0}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "completed"}}},
+      "then": {"properties": {"upstream_status_code": {"type": "integer", "minimum": 200, "maximum": 299}, "error_category": {"type": "null"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "stream_interrupted"}}},
+      "then": {"properties": {"upstream_status_code": {"type": "integer", "minimum": 200, "maximum": 299}, "error_category": {"const": "upstream_error"}, "usage": {"type": "null"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "transport_error"}}},
+      "then": {"properties": {"upstream_status_code": {"type": "null"}, "upstream_request_id_sha256": {"type": "null"}, "reported_model": {"type": "null"}, "finish_reason": {"type": "null"}, "usage": {"type": "null"}, "error_category": {"const": "transport_error"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "upstream_error"}}},
+      "then": {"properties": {"upstream_status_code": {"anyOf": [{"type": "integer", "minimum": 100, "maximum": 199}, {"type": "integer", "minimum": 300, "maximum": 599}]}, "reported_model": {"type": "null"}, "finish_reason": {"type": "null"}, "usage": {"type": "null"}, "error_category": {"type": "string"}}}
+    }
+  ]
+}

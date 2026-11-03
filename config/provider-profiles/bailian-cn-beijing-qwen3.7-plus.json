@@ -1,0 +1,17 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-bailian-cn-beijing-qwen3-7-plus",
+  "profile_version": "0.1.0",
+  "lifecycle": "active",
+  "provider": {"provider_id": "provider-bailian", "display_name": "Alibaba Cloud Model Studio (Bailian)", "region": "cn-beijing", "credential_environment_variable": "PVI_PROBE_BAILIAN_API_KEY"},
+  "endpoints": [{"endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible", "route_id_prefix": "bailian-cn-beijing", "transport": "openai_compatible_chat_completions", "base_url_environment_variable": "PVI_PROBE_BAILIAN_OPENAI_BASE_URL", "allowed_hosts": ["llm-example.cn-beijing.maas.aliyuncs.com"], "required_base_path": "/compatible-mode/v1", "chat_completions_path": "/chat/completions", "catalog_discovery": {"operation": "openai_models_list", "path": "/models", "on_unavailable": "record_inconclusive_do_not_fallback"}, "qualification_enabled": true}],
+  "model_selection": {"strategy": "live_catalog_match", "selection_order": ["qwen3_7_plus"], "targets": [{"logical_model_id": "qwen3_7_plus", "catalog_id_patterns": ["^qwen3\\.7-plus$"], "source": {"kind": "official_documentation", "url": "https://help.aliyun.com/zh/model-studio/qwen3-7-plus"}, "if_absent": "record_not_discovered_do_not_substitute"}]},
+  "qualification": {
+    "required_network_flags": ["allow_network", "confirm_cost"],
+    "probe_set": ["message", "stream", "thinking", "native_tool_call", "assistant_replay", "tool_result_replay", "usage"],
+    "request_variants": [{"variant_id": "enable_thinking_false", "request_overrides": {"enable_thinking": false}}, {"variant_id": "enable_thinking_true", "request_overrides": {"enable_thinking": true}}],
+    "probe_request_policy": {"temperature": 0, "seed": null, "max_output_parameter": "max_tokens", "max_output_tokens": {"message": 64, "stream": 64, "thinking": 256, "tool": 256, "replay": 128}, "tool_choice_mode": "forced_function", "timeout_seconds": 300, "retry_total_attempts": 1, "fallback": null},
+    "result_rules": {"single_failure_means": "inconclusive", "model_identity": "record_requested_and_reported_model", "raw_content": "never_persist", "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"},
+    "enablement": {"required_probes": ["message", "stream", "thinking", "native_tool_call", "assistant_replay", "tool_result_replay", "usage"], "validity_hours": 168, "consecutive_failure_threshold": 5}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "1.0.0",
+  "endpoint_id": "endpoint-official-beta",
+  "endpoint_kind": "official_direct",
+  "provider_id": "provider-fixture-beta",
+  "api_surface": "native_api",
+  "api_version": "fixture-v1",
+  "model_requested": "fixture-model-beta",
+  "model_reported": null,
+  "model_revision": "unknown",
+  "deployment_id": null,
+  "region": null,
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-07-20T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "verified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "declared_unverified",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "native",
+    "usage_notes": ["只有声明证据，尚未执行受控 Probe。"]
+  }
+}

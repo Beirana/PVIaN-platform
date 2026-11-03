@@ -1,0 +1,296 @@
+openapi: 3.1.0
+info:
+  title: PVI Capability Service
+  version: 0.5.1
+paths:
+  /v1/endpoints:
+    get:
+      summary: List Endpoints
+      operationId: list_endpoints_v1_endpoints_get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response List Endpoints V1 Endpoints Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/endpoints/{endpoint_id}:
+    get:
+      summary: Get Endpoint
+      operationId: get_endpoint_v1_endpoints__endpoint_id__get
+      parameters:
+      - name: endpoint_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Endpoint Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/capability-profiles:
+    get:
+      summary: List Profiles
+      operationId: list_profiles_v1_capability_profiles_get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response List Profiles V1 Capability Profiles Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/capability-profiles/{profile_id}:
+    get:
+      summary: Get Profile
+      operationId: get_profile_v1_capability_profiles__profile_id__get
+      parameters:
+      - name: profile_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Profile Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/capability-queries:resolve:
+    post:
+      summary: Resolve Capabilities
+      operationId: resolve_capabilities_v1_capability_queries_resolve_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapabilityQuery'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/probes:
+    get:
+      summary: List Probes
+      operationId: list_probes_v1_probes_get
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                title: Response List Probes V1 Probes Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/probe-runs/{run_id}:
+    get:
+      summary: Get Probe Run
+      operationId: get_probe_run_v1_probe_runs__run_id__get
+      parameters:
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Run Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/evidence/{evidence_id}:
+    get:
+      summary: Get Evidence
+      operationId: get_evidence_v1_evidence__evidence_id__get
+      parameters:
+      - name: evidence_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Evidence Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CapabilityQuery:
+      properties:
+        profile_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Profile Id
+        model:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Model
+        endpoint_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Endpoint Id
+        profile_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Profile Version
+        requirements:
+          additionalProperties: true
+          type: object
+          title: Requirements
+      additionalProperties: false
+      type: object
+      title: CapabilityQuery
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

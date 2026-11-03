@@ -1,0 +1,117 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-broker-alpha",
+  "profile_version": "1.0.0",
+  "subject": {
+    "endpoint_id": "endpoint-broker-alpha",
+    "endpoint_kind": "broker_gateway",
+    "provider_id": "provider-fixture-broker",
+    "api_surface": "openai_compatible_fixture",
+    "api_version": "unknown",
+    "model_requested": "fixture-model-alpha",
+    "model_reported": null,
+    "model_revision": "unknown",
+    "deployment_id": null,
+    "region": null,
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-07-20T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "unknown",
+    "protocol_fidelity_assurance": "failed",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "lossy_translation",
+    "usage_notes": ["OpenAI-compatible 只描述外形；工具参数流和模型身份未验证。"]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "inconclusive",
+      "effective": "inconclusive",
+      "evidence_ids": []
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "evidence_ids": []
+    },
+    "structured_output": {
+      "advertised": "supported",
+      "observed": "inconclusive",
+      "effective": "unknown",
+      "evidence_ids": []
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "inconclusive",
+      "effective": "unknown",
+      "representation": "unknown",
+      "streaming_arguments": "unknown",
+      "multiple_calls_per_turn": "unknown",
+      "parallel_calls": "unknown",
+      "stable_call_result_correlation": "unknown",
+      "native_tool_result_continuation": "unknown",
+      "evidence_ids": []
+    },
+    "reasoning": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "exposure": "unknown",
+      "continuation_artifact": "unknown",
+      "evidence_ids": []
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": []
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "inconclusive",
+      "effective": "inconclusive",
+      "evidence_ids": []
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "unknown",
+      "decoding_controls": "unknown",
+      "top_k_logprobs": "unknown",
+      "full_vocab_logits": "unknown",
+      "local_weights_access": "unknown",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": []
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "inconclusive",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-probe-suite/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": ["gateway_fidelity_probe"],
+    "next_revalidation_due": null
+  }
+}

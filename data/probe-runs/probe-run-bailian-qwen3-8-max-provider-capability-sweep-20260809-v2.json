@@ -1,0 +1,17 @@
+{
+  "schema_version": "pvi.probe-run/v1",
+  "probe_run_id": "probe-run-bailian-qwen3-8-max-provider-capability-sweep-20260809-v2",
+  "probe_id": "provider_capability_sweep_probe",
+  "probe_version": "1.0.0",
+  "subject_profile_id": "cap-bailian-qwen3-8-max",
+  "input_digest": null,
+  "configuration_digest": "sha256:7985cd550240798729a1a51f02c97ec951188da3e5ae2fba26311d7ceb10aa12",
+  "environment_digest": null,
+  "started_at": "2026-08-09T13:11:37.031879Z",
+  "completed_at": "2026-08-09T13:11:37.031879Z",
+  "verdict": "observed_supported",
+  "evidence_ids": [
+    "evidence-bailian-provider-capability-sweep-20260809-v2"
+  ],
+  "normalization_error_ids": []
+}

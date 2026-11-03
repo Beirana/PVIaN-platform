@@ -1,0 +1,140 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-bailian-qwen3-8-max",
+  "profile_version": "1.1.0",
+  "subject": {
+    "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+    "endpoint_kind": "managed_cloud",
+    "provider_id": "provider-bailian",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "compatible-mode/v1",
+    "model_requested": "qwen3.8-max",
+    "model_reported": "qwen3.8-max",
+    "model_revision": "unknown",
+    "deployment_id": null,
+    "region": "cn-beijing",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-09T13:11:37.031879Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Official cn-beijing console/pricing advertises the exact ID; older public model-list documentation still names qwen3.8-max-preview.",
+      "One bounded non-stream gateway-forwarder smoke returned HTTP 200, exact requested/reported model identity, finish_reason=stop, and usage; this observation does not qualify the route or prove weight provenance.",
+      "The redacted v2 provider capability sweep observed message, usage, streaming, reasoning, structured-output, and native-tool/replay behavior; effective remains unknown pending an independent qualification policy decision."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-qwen3-8-max-official-20260809",
+        "evidence-bailian-gateway-forwarder-smoke-20260809",
+        "evidence-bailian-provider-capability-sweep-20260809-v2"
+      ]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": []
+    },
+    "structured_output": {
+      "advertised": "unknown",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-provider-capability-sweep-20260809-v2"
+      ]
+    },
+    "tool_calling": {
+      "advertised": "unknown",
+      "observed": "supported",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "supported",
+      "native_tool_result_continuation": "supported",
+      "evidence_ids": [
+        "evidence-bailian-provider-capability-sweep-20260809-v2"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "exposure": "visible_reasoning_text",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-bailian-qwen3-8-max-official-20260809",
+        "evidence-bailian-provider-capability-sweep-20260809-v2"
+      ]
+    },
+    "usage_context": {
+      "advertised": "unknown",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-gateway-forwarder-smoke-20260809",
+        "evidence-bailian-provider-capability-sweep-20260809-v2"
+      ]
+    },
+    "streaming": {
+      "advertised": "unknown",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-bailian-provider-capability-sweep-20260809-v2"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": []
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [
+      "online_text_message_probe",
+      "provider_capability_sweep_probe"
+    ],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

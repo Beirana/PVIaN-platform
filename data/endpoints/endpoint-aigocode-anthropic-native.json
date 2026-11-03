@@ -1,0 +1,31 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-aigocode-anthropic-native",
+  "endpoint_kind": "broker_gateway",
+  "provider_id": "provider-aigocode-anthropic",
+  "api_surface": "anthropic_native_messages",
+  "api_version": "anthropic-version 2023-06-01",
+  "model_requested": "claude-sonnet-5",
+  "model_reported": null,
+  "model_revision": "claude-sonnet-5 per official Anthropic model docs; station relay identity",
+  "deployment_id": null,
+  "region": "global",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-19T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Operator-provided endpoint (CCSwitch configuration 2026-08-19): https://api.aigocode.com with Anthropic Messages native format; the same station host serves the OpenAI-compatible surface at /v1/chat/completions as a different identity.",
+      "Wire characterization 2026-08-19 (3 authorized calls, Bearer auth + anthropic-version + claude-cli style UA): message 200 exact identity; forced tool_use returns native dict input (no malformed concatenated JSON, unlike the OpenAI-compat shim); tool_result replay accepted 200 and answered from the tool output.",
+      "An earlier probe against the same URL failed with a Cloudflare-style 502 when sent with dual auth headers and a generic python User-Agent; request shape (Bearer-only + claude-cli style UA) resolves it. The gateway pins these headers for this surface.",
+      "Broker/relay endpoint: requested/reported identity must be verified on the wire per qualification; no station per-token prices are public, so ledger cost estimates are intentionally unknown.",
+      "Agent tool loops and Claude thinking blocks are usable on this native surface; the OpenAI-compat route keeps its recorded shim defects (arguments concatenation, replay 400)."
+    ]
+  }
+}

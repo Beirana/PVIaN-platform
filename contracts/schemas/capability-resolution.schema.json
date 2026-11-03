@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/capability-resolution.schema.json",
+  "title": "PVI Capability Resolution v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "query_id",
+    "data_version",
+    "resolved_at",
+    "candidates"
+  ],
+  "properties": {
+    "schema_version": { "const": "pvi.capability-resolution/v1" },
+    "query_id": { "type": "string", "minLength": 1 },
+    "data_version": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "resolved_at": { "type": ["string", "null"], "format": "date-time" },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "profile_id",
+          "profile_version",
+          "endpoint_id",
+          "satisfied",
+          "unsatisfied",
+          "unknown",
+          "profile"
+        ],
+        "properties": {
+          "profile_id": { "type": "string" },
+          "profile_version": { "type": "string" },
+          "endpoint_id": { "type": "string" },
+          "satisfied": { "$ref": "#/$defs/items" },
+          "unsatisfied": { "$ref": "#/$defs/items" },
+          "unknown": { "$ref": "#/$defs/items" },
+          "profile": { "type": "object" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "requirement",
+          "expected",
+          "actual",
+          "reason",
+          "evidence_ids"
+        ],
+        "properties": {
+          "requirement": { "type": "string" },
+          "expected": {},
+          "actual": {},
+          "reason": { "type": ["string", "null"] },
+          "evidence_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

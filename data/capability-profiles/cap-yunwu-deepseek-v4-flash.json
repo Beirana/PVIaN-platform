@@ -1,0 +1,137 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-yunwu-deepseek-v4-flash",
+  "profile_version": "1.0.0",
+  "subject": {
+    "endpoint_id": "endpoint-yunwu-openai-compatible",
+    "endpoint_kind": "broker_gateway",
+    "provider_id": "provider-yunwu",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "v1",
+    "model_requested": "deepseek-v4-flash",
+    "model_reported": null,
+    "model_revision": "unknown",
+    "deployment_id": null,
+    "region": null,
+    "relevant_configuration_digest": "sha256:a7728d3b49f16bc852b7e5c5e68fcee192c5a72be75f6113530a8bf341cccc9b",
+    "observed_at": "2026-08-03T07:06:30.280640Z"
+  },
+  "assurance": {
+    "identity_assurance": "unknown",
+    "model_provenance_assurance": "unknown",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "failed",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "The live catalog exposed the exact deepseek-v4-flash ID.",
+      "Message, stream, all four thinking variants, and native tool/replay probes returned provider 5xx responses; no model identity or usage was returned.",
+      "This is discovered_but_call_failed, not not_discovered and not a claim that the model capability is unsupported.",
+      "The candidate has no public alias and is not currently usable for experiments."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "unknown",
+      "observed": "inconclusive",
+      "effective": "inconclusive",
+      "evidence_ids": [
+        "evidence-yunwu-deepseek-v4-flash-preliminary-20260803"
+      ]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": []
+    },
+    "structured_output": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": []
+    },
+    "tool_calling": {
+      "advertised": "unknown",
+      "observed": "inconclusive",
+      "effective": "inconclusive",
+      "representation": "unknown",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "not_tested",
+      "evidence_ids": [
+        "evidence-yunwu-deepseek-v4-flash-preliminary-20260803"
+      ]
+    },
+    "reasoning": {
+      "advertised": "unknown",
+      "observed": "inconclusive",
+      "effective": "inconclusive",
+      "exposure": "unknown",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-yunwu-deepseek-v4-flash-preliminary-20260803"
+      ]
+    },
+    "usage_context": {
+      "advertised": "unknown",
+      "observed": "inconclusive",
+      "effective": "inconclusive",
+      "evidence_ids": [
+        "evidence-yunwu-deepseek-v4-flash-preliminary-20260803"
+      ]
+    },
+    "streaming": {
+      "advertised": "unknown",
+      "observed": "inconclusive",
+      "effective": "inconclusive",
+      "evidence_ids": [
+        "evidence-yunwu-deepseek-v4-flash-preliminary-20260803"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": []
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "inconclusive",
+    "usage_reporting": "inconclusive",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "inconclusive"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-probe-qualification/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [
+      "online_text_message_probe",
+      "online_streaming_probe",
+      "reasoning_exposure_probe",
+      "online_native_tool_call_probe"
+    ],
+    "next_revalidation_due": null
+  }
+}

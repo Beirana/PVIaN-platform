@@ -1,0 +1,59 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-aigocode-anthropic-claude-sonnet-5",
+  "profile_version": "0.1.0",
+  "lifecycle": "candidate",
+  "provider": {
+    "provider_id": "provider-aigocode-anthropic",
+    "display_name": "AiGoCode Anthropic-native surface (Claude group token)",
+    "region": "global",
+    "credential_environment_variable": "PVI_PROBE_AIGOCODE_CLAUDE_3.9_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-aigocode-anthropic-native",
+      "route_id_prefix": "aigocode-anthropic",
+      "transport": "anthropic_native_messages",
+      "base_url_environment_variable": "PVI_PROBE_AIGOCODE_ANTHROPIC_BASE_URL",
+      "allowed_hosts": ["api.aigocode.com"],
+      "required_base_path": "",
+      "messages_path": "/v1/messages",
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_wire_identity_match",
+    "selection_order": ["claude_sonnet_5"],
+    "targets": [
+      {
+        "logical_model_id": "claude_sonnet_5",
+        "catalog_id_patterns": ["^claude-sonnet-5$"],
+        "source": {
+          "kind": "official_documentation",
+          "url": "https://api.aigocode.com/v1/messages",
+          "public_document_drift": "operator-provided endpoint (CCSwitch configuration, Anthropic Messages native format); the station's OpenAI-compat route for the same model name is a different identity with recorded shim defects and must never be mapped; there is no catalog GET on this surface — identity is proven by requested/reported model equality on the wire"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": ["allow_network", "confirm_cost"],
+    "probe_set": ["message", "native_tool_call", "tool_result_replay", "usage"],
+    "request_variants": [
+      {"variant_id": "baseline", "request_overrides": {}}
+    ],
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": ["message", "native_tool_call", "tool_result_replay", "usage"],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    },
+    "probe_executor": "scripts/qualify_anthropic_surface.py — Anthropic wire format (the OpenAI qualifier does not implement this transport)"
+  }
+}

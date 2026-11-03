@@ -1,0 +1,120 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-official-alpha",
+  "profile_version": "1.0.0",
+  "subject": {
+    "endpoint_id": "endpoint-official-alpha",
+    "endpoint_kind": "official_direct",
+    "provider_id": "provider-fixture-alpha",
+    "api_surface": "native_api",
+    "api_version": "fixture-v1",
+    "model_requested": "fixture-model-alpha",
+    "model_reported": "fixture-model-alpha-rev1",
+    "model_revision": "fixture-rev1",
+    "deployment_id": null,
+    "region": null,
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-07-20T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "verified",
+    "model_provenance_assurance": "verified",
+    "protocol_fidelity_assurance": "verified",
+    "data_handling_assurance": "declared_unverified",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "native",
+    "usage_notes": ["脱敏离线 fixture；不代表任何真实供应商。"]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "supported",
+      "evidence_ids": ["evidence-official-tool-probe"]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "evidence_ids": []
+    },
+    "structured_output": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "evidence_ids": ["evidence-official-tool-doc"]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "supported",
+      "representation": "native_structured",
+      "streaming_arguments": "unsupported",
+      "multiple_calls_per_turn": "supported",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "supported",
+      "native_tool_result_continuation": "supported",
+      "evidence_ids": [
+        "evidence-official-tool-doc",
+        "evidence-official-tool-probe"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "exposure": "summary_only",
+      "continuation_artifact": "unknown",
+      "evidence_ids": ["evidence-official-tool-doc"]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "evidence_ids": []
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "evidence_ids": []
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "sample_only",
+      "seed_control": "unknown",
+      "decoding_controls": "unknown",
+      "top_k_logprobs": "unknown",
+      "full_vocab_logits": "unsupported",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "not_applicable",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "not_tested",
+      "evidence_ids": []
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "supported",
+    "usage_reporting": "supported",
+    "routing_transparency": "not_applicable",
+    "fallback_behavior": "not_applicable",
+    "raw_evidence_availability": "supported",
+    "model_disclosure": "supported"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-probe-suite/v1",
+    "completed_probe_ids": ["native_tool_call_probe"],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}

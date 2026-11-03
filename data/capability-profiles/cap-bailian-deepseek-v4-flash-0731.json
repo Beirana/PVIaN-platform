@@ -1,0 +1,50 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-bailian-deepseek-v4-flash-0731",
+  "profile_version": "1.0.0",
+  "subject": {
+    "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+    "endpoint_kind": "managed_cloud",
+    "provider_id": "provider-bailian",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "compatible-mode/v1",
+    "model_requested": "deepseek-v4-flash-0731",
+    "model_reported": "deepseek-v4-flash-0731",
+    "model_revision": "unknown",
+    "deployment_id": null,
+    "region": "cn-beijing",
+    "relevant_configuration_digest": "sha256:a6f394cb2687d6b0d039a4971f2994511b17389c44ff9eb23861bc653cf53e97",
+    "observed_at": "2026-08-03T06:21:24.472210Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "unknown",
+    "protocol_fidelity_assurance": "declared_unverified",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Controlled qualification observed exact requested/reported model identity; this does not prove upstream weight provenance.",
+      "Message, stream, thinking, native tool, assistant replay, and tool-result replay were observed_supported.",
+      "effective=supported applies only to the 24-hour qualification window; the candidate has no public alias and is not an SLA."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {"advertised": "unknown", "observed": "supported", "effective": "supported", "evidence_ids": ["evidence-bailian-deepseek-v4-flash-0731-qualification-20260803"]},
+    "multimodal": {"advertised": "unknown", "observed": "not_tested", "effective": "unknown", "evidence_ids": []},
+    "structured_output": {"advertised": "unknown", "observed": "not_tested", "effective": "unknown", "evidence_ids": []},
+    "tool_calling": {
+      "advertised": "unknown", "observed": "supported", "effective": "supported", "representation": "native_structured", "streaming_arguments": "not_tested", "multiple_calls_per_turn": "not_tested", "parallel_calls": "not_tested", "stable_call_result_correlation": "supported", "native_tool_result_continuation": "supported", "evidence_ids": ["evidence-bailian-deepseek-v4-flash-0731-qualification-20260803"]
+    },
+    "reasoning": {"advertised": "unknown", "observed": "supported", "effective": "supported", "exposure": "visible_reasoning_text", "continuation_artifact": "not_tested", "evidence_ids": ["evidence-bailian-deepseek-v4-flash-0731-qualification-20260803"]},
+    "usage_context": {"advertised": "unknown", "observed": "supported", "effective": "supported", "evidence_ids": ["evidence-bailian-deepseek-v4-flash-0731-qualification-20260803"]},
+    "streaming": {"advertised": "unknown", "observed": "supported", "effective": "supported", "evidence_ids": ["evidence-bailian-deepseek-v4-flash-0731-qualification-20260803"]},
+    "sampling_observability": {
+      "observed": "not_tested", "sample_access": "unknown", "seed_control": "not_tested", "decoding_controls": "not_tested", "top_k_logprobs": "not_tested", "full_vocab_logits": "not_tested", "local_weights_access": "not_applicable", "tokenizer_access": "unknown", "evidence_ids": []
+    },
+    "builtin_tools": {"advertised": "unknown", "observed": "not_tested", "effective": "unknown", "evidence_ids": []}
+  },
+  "endpoint_capabilities": {"stream_transport": "supported", "usage_reporting": "supported", "routing_transparency": "unknown", "fallback_behavior": "unknown", "raw_evidence_availability": "unknown", "model_disclosure": "supported"},
+  "runtime_interop": {"mcp_client": "external_runtime_managed", "skills": "external_runtime_managed", "tool_execution": "consumer_managed", "sandbox_evidence_adapter": "not_configured"},
+  "probe_summary": {"probe_suite_version": "pvi-probe-qualification/v1", "completed_probe_ids": ["online_text_message_probe", "online_streaming_probe", "online_native_tool_call_probe", "tool_result_correlation_probe"], "inconclusive_probe_ids": [], "next_revalidation_due": "2026-08-04T06:21:24.472210Z"}
+}

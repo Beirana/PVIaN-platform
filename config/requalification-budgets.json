@@ -1,0 +1,296 @@
+{
+  "schema_version": "pvian.requalification-budgets/v1",
+  "description": "Frozen per-model budget for automatic daily requalification (04:00 checkpoint). A route enters the requalification set once its remaining TTL drops into the final 24h window, is expired, or is degraded; a successful pass refreshes validity to a fresh 168h. Two budget classes: (1) priced providers — frozen_max_cost_cny derived from qualification_completion_call_count (model-extension-runbook §7) times the then-current list price, never auto-increased; (2) subscription/relay providers without a public per-token list price — frozen_max_cost_cny is null and the frozen max_completion_calls count IS the budget (no CNY figure is invented for Credits or console-walled relay pricing). requalify_due.py enforces membership fail-closed: any due route without an entry aborts the whole run.",
+  "currency": "CNY",
+  "budgets": [
+    {
+      "profile_id": "provider-bailian-cn-beijing",
+      "model": "deepseek-v4-pro",
+      "max_completion_calls": 8,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-deepseek-v4-pro.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 12,
+        "output_rate_per_1m": 24
+      },
+      "frozen_max_cost_cny": 0.02,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization — full probe set restored (was message+stream only, now includes thinking+tool+replay)"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-deepseek-v4-flash-0731",
+      "model": "deepseek-v4-flash-0731",
+      "max_completion_calls": 8,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-deepseek-v4-flash-0731.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 1,
+        "output_rate_per_1m": 2
+      },
+      "frozen_max_cost_cny": 0.02,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization — full probe set restored (was message+stream only, now includes thinking+tool+replay)"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-glm-5-2",
+      "model": "glm-5.2",
+      "max_completion_calls": 7,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-glm-5.2.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 8,
+        "output_rate_per_1m": 28
+      },
+      "frozen_max_cost_cny": 0.0199,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization during full Bailian activation"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-minimax-m3",
+      "model": "MiniMax-M3",
+      "max_completion_calls": 6,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-minimax-m3.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 4.2,
+        "output_rate_per_1m": 16.8
+      },
+      "frozen_max_cost_cny": 0.01,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization — tool probes added (was tool_choice_mode=none)"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-qwen3-7-plus",
+      "model": "qwen3.7-plus",
+      "max_completion_calls": 6,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-qwen3.7-plus.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 2,
+        "output_rate_per_1m": 8
+      },
+      "frozen_max_cost_cny": 0.0048,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization during full Bailian activation"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-qwen3-8-max",
+      "model": "qwen3.8-max",
+      "max_completion_calls": 6,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-qwen3.8-max.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 12,
+        "output_rate_per_1m": 36
+      },
+      "frozen_max_cost_cny": 0.0222,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization during full Bailian activation"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-qwen3-vl-plus",
+      "model": "qwen3-vl-plus",
+      "max_completion_calls": 6,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-qwen3-vl-plus.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 1,
+        "output_rate_per_1m": 10
+      },
+      "frozen_max_cost_cny": 0.006,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization — tool probes added (was tool_choice_mode=none)"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-xiaomi-mimo-v2-5-pro",
+      "model": "xiaomi/mimo-v2.5-pro",
+      "max_completion_calls": 5,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-xiaomi-mimo-v2.5-pro.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 7,
+        "output_rate_per_1m": 21
+      },
+      "frozen_max_cost_cny": 0.01,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization — tool probes added (was tool_choice_mode=none)"
+    },
+    {
+      "profile_id": "provider-bailian-cn-beijing-kimi-k3",
+      "model": "kimi/kimi-k3",
+      "max_completion_calls": 2,
+      "pricing_basis": {
+        "source": "config/pricing/bailian-cn-beijing-kimi-k3.json",
+        "pricing_version": "2026-08-09-official-list",
+        "input_rate_per_1m": 20,
+        "output_rate_per_1m": 100
+      },
+      "frozen_max_cost_cny": 0.02,
+      "confirmed_at": "2026-08-11T00:00:00Z",
+      "confirmed_by": "user authorization during full Bailian activation"
+    },
+    {
+      "profile_id": "provider-deepseek-official-v4-pro",
+      "model": "deepseek-v4-pro",
+      "max_completion_calls": 5,
+      "pricing_basis": {
+        "source": "config/pricing/deepseek-official-v4-pro.json",
+        "pricing_version": "2026-08-17-official-list-cn",
+        "input_rate_per_1m": 9.0,
+        "output_rate_per_1m": 27.0
+      },
+      "frozen_max_cost_cny": 0.15,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-deepseek-official-v4-flash",
+      "model": "deepseek-v4-flash",
+      "max_completion_calls": 5,
+      "pricing_basis": {
+        "source": "config/pricing/deepseek-official-v4-flash.json",
+        "pricing_version": "2026-08-17-official-list-cn",
+        "input_rate_per_1m": 3.0,
+        "output_rate_per_1m": 9.0
+      },
+      "frozen_max_cost_cny": 0.05,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-moonshot-official-kimi-k3",
+      "model": "kimi-k3",
+      "max_completion_calls": 4,
+      "pricing_basis": {
+        "source": "config/pricing/moonshot-official-kimi-k3.json",
+        "pricing_version": "2026-08-17-official-list",
+        "input_rate_per_1m": 20,
+        "output_rate_per_1m": 100
+      },
+      "frozen_max_cost_cny": 0.3,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-openrouter-dots-3-note-free",
+      "model": "dots-studio/dots-3-note-preview:free",
+      "max_completion_calls": 4,
+      "pricing_basis": {
+        "source": "config/pricing/openrouter-dots-3-note-free.json",
+        "pricing_version": "2026-08-17-catalog-free",
+        "note": "free-tier model, USD list rates are all zero; 0 CNY is the honest frozen ceiling"
+      },
+      "frozen_max_cost_cny": 0.0,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-aigocode-gpt-5-6-sol",
+      "model": "gpt-5.6-sol",
+      "max_completion_calls": 1,
+      "pricing_basis": {
+        "source": null,
+        "note": "relay station without public per-token prices (console login wall); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-aigocode-claude-sonnet-5",
+      "model": "claude-sonnet-5",
+      "max_completion_calls": 1,
+      "pricing_basis": {
+        "source": null,
+        "note": "relay station without public per-token prices (console login wall); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-aigocode-gemini-3-7-flash",
+      "model": "gemini-3.7-flash",
+      "max_completion_calls": 1,
+      "pricing_basis": {
+        "source": null,
+        "note": "relay station without public per-token prices (console login wall); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-aigocode-grok-4-6",
+      "model": "grok-4.6",
+      "max_completion_calls": 4,
+      "pricing_basis": {
+        "source": null,
+        "note": "relay station without public per-token prices (console login wall); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); no manual renewal"
+    },
+    {
+      "profile_id": "provider-aliyun-token-plan-qwen3-8-max",
+      "model": "qwen3.8-max",
+      "max_completion_calls": 6,
+      "pricing_basis": {
+        "source": null,
+        "note": "Credits subscription (no per-token list price); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive for the isolated 5245 gateway (24h renewal window, fresh 168h TTL, atomic state swap, no process touch)"
+    },
+    {
+      "profile_id": "provider-aliyun-token-plan-qwen3-7-max",
+      "model": "qwen3.7-max",
+      "max_completion_calls": 6,
+      "pricing_basis": {
+        "source": null,
+        "note": "Credits subscription (no per-token list price); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive for the isolated 5245 gateway (24h renewal window, fresh 168h TTL, atomic state swap, no process touch)"
+    },
+    {
+      "profile_id": "provider-aliyun-token-plan-qwen3-6-flash",
+      "model": "qwen3.6-flash",
+      "max_completion_calls": 6,
+      "pricing_basis": {
+        "source": null,
+        "note": "Credits subscription (no per-token list price); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive for the isolated 5245 gateway (24h renewal window, fresh 168h TTL, atomic state swap, no process touch)"
+    },
+    {
+      "profile_id": "provider-mimo-token-plan-mimo-v2-5-pro",
+      "model": "mimo-v2.5-pro",
+      "max_completion_calls": 2,
+      "pricing_basis": {
+        "source": null,
+        "note": "subscription endpoint (tp- key, no per-token list price); the frozen call count is the budget, no CNY figure invented"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL); route is currently degraded (rate_limited), requalification retries are budget-bounded"
+    },
+    {
+      "profile_id": "provider-aigocode-anthropic-claude-sonnet-5",
+      "model": "claude-sonnet-5",
+      "max_completion_calls": 3,
+      "pricing_basis": {
+        "source": null,
+        "note": "Anthropic-native relay surface without public per-token prices; renewed by scripts/qualify_anthropic_surface.py (3 wire probes), the frozen call count is the budget"
+      },
+      "frozen_max_cost_cny": null,
+      "confirmed_at": "2026-08-20T00:00:00Z",
+      "confirmed_by": "user authorization 2026-08-20 — daily auto-renewal directive (24h renewal window, fresh 168h TTL)"
+    }
+  ]
+}

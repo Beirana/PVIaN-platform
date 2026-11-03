@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/local-pricing-v2.schema.json",
+  "title": "PVIaN local tiered pricing v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "pricing_version",
+    "effective_at",
+    "captured_at",
+    "source",
+    "provider",
+    "profile_id",
+    "region",
+    "model",
+    "currency",
+    "unit",
+    "tiers"
+  ],
+  "properties": {
+    "schema_version": {"const": "pvian.local-pricing/v2"},
+    "pricing_version": {"type": "string", "minLength": 1},
+    "effective_at": {"type": ["string", "null"], "format": "date-time"},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "url", "price_basis", "discounts_included", "captured_via", "content_sha256", "content_digest_status"],
+      "properties": {
+        "kind": {"const": "official_documentation"},
+        "url": {"type": "string", "format": "uri"},
+        "price_basis": {"const": "advertised_list_price"},
+        "discounts_included": {"const": false},
+        "captured_via": {"const": "official_page_field_capture"},
+        "content_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "content_digest_status": {"enum": ["verified", "unavailable_dynamic_page_not_archived"]},
+        "model_identity_evidence": {
+          "type": "array",
+          "items": {"type": "string", "format": "uri"},
+          "uniqueItems": true
+        },
+        "public_documentation_drift": {"type": "string", "minLength": 1}
+      }
+    },
+    "provider": {"enum": ["bailian", "deepseek-official", "moonshot-official", "openrouter"]},
+    "profile_id": {"type": "string", "minLength": 1},
+    "region": {"enum": ["cn-beijing", "global", "cn"]},
+    "model": {"type": "string", "minLength": 1},
+    "currency": {"enum": ["CNY", "USD"]},
+    "unit": {"const": "per_1m_tokens"},
+    "tiers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["input_tokens_gt", "input_tokens_lte", "rates"],
+        "properties": {
+          "input_tokens_gt": {"type": "integer", "minimum": 0},
+          "input_tokens_lte": {"type": "integer", "minimum": 1},
+          "rates": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["input", "cached_input", "output"],
+            "properties": {
+              "input": {"type": "number", "minimum": 0},
+              "cached_input": {"type": ["number", "null"], "minimum": 0},
+              "output": {"type": "number", "minimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}

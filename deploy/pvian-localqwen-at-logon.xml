@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PVIaN Local-Qwen Gateway (127.0.0.1:5239) — At-logon auto-start task.
+
+  Dedicated gateway instance for the self-hosted vLLM Qwen3.8-27B-FP8
+  endpoint (127.0.0.1:18000, SSH tunnel). Completely independent of the
+  production 5200 instance: own overlay profiles/aliases/state/ledger/log/PID
+  under var/gateway-local-qwen/, same client key registry.
+
+  Prerequisite: the SSH tunnel to the GPU box must be re-established after
+  logon for upstream calls to succeed; the gateway itself starts and serves
+  /healthz regardless, and forwards as soon as the tunnel is back.
+
+  Register-ScheduledTask/schtasks from a non-elevated shell returns Access
+  Denied on this machine — import ONCE from an elevated prompt:
+
+    schtasks /Create /TN "PVIaN-LocalQwen-Gateway-AtLogon" /XML deploy\pvian-localqwen-at-logon.xml /F
+
+  Disable before maintenance:
+    schtasks /Change /TN "PVIaN-LocalQwen-Gateway-AtLogon" /Disable
+  Re-enable after:
+    schtasks /Change /TN "PVIaN-LocalQwen-Gateway-AtLogon" /Enable
+-->
+<Task xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>PVIaN dedicated local-qwen gateway (5239) — auto-start at user logon. Runs scripts/gateway_local_qwen_service.py start via the venv pythonw.</Description>
+    <URI>\PVIaN-LocalQwen-Gateway-AtLogon</URI>
+  </RegistrationInfo>
+  <Triggers>
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+      <Delay>PT60S</Delay>
+    </LogonTrigger>
+  </Triggers>
+  <Principals>
+    <Principal>
+      <UserId>YOUR_WINDOWS_USERNAME</UserId>
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>false</AllowHardTerminate>
+    <StartWhenAvailable>false</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
+    <Priority>7</Priority>
+    <RestartOnFailure>
+      <Interval>PT1M</Interval>
+      <Count>3</Count>
+    </RestartOnFailure>
+  </Settings>
+  <Actions>
+    <Exec>
+      <Command>C:\path\to\PVIaN-platform\.venv\Scripts\pythonw.exe</Command>
+      <Arguments>scripts\gateway_local_qwen_service.py start</Arguments>
+      <WorkingDirectory>C:\path\to\PVIaN-platform</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

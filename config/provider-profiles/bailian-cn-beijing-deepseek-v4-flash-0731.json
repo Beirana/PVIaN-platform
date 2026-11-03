@@ -1,0 +1,72 @@
+{
+  "schema_version": "pvi.provider-qualification-profile/v1",
+  "profile_id": "provider-bailian-cn-beijing-deepseek-v4-flash-0731",
+  "profile_version": "0.1.0",
+  "lifecycle": "active",
+  "provider": {
+    "provider_id": "provider-bailian",
+    "display_name": "Alibaba Cloud Model Studio (Bailian)",
+    "region": "cn-beijing",
+    "credential_environment_variable": "PVI_PROBE_BAILIAN_API_KEY"
+  },
+  "endpoints": [
+    {
+      "endpoint_id": "endpoint-bailian-cn-beijing-openai-compatible",
+      "route_id_prefix": "bailian-cn-beijing",
+      "transport": "openai_compatible_chat_completions",
+      "base_url_environment_variable": "PVI_PROBE_BAILIAN_OPENAI_BASE_URL",
+      "allowed_hosts": ["llm-example.cn-beijing.maas.aliyuncs.com"],
+      "required_base_path": "/compatible-mode/v1",
+      "chat_completions_path": "/chat/completions",
+      "catalog_discovery": {
+        "operation": "openai_models_list",
+        "path": "/models",
+        "on_unavailable": "record_inconclusive_do_not_fallback"
+      },
+      "qualification_enabled": true
+    }
+  ],
+  "model_selection": {
+    "strategy": "live_catalog_match",
+    "selection_order": ["deepseek_v4_flash_0731"],
+    "targets": [
+      {
+        "logical_model_id": "deepseek_v4_flash_0731",
+        "catalog_id_patterns": ["^deepseek-v4-flash-0731$"],
+        "source": {
+          "kind": "official_documentation",
+          "url": "https://help.aliyun.com/zh/model-studio/deepseek-api-by-vanchin"
+        },
+        "if_absent": "record_not_discovered_do_not_substitute"
+      }
+    ]
+  },
+  "qualification": {
+    "required_network_flags": ["allow_network", "confirm_cost"],
+    "probe_set": [
+      "message",
+      "stream",
+      "thinking",
+      "native_tool_call",
+      "assistant_replay",
+      "tool_result_replay"
+    ],
+    "request_variants": [
+      {"variant_id": "baseline", "request_overrides": {"enable_thinking": false}},
+      {"variant_id": "enable_thinking_true", "request_overrides": {"enable_thinking": true}},
+      {"variant_id": "reasoning_effort_high", "request_overrides": {"reasoning_effort": "high"}},
+      {"variant_id": "reasoning_effort_max", "request_overrides": {"reasoning_effort": "max"}}
+    ],
+    "result_rules": {
+      "single_failure_means": "inconclusive",
+      "model_identity": "record_requested_and_reported_model",
+      "raw_content": "never_persist",
+      "unsupported_parameter": "record_protocol_result_do_not_retry_with_fallback"
+    },
+    "enablement": {
+      "required_probes": ["message", "stream", "thinking", "native_tool_call", "assistant_replay", "tool_result_replay"],
+      "validity_hours": 168,
+      "consecutive_failure_threshold": 5
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "pvian.local-pricing/v2",
+  "pricing_version": "2026-08-17-catalog-free",
+  "effective_at": null,
+  "captured_at": "2026-08-17T00:00:00Z",
+  "source": {
+    "kind": "official_documentation",
+    "url": "https://openrouter.ai/api/v1/models",
+    "price_basis": "advertised_list_price",
+    "discounts_included": false,
+    "captured_via": "official_page_field_capture",
+    "content_sha256": null,
+    "content_digest_status": "unavailable_dynamic_page_not_archived",
+    "public_documentation_drift": "Zero rates are the advertised free-tier list price for the :free suffixed identity, not an unknown-value placeholder. Free-tier availability and rate limits are volatile and can change without notice."
+  },
+  "provider": "openrouter",
+  "profile_id": "provider-openrouter-nemotron-3-5-lightning-free",
+  "region": "global",
+  "model": "nvidia/nemotron-3.5-lightning:free",
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "tiers": [
+    {
+      "input_tokens_gt": 0,
+      "input_tokens_lte": 1000000,
+      "rates": {"input": 0, "cached_input": 0, "output": 0}
+    }
+  ]
+}

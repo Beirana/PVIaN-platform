@@ -1,0 +1,30 @@
+{
+  "schema_version": "pvi.endpoint-profile/v1",
+  "profile_version": "0.1.0",
+  "endpoint_id": "endpoint-local-qwen-openai-compatible",
+  "endpoint_kind": "local_open_weights",
+  "provider_id": "provider-local-qwen",
+  "api_surface": "openai_compatible_chat_completions",
+  "api_version": "vllm_openai_compat",
+  "model_requested": "qwen3.8-27b-fp8",
+  "model_reported": "qwen3.8-27b-fp8",
+  "model_revision": "Qwen3.8-27B-FP8 served by vLLM (self-hosted, SSH-tunneled to 127.0.0.1:18000)",
+  "deployment_id": null,
+  "region": "local",
+  "relevant_configuration_digest": null,
+  "observed_at": "2026-08-18T00:00:00Z",
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Operator deployment contract: base_url http://127.0.0.1:18000/v1, model qwen3.8-27b-fp8, and a non-empty dummy api_key are stable values across backend machine swaps; /v1/chat/completions (SSE + tools), /v1/models, /v1/completions are served.",
+      "Self-hosted local runtime behind an SSH tunnel: availability depends on the tunnel and the remote GPU server; server catalog reports max_model_len 131072 and owned_by vllm.",
+      "Reasoning is exposed in the nonstandard message.reasoning field (not reasoning_content); consumers parsing reasoning_content must adapt. Tool calls use finish_reason=tool_calls with the standard OpenAI tools format.",
+      "Deployment guidance: max_tokens >= 1024 for thinking output to reach content; concurrency cap 4 concurrent generations with queueing (no errors), long documents (>100K prompt) advised to limit to 2 concurrent; timeouts 60-120s per request class (gateway uses 300s like other routes per operator direction)."
+    ]
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pvi.invalid/schemas/qualification-manifest.schema.json",
+  "title": "PVIaN provider qualification manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "manifest_id", "evidence_class", "identity", "request",
+    "probe_plan", "observations", "pricing", "readiness", "stop_conditions", "content_policy",
+    "manifest_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": "pvian.provider-qualification-manifest/v1"},
+    "manifest_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"},
+    "evidence_class": {"const": "provider_probe"},
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider", "region", "requested_model", "route_id", "profile_id",
+        "profile_version", "public_alias", "gateway_smoke_eligible", "model_comparability"
+      ],
+      "properties": {
+        "provider": {"type": "string", "minLength": 1, "maxLength": 128},
+        "region": {"type": "string", "minLength": 1, "maxLength": 128},
+        "requested_model": {"type": "string", "minLength": 1, "maxLength": 256},
+        "route_id": {"type": "string", "minLength": 1, "maxLength": 512},
+        "profile_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "profile_version": {"type": "string", "minLength": 1, "maxLength": 64},
+        "public_alias": {"type": ["string", "null"], "minLength": 1, "maxLength": 512},
+        "gateway_smoke_eligible": {"type": "boolean"},
+        "model_comparability": {
+          "enum": ["homogeneous_text_candidate", "interface_compatibility_only"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"public_alias": {"type": "null"}}},
+          "then": {"properties": {"gateway_smoke_eligible": {"const": false}}}
+        }
+      ]
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transport", "stream", "max_output_parameter", "max_output_tokens",
+        "context_window", "timeout_seconds", "retry_total_attempts", "fallback",
+        "parameters", "seed_support"
+      ],
+      "properties": {
+        "transport": {"const": "openai_compatible_chat_completions"},
+        "stream": {"type": "boolean"},
+        "max_output_parameter": {"enum": ["max_tokens", "max_completion_tokens"]},
+        "max_output_tokens": {"type": "integer", "minimum": 1},
+        "context_window": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tokens", "status", "source"],
+          "properties": {
+            "tokens": {"type": ["integer", "null"], "minimum": 1},
+            "status": {"enum": ["official_documented", "advertised_only", "observed", "unknown"]},
+            "source": {"type": ["string", "null"], "maxLength": 2048}
+          },
+          "allOf": [
+            {
+              "if": {"properties": {"status": {"enum": ["official_documented", "advertised_only", "observed"]}}},
+              "then": {"properties": {"tokens": {"type": "integer"}, "source": {"type": "string", "minLength": 1}}}
+            },
+            {
+              "if": {"properties": {"status": {"const": "unknown"}}},
+              "then": {"properties": {"tokens": {"type": "null"}, "source": {"type": "null"}}}
+            }
+          ]
+        },
+        "timeout_seconds": {"type": "integer", "minimum": 1},
+        "retry_total_attempts": {"const": 1},
+        "fallback": {"type": "null"},
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "request_state", "value"],
+            "properties": {
+              "name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"},
+              "request_state": {"enum": ["sent", "omitted", "unsupported"]},
+              "value": {"type": ["string", "number", "integer", "boolean", "null"]}
+            }
+          }
+        },
+        "seed_support": {"enum": ["observed_supported", "official_documented", "unsupported", "unknown"]}
+      }
+    },
+    "probe_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probes", "request_variant_ids", "catalog_gets", "completion_calls",
+        "max_completion_calls", "input_token_cap_total", "output_token_cap_total"
+      ],
+      "properties": {
+        "probes": {
+          "type": "array", "uniqueItems": true, "minItems": 1,
+          "items": {"enum": ["message", "stream", "thinking", "native_tool_call", "assistant_replay", "tool_result_replay", "usage"]}
+        },
+        "request_variant_ids": {
+          "type": "array", "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 128}
+        },
+        "catalog_gets": {"const": 1},
+        "completion_calls": {"type": "integer", "minimum": 1},
+        "max_completion_calls": {"type": "integer", "minimum": 1},
+        "input_token_cap_total": {"type": "integer", "minimum": 0},
+        "output_token_cap_total": {"type": "integer", "minimum": 0}
+      }
+    },
+    "observations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_model", "reported_model", "gateway_request_id", "provider_request_id",
+        "attempt", "finish_reason", "error", "usage", "cost", "elapsed_ms"
+      ],
+      "properties": {
+        "requested_model": {"const": "persist_exact"},
+        "reported_model": {"const": "persist_exact_or_absent"},
+        "gateway_request_id": {"const": "persist_opaque_exact_or_absent"},
+        "provider_request_id": {"const": "persist_sha256_or_absent"},
+        "attempt": {"const": "persist_ordinal_and_terminal_status"},
+        "finish_reason": {"const": "persist_safe_enum_or_absent"},
+        "error": {"const": "category_and_status_only_no_remote_body"},
+        "usage": {"const": "persist_normalized_or_mark_unknown"},
+        "cost": {"const": "persist_estimate_or_mark_unknown"},
+        "elapsed_ms": {"const": "persist_nonnegative_integer_or_absent"}
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "currency", "pricing_version", "input_per_1m", "cached_input_per_1m",
+        "output_per_1m", "source_document", "source_document_sha256", "captured_at",
+        "maximum_cost", "maximum_cost_formula"
+      ],
+      "properties": {
+        "currency": {"const": "CNY"},
+        "pricing_version": {"type": "string", "minLength": 1, "maxLength": 128},
+        "input_per_1m": {"type": "string", "pattern": "^\\d+(\\.\\d+)?$"},
+        "cached_input_per_1m": {
+          "oneOf": [
+            {"type": "string", "pattern": "^\\d+(\\.\\d+)?$"},
+            {"type": "null"}
+          ]
+        },
+        "output_per_1m": {"type": "string", "pattern": "^\\d+(\\.\\d+)?$"},
+        "source_document": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "source_document_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "captured_at": {"type": "string", "format": "date-time"},
+        "maximum_cost": {"type": "string", "pattern": "^\\d+(\\.\\d+)?$"},
+        "maximum_cost_formula": {"const": "(input_token_cap_total*max(input_per_1m,coalesce(cached_input_per_1m,input_per_1m))+output_token_cap_total*output_per_1m)/1000000"}
+      }
+    },
+    "readiness": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "blockers"],
+      "properties": {
+        "status": {"enum": ["ready_for_authorized_live_probe", "blocked"]},
+        "blockers": {
+          "type": "array", "uniqueItems": true,
+          "items": {"enum": ["live_probe_not_authorized", "pricing_unverified", "public_alias_unverified", "profile_manifest_drift"]}
+        }
+      }
+    },
+    "stop_conditions": {
+      "type": "array", "uniqueItems": true, "minItems": 8,
+      "items": {
+        "enum": [
+          "catalog_exact_model_absent", "requested_reported_model_mismatch",
+          "unexpected_parameter_rejection", "missing_required_usage", "missing_required_finish_reason",
+          "transport_or_provider_error", "cost_cap_would_be_exceeded", "manifest_or_profile_drift"
+        ]
+      }
+    },
+    "content_policy": {"const": "no_prompt_no_question_no_choices_no_private_reasoning_no_raw_provider_body_no_remote_error_text"},
+    "manifest_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schema_version": "pvi.capability-profile/v1",
+  "profile_id": "cap-mimo-token-plan-mimo-v2-5-pro",
+  "profile_version": "0.2.0",
+  "subject": {
+    "endpoint_id": "endpoint-mimo-token-plan-openai-compatible",
+    "endpoint_kind": "official_direct",
+    "provider_id": "provider-mimo-token-plan",
+    "api_surface": "openai_compatible_chat_completions",
+    "api_version": "v1_subscription_docs",
+    "model_requested": "mimo-v2.5-pro",
+    "model_reported": "mimo-v2.5-pro",
+    "model_revision": "MiMo-V2.5-Pro flagship (1T MoE / 42B active; official model list 2026-08-18)",
+    "deployment_id": null,
+    "region": "cn",
+    "relevant_configuration_digest": null,
+    "observed_at": "2026-08-18T00:00:00Z"
+  },
+  "assurance": {
+    "identity_assurance": "declared_unverified",
+    "model_provenance_assurance": "declared_unverified",
+    "protocol_fidelity_assurance": "unknown",
+    "data_handling_assurance": "unknown",
+    "operational_assurance": "unknown",
+    "protocol_fidelity": "unknown",
+    "usage_notes": [
+      "Advertised layer from the official MiMo model list (mimo.mi.com) captured 2026-08-18; observed layer reflects only the single operator-authorized trial completion, not a full qualification.",
+      "Operator-accepted ToS gray zone: the plan is restricted to coding tools and forbids API automation; recorded deliberately per operator direction 2026-08-18.",
+      "Distinct identity from the pay-as-you-go MiMo API and from the Bailian-hosted xiaomi/mimo-v2.5-pro route; never mapped across channels.",
+      "Subscription billing via Credits (no per-token list price applies); ledger cost estimates are intentionally unknown (pricing_missing), never zero.",
+      "Trial observation 2026-08-18: reasoning_content field present in the message dialect, usage reports reasoning_tokens detail and cache hits; official docs advise retaining historical reasoning_content in multi-turn tool calls.",
+      "2026-08-18 full live gates under user authorization (8 completions): qualification ENABLED with exact requested/reported identity and reasoning_content field present; forwarder smoke 200 exact identity (cost honestly pricing_missing); isolated 5238 gateway smoke 200 exact identity with cache-hit usage. Stream/tool/structured probes executed within the qualification budget but are not part of the persisted state capability summary, so they remain not_tested in this profile. Valid until 2026-08-25 in the isolated state; promotion to production 5200 awaits a separate window."
+    ]
+  },
+  "model_api_capabilities": {
+    "messages": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818",
+        "evidence-mimo-token-plan-trial-20260818"
+      ]
+    },
+    "multimodal": {
+      "advertised": "unknown",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818"
+      ]
+    },
+    "structured_output": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818"
+      ]
+    },
+    "tool_calling": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "representation": "native_structured",
+      "streaming_arguments": "not_tested",
+      "multiple_calls_per_turn": "not_tested",
+      "parallel_calls": "not_tested",
+      "stable_call_result_correlation": "not_tested",
+      "native_tool_result_continuation": "not_tested",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818"
+      ]
+    },
+    "reasoning": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "exposure": "visible_reasoning_text",
+      "continuation_artifact": "not_tested",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818",
+        "evidence-mimo-token-plan-trial-20260818"
+      ]
+    },
+    "usage_context": {
+      "advertised": "supported",
+      "observed": "supported",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818",
+        "evidence-mimo-token-plan-trial-20260818"
+      ]
+    },
+    "streaming": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818"
+      ]
+    },
+    "sampling_observability": {
+      "observed": "not_tested",
+      "sample_access": "unknown",
+      "seed_control": "not_tested",
+      "decoding_controls": "not_tested",
+      "top_k_logprobs": "not_tested",
+      "full_vocab_logits": "not_tested",
+      "local_weights_access": "not_applicable",
+      "tokenizer_access": "unknown",
+      "evidence_ids": []
+    },
+    "builtin_tools": {
+      "advertised": "supported",
+      "observed": "not_tested",
+      "effective": "unknown",
+      "evidence_ids": [
+        "evidence-mimo-token-plan-docs-20260818"
+      ]
+    }
+  },
+  "endpoint_capabilities": {
+    "stream_transport": "unknown",
+    "usage_reporting": "unknown",
+    "routing_transparency": "unknown",
+    "fallback_behavior": "unknown",
+    "raw_evidence_availability": "unknown",
+    "model_disclosure": "unknown"
+  },
+  "runtime_interop": {
+    "mcp_client": "external_runtime_managed",
+    "skills": "external_runtime_managed",
+    "tool_execution": "consumer_managed",
+    "sandbox_evidence_adapter": "not_configured"
+  },
+  "probe_summary": {
+    "probe_suite_version": "pvi-provider-capability-sweep/v1",
+    "completed_probe_ids": [],
+    "inconclusive_probe_ids": [],
+    "next_revalidation_due": null
+  }
+}
