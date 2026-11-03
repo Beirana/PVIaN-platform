@@ -2,7 +2,7 @@
   "schema_version": "pvi.provider-qualification-profile/v1",
   "profile_id": "provider-bigmodel-coding-glm-5-3",
   "profile_version": "0.2.0",
-  "lifecycle": "candidate",
+  "lifecycle": "active",
   "provider": {
     "provider_id": "provider-bigmodel-coding",
     "display_name": "Zhipu BigModel GLM Coding Plan (official subscription endpoint)",
